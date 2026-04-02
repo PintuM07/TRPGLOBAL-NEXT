@@ -145,6 +145,38 @@
   transition: color 0.4s;
 }
 
+/* Social Icons */
+.lc-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.lc-mobile .lc-social {
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.lc-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg2);
+  color: var(--fg2);
+  border: 1px solid var(--border);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.lc-social-icon:hover {
+  background: var(--card-hover);
+  color: var(--red);
+  border-color: var(--border2);
+  transform: translateY(-3px);
+}
+
 /* Mobile layout */
 .lc-mobile {
   display: none;
