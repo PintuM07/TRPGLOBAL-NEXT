@@ -174,16 +174,57 @@ function LeadersCarousel() {
           <AnimatePresence mode="wait">
             <motion.div
               key={leader.name}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={{
+                hidden: { opacity: 0, y: 8 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0, 
+                  transition: { duration: 0.4, ease: "easeOut", staggerChildren: 0.015 } 
+                },
+                exit: { 
+                  opacity: 0, 
+                  y: -8, 
+                  transition: { duration: 0.3, ease: "easeIn", staggerChildren: 0.01, staggerDirection: -1 } 
+                }
+              }}
             >
               <div className="lc-card-header">
                 <h3 className="lc-card-name">{leader.name}</h3>
                 <p className="lc-card-role">{leader.role}</p>
               </div>
-              <p className="lc-card-bio">{leader.bio}</p>
+              
+              {/* Professional Text Reveal Effect */}
+              <motion.div className="lc-card-bio">
+                {leader.bio.split(" ").map((word, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, filter: "blur(4px)", y: 2 },
+                      visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+                      exit: { opacity: 0, filter: "blur(4px)", y: -2, transition: { duration: 0.2, ease: "easeIn" } }
+                    }}
+                    style={{ display: "inline-block", marginRight: "0.22em" }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </motion.div>
+
+              {/* Professional Social Icons */}
+              <div className="lc-social">
+                <a href="#" className="lc-social-icon" aria-label="LinkedIn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" className="lc-social-icon" aria-label="Twitter">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+                </a>
+                <a href="#" className="lc-social-icon" aria-label="Email">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -213,14 +254,54 @@ function LeadersCarousel() {
           <AnimatePresence mode="wait">
             <motion.div
               key={leader.name}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={{
+                hidden: { opacity: 0, y: 8 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0, 
+                  transition: { duration: 0.4, ease: "easeOut", staggerChildren: 0.015 } 
+                },
+                exit: { 
+                  opacity: 0, 
+                  y: -8, 
+                  transition: { duration: 0.3, ease: "easeIn", staggerChildren: 0.01, staggerDirection: -1 } 
+                }
+              }}
             >
               <h3 className="lc-card-name">{leader.name}</h3>
               <p className="lc-card-role">{leader.role}</p>
-              <p className="lc-card-bio">{leader.bio}</p>
+              
+              <motion.div className="lc-card-bio">
+                {leader.bio.split(" ").map((word, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, filter: "blur(4px)", y: 2 },
+                      visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+                      exit: { opacity: 0, filter: "blur(4px)", y: -2, transition: { duration: 0.2, ease: "easeIn" } }
+                    }}
+                    style={{ display: "inline-block", marginRight: "0.22em" }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </motion.div>
+
+              {/* Professional Social Icons */}
+              <div className="lc-social">
+                <a href="#" className="lc-social-icon" aria-label="LinkedIn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" className="lc-social-icon" aria-label="Twitter">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+                </a>
+                <a href="#" className="lc-social-icon" aria-label="Email">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
