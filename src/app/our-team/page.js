@@ -8,30 +8,30 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 /* ── DATA ── */
 const LEADERS = [
   {
-    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80',
+    img: '/assets/Arun.png',
     name: 'Arun Majumdar',
-    role: 'Chief Executive Officer',
+    role: 'Group CEO & Senior Partner',
     bio: 'Arun leads TRP Global\'s strategic vision with 20+ years in enterprise risk and ERP. He built TRP from the ground up, growing it to a 100+ enterprise client base across 18 countries.',
     initials: 'AM',
   },
   {
-    img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80',
+    img: '/assets/Sayantan.jpg',
     name: 'Sayantan Polley',
-    role: 'Director — Oracle Practice',
+    role: 'Co-Founder & Director',
     bio: 'Sayantan oversees delivery operations and Oracle practice leadership, with deep expertise in Oracle RMC and IAG driving successful implementations across 40+ enterprises globally.',
     initials: 'SP',
   },
   {
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&auto=format&fit=crop&q=80',
+    img: '/assets/Rahul.jpeg',
     name: 'Rahul Ghosh',
     role: 'Partner — SAP & GRC',
     bio: 'Rahul leads the SAP and GRC practice, bringing deep experience in S/4HANA transformations and governance frameworks across financial services and manufacturing sectors.',
     initials: 'RG',
   },
   {
-    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80',
-    name: 'Vikram Desai',
-    role: 'CTO — Technology',
+    img: '/assets/Samson.jpg',
+    name: 'Samson George',
+    role: 'Associate Partner',
     bio: 'Vikram architects TRP\'s AI and ML risk platforms. With a background in computational science and 15+ years in fintech, he drives the technical roadmap for next-gen risk solutions.',
     initials: 'VD',
   },
