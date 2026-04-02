@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useReveal } from '@/lib/hooks/useReveal';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 /* ── DATA ── */
 const LEADERS = [
@@ -113,85 +115,145 @@ const EVENTS = [
   },
 ];
 
-/* ── LEADERS CAROUSEL ── */
+/* ── LEADERS CAROUSEL (Reference Style) ── */
 function LeadersCarousel() {
   const [active, setActive] = useState(0);
   const timerRef = useRef(null);
+
+  const handleNext = useCallback(() => {
+    setActive((prev) => (prev + 1) % LEADERS.length);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    setActive((prev) => (prev - 1 + LEADERS.length) % LEADERS.length);
+  }, []);
 
   const goTo = useCallback((idx) => {
     setActive(idx);
   }, []);
 
-  const next = useCallback(() => {
-    setActive((prev) => (prev + 1) % LEADERS.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setActive((prev) => (prev - 1 + LEADERS.length) % LEADERS.length);
-  }, []);
-
-  // Auto rotate
+  /* Infinite auto-loop */
   useEffect(() => {
-    timerRef.current = setInterval(next, 5000);
+    timerRef.current = setInterval(handleNext, 5000);
     return () => clearInterval(timerRef.current);
-  }, [next]);
+  }, [handleNext]);
 
   const resetTimer = () => {
     clearInterval(timerRef.current);
-    timerRef.current = setInterval(next, 5000);
+    timerRef.current = setInterval(handleNext, 5000);
   };
 
   const leader = LEADERS[active];
 
   return (
-    <div className="ot-leaders-carousel">
-      <div className="ot-leaders-img-side">
-        {LEADERS.map((l, i) => (
-          <div
-            key={l.name}
-            className={`ot-leaders-img-wrap ${i === active ? 'ot-leaders-img-active' : ''}`}
-          >
-            <img src={l.img} alt={l.name} />
-            <div className="ot-leaders-initials">{l.initials}</div>
-          </div>
-        ))}
+    <div className="lc-root">
+      {/* ── Desktop Layout ── */}
+      <div className="lc-desktop">
+        {/* Large Image */}
+        <div className="lc-avatar">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={leader.img}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              className="lc-avatar-inner"
+            >
+              <img
+                src={leader.img}
+                alt={leader.name}
+                draggable={false}
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Overlapping Card */}
+        <div className="lc-card">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={leader.name}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+            >
+              <div className="lc-card-header">
+                <h3 className="lc-card-name">{leader.name}</h3>
+                <p className="lc-card-role">{leader.role}</p>
+              </div>
+              <p className="lc-card-bio">{leader.bio}</p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
-      <div className="ot-leaders-info-side">
-        <div className="ot-leaders-info" key={active}>
-          <div className="ot-leaders-name">{leader.name}</div>
-          <div className="ot-leaders-role">{leader.role}</div>
-          <p className="ot-leaders-bio">{leader.bio}</p>
-        </div>
-
-        <div className="ot-leaders-controls">
-          <button
-            className="ot-leaders-arrow"
-            onClick={() => { prev(); resetTimer(); }}
-            aria-label="Previous leader"
-          >
-            ←
-          </button>
-
-          <div className="ot-leaders-dots">
-            {LEADERS.map((_, i) => (
-              <button
-                key={i}
-                className={`ot-leaders-dot ${i === active ? 'ot-leaders-dot-active' : ''}`}
-                onClick={() => { goTo(i); resetTimer(); }}
-                aria-label={`Go to leader ${i + 1}`}
+      {/* ── Mobile Layout ── */}
+      <div className="lc-mobile">
+        <div className="lc-mobile-avatar">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={leader.img}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              className="lc-mobile-avatar-inner"
+            >
+              <img
+                src={leader.img}
+                alt={leader.name}
+                draggable={false}
               />
-            ))}
-          </div>
-
-          <button
-            className="ot-leaders-arrow"
-            onClick={() => { next(); resetTimer(); }}
-            aria-label="Next leader"
-          >
-            →
-          </button>
+            </motion.div>
+          </AnimatePresence>
         </div>
+        <div className="lc-mobile-content">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={leader.name}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+            >
+              <h3 className="lc-card-name">{leader.name}</h3>
+              <p className="lc-card-role">{leader.role}</p>
+              <p className="lc-card-bio">{leader.bio}</p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* ── Bottom Navigation ── */}
+      <div className="lc-bottom-nav">
+        <button
+          className="lc-nav-btn"
+          onClick={() => { handlePrev(); resetTimer(); }}
+          aria-label="Previous leader"
+        >
+          <ChevronLeft size={22} />
+        </button>
+
+        <div className="lc-dots">
+          {LEADERS.map((_, i) => (
+            <button
+              key={i}
+              className={`lc-dot ${i === active ? 'lc-dot-active' : ''}`}
+              onClick={() => { goTo(i); resetTimer(); }}
+              aria-label={`Go to leader ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          className="lc-nav-btn"
+          onClick={() => { handleNext(); resetTimer(); }}
+          aria-label="Next leader"
+        >
+          <ChevronRight size={22} />
+        </button>
       </div>
     </div>
   );
