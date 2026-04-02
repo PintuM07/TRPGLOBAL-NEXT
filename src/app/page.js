@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { SERVICES_DATA } from '@/lib/constants/serviceData';
 import { AnimatedCounter } from '@/lib/hooks/useAnimatedCounter';
 
-const VIDEO_SRC = '/assets/Risk_Management_Video_Generation.mp4';
+const VIDEO_SRC = '/assets/HeroVideo.mp4';
 
 const SLIDES = [
   {
