@@ -140,7 +140,7 @@ a {
   background: linear-gradient(120deg, #ff4e13, #ffb300, #47ad05);
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 0.6s ease;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth but faster ease-in-out */
 }
 
 /* ── SHARED UTILS ── */
@@ -415,4 +415,28 @@ a {
   .page-banner {
     height: 280px;
   }
+}
+
+/* ── CURSOR BEHAVIOR ── */
+body {
+  cursor: default;
+}
+
+a, 
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"], 
+select, 
+.svc-card, 
+.ig-card, 
+.team-card, 
+.job-item,
+[role="button"] {
+  cursor: pointer;
+}
+
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), 
+textarea {
+  cursor: text;
 }

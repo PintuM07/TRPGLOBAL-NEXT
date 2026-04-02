@@ -23,10 +23,16 @@ export function PageTransition() {
   const [transitioning, setTransitioning] = useState(false);
 
   useEffect(() => {
-    setTransitioning(true);
-    const t = setTimeout(() => setTransitioning(false), 600);
-    return () => clearTimeout(t);
+    // Finish transition (make curtain disappear) once navigation completes
+    setTransitioning(false);
   }, [pathname]);
+
+  useEffect(() => {
+    // Start transition before routing 
+    const handleStart = () => setTransitioning(true);
+    window.addEventListener('start-transition', handleStart);
+    return () => window.removeEventListener('start-transition', handleStart);
+  }, []);
 
   return (
     <div

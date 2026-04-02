@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: '/services', label: 'Services' },
   { href: '/oracle-rmc', label: 'Oracle RMC' },
   { href: '/about', label: 'About' },
+  { href: '/our-team', label: 'Our Team' },
   { href: '/insights', label: 'Blog' },
   { href: '/careers', label: 'Careers' },
 ];
@@ -47,11 +48,31 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  const handleNavClick = (e, href) => {
+    // Prevent triggering transition if we are already on this page
+    if (pathname === href) {
+      if (menuOpen) setMenuOpen(false);
+      return;
+    }
+    
+    e.preventDefault();
+    if (menuOpen) setMenuOpen(false);
+    
+    // Trigger transition curtain start
+    window.dispatchEvent(new Event('start-transition'));
+    
+    // Wait 450ms for curtain to smoothly cover the screen before pushing route
+    // (Using 450ms matches the smooth CSS ease-in-out transition)
+    setTimeout(() => {
+      router.push(href);
+    }, 450);
+  };
+
   return (
     <>
       <nav id="nav" className={`${scrolled ? 'scrolled' : ''} ${hidden && !menuOpen ? 'hidden' : ''}`}>
         <div className="nav-inner">
-          <Link href="/" className="nav-logo-link">
+          <Link href="/" className="nav-logo-link" onClick={(e) => handleNavClick(e, '/')}>
             <Logo as="span" size="sm" className="nav-logo" />
           </Link>
 
@@ -60,6 +81,7 @@ export default function Navbar() {
               <li key={href}>
                 <Link
                   href={href}
+                  onClick={(e) => handleNavClick(e, href)}
                   className={pathname === href ? 'active' : ''}
                 >
                   {label}
@@ -72,7 +94,7 @@ export default function Navbar() {
             <button className="theme-btn" onClick={toggleTheme} title="Toggle theme">
               {theme === 'light' ? '🌙' : '☀'}
             </button>
-            <Link href="/contact" className="nav-cta">
+            <Link href="/contact" className="nav-cta" onClick={(e) => handleNavClick(e, '/contact')}>
               Contact
             </Link>
             <button
@@ -93,12 +115,13 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
+              onClick={(e) => handleNavClick(e, href)}
               className={`mobile-link ${pathname === href ? 'active' : ''}`}
             >
               {label}
             </Link>
           ))}
-          <Link href="/contact" className="mobile-link mobile-link-cta">
+          <Link href="/contact" className="mobile-link mobile-link-cta" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact Us
           </Link>
         </div>

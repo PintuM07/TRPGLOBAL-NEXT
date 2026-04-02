@@ -1,0 +1,463 @@
+/* ══════════════════════════════════════════
+   OUR TEAM PAGE STYLES
+   ══════════════════════════════════════════ */
+
+/* ── HERO ── */
+.ot-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-top: 60px;
+  transition: border-color 0.4s;
+}
+
+.ot-hero-left {
+  padding: 80px 64px 80px 32px;
+  border-right: 1px solid var(--border);
+  max-width: 760px;
+  transition: border-color 0.4s;
+}
+
+.ot-hero-right {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.ot-hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ot-hero-right-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.5) 100%);
+}
+
+.ot-hero-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  right: 28px;
+  color: #fff;
+}
+
+.ot-hero-caption-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ot-hero-caption-sub {
+  font-size: 0.82rem;
+  opacity: 0.8;
+}
+
+/* ── LEADERS SECTION ── */
+.ot-leaders-section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+
+.ot-leaders-carousel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 48px;
+  align-items: center;
+}
+
+/* Image side */
+.ot-leaders-img-side {
+  position: relative;
+  height: 420px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg3);
+  transition: background 0.4s;
+}
+
+.ot-leaders-img-wrap {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ot-leaders-img-wrap.ot-leaders-img-active {
+  opacity: 1;
+}
+
+.ot-leaders-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.ot-leaders-initials {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--red);
+  opacity: 0.08;
+  font-family: 'Source Serif 4', serif;
+  pointer-events: none;
+}
+
+/* Info side */
+.ot-leaders-info-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ot-leaders-info {
+  animation: ot-fade-in 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes ot-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ot-leaders-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 6px;
+  transition: color 0.4s;
+}
+
+.ot-leaders-role {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.ot-leaders-bio {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 32px;
+  transition: color 0.4s;
+}
+
+/* Controls */
+.ot-leaders-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ot-leaders-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  color: var(--fg);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.ot-leaders-arrow:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.ot-leaders-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.ot-leaders-dot {
+  width: 32px;
+  height: 4px;
+  border-radius: 2px;
+  border: none;
+  background: var(--border2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, width 0.3s;
+}
+
+.ot-leaders-dot-active {
+  background: var(--red);
+  width: 48px;
+}
+
+/* ── ACTIVITIES SECTION ── */
+.ot-activities-section {
+  padding: 80px 0;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.ot-activities-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 0;
+}
+
+.ot-activities-wrap {
+  position: relative;
+  margin-top: 48px;
+}
+
+.ot-activities-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.ot-act-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  color: var(--fg);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.ot-act-arrow:hover:not(:disabled) {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.ot-act-arrow-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.ot-activities-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
+}
+
+.ot-activities-track::-webkit-scrollbar {
+  display: none;
+}
+
+.ot-activity-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.3s, transform 0.3s;
+}
+
+.ot-activity-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  border-color: var(--border2);
+  transform: translateY(-4px);
+}
+
+[data-theme="dark"] .ot-activity-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+
+.ot-activity-icon {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+
+.ot-activity-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 8px;
+  transition: color 0.4s;
+}
+
+.ot-activity-desc {
+  font-size: 0.875rem;
+  line-height: 1.68;
+  color: var(--muted);
+  transition: color 0.4s;
+}
+
+/* ── EVENTS SECTION ── */
+.ot-events-section {
+  padding: 80px 0;
+}
+
+.ot-events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.ot-event-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.35s, transform 0.35s;
+}
+
+.ot-event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  border-color: var(--red);
+}
+
+[data-theme="dark"] .ot-event-card:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+}
+
+.ot-event-img {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ot-event-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.ot-event-card:hover .ot-event-img img {
+  transform: scale(1.06);
+}
+
+.ot-event-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.35) 100%);
+  pointer-events: none;
+}
+
+.ot-event-date-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.ot-event-body {
+  padding: 24px;
+}
+
+.ot-event-location {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.ot-event-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 10px;
+  transition: color 0.4s;
+}
+
+.ot-event-desc {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--muted);
+  transition: color 0.4s;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .ot-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .ot-hero-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 48px 20px;
+  }
+
+  .ot-hero-right {
+    min-height: 280px;
+  }
+
+  .ot-leaders-carousel {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ot-leaders-img-side {
+    height: 340px;
+  }
+
+  .ot-events-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ot-activity-card {
+    flex: 0 0 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ot-events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ot-leaders-img-side {
+    height: 280px;
+  }
+
+  .ot-activity-card {
+    flex: 0 0 85vw;
+  }
+
+  .ot-leaders-section,
+  .ot-activities-section,
+  .ot-events-section {
+    padding: 56px 0;
+  }
+}
