@@ -10,18 +10,18 @@ const VIDEO_SRC = '/assets/Risk_Management_Video_Generation.mp4';
 
 const SLIDES = [
   {
-    heading: <>Secure. <strong>Compliant.</strong><br />Digitally Transformed.</>,
-    sub: 'TRP Global partners with 100+ global enterprises to manage risk, strengthen security, and accelerate digital transformation.',
+    heading: <><strong>Agentic AI for Oracle  </strong><br />Risk & Compliance.</>,
+    sub: 'TRPGLOBAL partners with 100+ global clients to deliver Agentic AI that automates Oracle risk and compliance with real-time risk intelligence and continuous controls monitoring.',
     accent: 'slide-accent-blue',
   },
   {
-    heading: <><strong>Enterprise Risk,</strong><br />Redefined.</>,
-    sub: 'Our AI-powered iRM platform delivers real-time risk visibility, automated compliance workflows, and fraud detection across your entire technology stack.',
+    heading: <><strong>Zero-Trust Access Governance,</strong><br />Automated.</>,
+    sub: 'Achieve automated compliance with continuous monitoring, real-time visibility, and audit-ready access controls & no manual reviews.',
     accent: 'slide-accent-red',
   },
   {
-    heading: <>Oracle. SAP.<br /><strong>AI-Powered.</strong></>,
-    sub: 'Deep expertise across Oracle and SAP ecosystems — combined with proprietary AI — to deliver measurable enterprise outcomes.',
+    heading: <><strong>AI Agents Built for Governance  &</strong><br /><strong>Audit.</strong></>,
+    sub: 'Deploy Agentic AI with built-in AI audit trails, powered by the Oracle AI Data Platform for secure, compliant automation.',
     accent: 'slide-accent-teal',
   },
 ];
@@ -144,8 +144,8 @@ export default function HomePage() {
           <h1 key={activeSlide} className="hero-title-anim">{SLIDES[activeSlide].heading}</h1>
           <p className="hero-sub" key={`sub-${activeSlide}`}>{SLIDES[activeSlide].sub}</p>
           <div className="hero-actions">
-            <Link href="/services" className="btn-primary">Explore Services <span className="arrow">→</span></Link>
-            <Link href="/oracle-rmc" className="btn-secondary hero-btn-secondary">View Oracle RMC</Link>
+            <Link href="/services" className="btn-primary">Explore Our Services <span className="arrow">→</span></Link>
+            <Link href="/contact" className="btn-secondary hero-btn-secondary">Book a Free Consultation</Link>
           </div>
           <div className="hero-dots">
             {SLIDES.map((_, idx) => (
@@ -208,10 +208,13 @@ export default function HomePage() {
       <div className="intro-split">
         <div className="intro-left rv-l">
           <div className="eyebrow">Who We Are</div>
-          <h2 className="heading" style={{ marginBottom: 20 }}><strong>Enterprise Risk,</strong><br />Redefined.</h2>
-          <p className="lead" style={{ marginBottom: 20 }}>Founded in 2018, TRP Global is a specialist IT consulting and risk management company helping businesses manage security, compliance, and digital transformation.</p>
-          <p className="body-text" style={{ marginBottom: 32 }}>We bring deep expertise across Oracle and SAP ecosystems, combined with Oracle Risk Management and Compliance solutions, to deliver measurable outcomes for global enterprises.</p>
-          <Link href="/about" className="btn-text">Learn about TRP Global <span className="arrow">→</span></Link>
+          <h2 className="heading" style={{ marginBottom: 20 }}><strong>WE Refined AI-Powered,</strong><br />Enterprise Risk Management.</h2>
+          <p className="lead" style={{ marginBottom: 20 }}>TRPGLOBAL helps enterprises transform how they manage risk, compliance, and security in a rapidly evolving digital landscape.</p>
+          <p className="body-text" style={{ marginBottom: 32 }}>By combining deep expertise in Oracle and SAP with Agentic AI, automated compliance, and real-time risk intelligence, we enable organisations to move beyond manual processes to smarter, audit-ready operations.
+            <br />
+            <strong>Trusted by 100+ global clients to deliver secure, scalable, and future-ready risk solutions.</strong>
+          </p>
+          <Link href="/about" className="btn-text" style={{ color: 'var(--red)' }}>Learn about TRP Global <span className="arrow">→</span></Link>
         </div>
         <div className="intro-right rv-r">
           <div className="intro-img">
@@ -245,7 +248,13 @@ export default function HomePage() {
               <Link href="/services" className="svc-card rv" key={card.name} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div className="svc-card-img"><img src={card.img} alt={card.name} /></div>
                 <div className="svc-card-body">
-                  <div className="svc-card-icon">{card.icon}</div>
+                  <div className="svc-card-icon">
+                    <img
+                      src={card.icon}
+                      alt={card.name}
+                      className="w-8 h-8 object-contain"
+                    />
+                  </div>
                   <h3>{card.name}</h3>
                   <p>{card.desc}</p>
                   <span className="svc-card-link">Learn more <span className="arrow">→</span></span>
@@ -301,8 +310,8 @@ export default function HomePage() {
       <div className="home-cta">
         <div className="container home-cta-inner">
           <div>
-            <h2 className="home-cta-title">Ready to transform your <strong>enterprise risk posture?</strong></h2>
-            <p className="home-cta-sub">Talk to our experts today. No obligation — just a conversation.</p>
+            <h2 className="home-cta-title">Ready to transform your <strong>Enterprise Risk Strategy with AI?</strong></h2>
+            <p className="home-cta-sub">AI-native GRC and IT audit automation backed by 160+ years of Big4 experience and trusted by 65+ global enterprises.</p>
           </div>
           <div className="home-cta-btns">
             <Link href="/contact" className="home-cta-btn-white">Book a Consultation</Link>
