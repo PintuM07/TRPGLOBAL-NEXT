@@ -1,34 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TRP Global — Enterprise Risk & ERP Excellence
 
-## Getting Started
+![TRP Global Banner](https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&auto=format&fit=crop&q=80)
 
-First, run the development server:
+TRP Global is a high-performance enterprise web application designed for a leading consultancy specializing in **ERP Risk Management, Compliance, and AI-driven Risk Solutions**. Built with a Big 4-style aesthetic, the platform reflects prestige, reliability, and technical sophistication.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Overview
+
+The TRP Global platform serves as a comprehensive corporate portal, showcasing expertise across Oracle and SAP ecosystems. It transitions from a traditional consultancy model to a tech-forward partner, highlighting advanced capabilities in:
+- **Oracle Risk Management Cloud (RMC)**
+- **AI Data Platforms & Agent Studios**
+- **S/4HANA Transformations**
+- **Governance & Compliance Frameworks**
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Library**: [React 19](https://react.dev/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Styling**: Vanilla CSS (Modern CSS Variables & Glassmorphism)
+- **Deployment**: Optimized for Vercel
+
+---
+
+## 📂 Project Structure
+
+```text
+trpglobal-next/
+├── public/              # Static assets (images, icons, fonts)
+├── src/
+│   ├── app/             # Next.js App Router (pages & layouts)
+│   │   ├── about/       # Corporate vision & mission
+│   │   ├── admin/       # Management dashboard
+│   │   ├── careers/     # Talent & recruitment
+│   │   ├── insights/    # Thought leadership & blogs
+│   │   ├── oracle-rmc/  # Specialized service vertical
+│   │   ├── our-team/    # Leadership & culture
+│   │   └── services/    # Full service directory
+│   ├── components/
+│   │   ├── layout/      # Nav, Footer, Grid systems
+│   │   └── ui/          # Buttons, Cards, Modals, Forms
+│   ├── lib/
+│   │   ├── constants/   # Centralized data (services, leaders)
+│   │   ├── context/     # Global state management
+│   │   └── hooks/       # Custom hooks (e.g., useReveal for scroll)
+│   └── styles/          # Global CSS & Design System
+└── package.json         # Dependencies & Scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ✨ Key Features
 
-## Learn More
+### 1. Advanced Animation System
+Powered by **Framer Motion**, the site features sophisticated micro-interactions:
+- **Reveal Effects**: Scroll-triggered entry animations via custom `useReveal` hooks.
+- **Dynamic Carousels**: Interactive leadership and activity sliders.
+- **Text Reveal**: Professional word-by-word animation for bios and headlines.
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Service Directory
+A data-driven services engine (defined in `serviceData.js`) that dynamically generates:
+- Deep-layer security audits for Oracle Security.
+- Real-time compliance dashboards for Oracle RMC.
+- AI Agent Studio showcases for automated risk guardrails.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Enterprise Content Strategy
+Dedicated sections for **Insights** and **Case Studies**, allowing TRP Global to showcase thought leadership in the ERP space.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Professional "Our Team" Page
+A premium leadership showcase featuring:
+- Interactive profile carousels.
+- Real-world event milestones and team culture highlights.
+- Direct connectivity via social integration for partners.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🏁 Getting Started
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Prerequisites
+- Node.js 18.17.0 or later
+- npm or yarn
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/PintuM07/TRPGLOBAL-NEXT.git
+
+# Install dependencies
+npm install
+```
+
+### Development
+```bash
+# Start the development server
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the application.
+
+---
+
+## 🎨 Design Philosophy
+
+TRP Global follows a **Minimalist Enterprise** aesthetic:
+- **Color Palette**: Sophisticated dark modes, stark white spaces, and vibrant accent highlights.
+- **Typography**: Editorial-grade sans-serif pairings for readability and authority.
+- **Interactions**: Glassmorphism, subtle gradients, and high-frequency micro-interactions that make the platform feel alive.
+
+---
+
+## 📄 License
+
+This project is private and proprietary to TRP Global. 
+© 2026 TRP Global. All rights reserved.
