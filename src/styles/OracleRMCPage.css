@@ -1,0 +1,133 @@
+.irm-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+
+.irm-left {
+  padding: 80px 64px 80px 32px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: border-color 0.4s;
+}
+
+.irm-right {
+  padding: 0;
+  overflow: hidden;
+  min-height: 560px;
+  position: relative;
+}
+
+.irm-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.irm-right-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 35%);
+  transition: background 0.4s;
+}
+
+.irm-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 36px;
+}
+
+.irm-feat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+
+.irm-feat-item:first-child { border-top: 1px solid var(--border); }
+
+.feat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.feat-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 4px;
+  transition: color 0.4s;
+}
+
+.feat-desc {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--muted);
+  transition: color 0.4s;
+}
+
+.irm-cards-section {
+  padding: 72px 0;
+  background: var(--bg2);
+  transition: background 0.4s;
+}
+
+.irm-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.icard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.3s;
+}
+
+.icard:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+.icard-icon { font-size: 1.6rem; margin-bottom: 16px; }
+
+.icard-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 8px;
+  transition: color 0.4s;
+}
+
+.icard-desc {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--muted);
+  transition: color 0.4s;
+}
+
+@media (max-width: 1024px) {
+  .irm-split { grid-template-columns: 1fr; }
+  .irm-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 48px 20px;
+  }
+  .irm-right { min-height: 280px; }
+  .irm-cards { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .irm-cards { grid-template-columns: 1fr; }
+}
