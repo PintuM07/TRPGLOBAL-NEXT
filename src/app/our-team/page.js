@@ -215,13 +215,13 @@ function LeadersCarousel() {
 
               {/* Professional Social Icons */}
               <div className="lc-social">
-                <a href="#" className="lc-social-icon" aria-label="LinkedIn">
+                <a href={leader.linkedin || "https://www.linkedin.com"} target="_blank" rel="noopener noreferrer" className="lc-social-icon" aria-label="LinkedIn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="#" className="lc-social-icon" aria-label="Twitter">
+                <a href={leader.twitter || "https://x.com"} target="_blank" rel="noopener noreferrer" className="lc-social-icon" aria-label="Twitter">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
                 </a>
-                <a href="#" className="lc-social-icon" aria-label="Email">
+                <a href={leader.email || "mailto:contact@trpglobal.com"} className="lc-social-icon" aria-label="Email">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </a>
               </div>
@@ -292,13 +292,13 @@ function LeadersCarousel() {
 
               {/* Professional Social Icons */}
               <div className="lc-social">
-                <a href="#" className="lc-social-icon" aria-label="LinkedIn">
+                <a href={leader.linkedin || "https://www.linkedin.com"} target="_blank" rel="noopener noreferrer" className="lc-social-icon" aria-label="LinkedIn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="#" className="lc-social-icon" aria-label="Twitter">
+                <a href={leader.twitter || "https://x.com"} target="_blank" rel="noopener noreferrer" className="lc-social-icon" aria-label="Twitter">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
                 </a>
-                <a href="#" className="lc-social-icon" aria-label="Email">
+                <a href={leader.email || "mailto:contact@trpglobal.com"} className="lc-social-icon" aria-label="Email">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </a>
               </div>

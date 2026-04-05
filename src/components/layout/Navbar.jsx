@@ -7,14 +7,60 @@ import Logo from '../ui/Logo';
 import Link from 'next/link';
 import './Navbar.css';
 
+const ChevronIcon = () => (
+  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" className="dropdown-chevron">
+    <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/oracle-rmc', label: 'Oracle RMC' },
-  { href: '/about', label: 'About' },
+  { 
+    href: '/services', 
+    label: 'Services',
+    subItems: [
+      { href: '/services', label: 'Consulting' },
+      { href: '/services', label: 'Risk Advisory' },
+      { href: '/services', label: 'Managed Services' }
+    ]
+  },
+  { 
+    href: '/oracle-rmc', 
+    label: 'Oracle RMC',
+    subItems: [
+      { href: '/oracle-rmc', label: 'Overview' },
+      { href: '/oracle-rmc', label: 'Solutions' },
+      { href: '/oracle-rmc', label: 'Implementation' }
+    ]
+  },
+  { 
+    href: '/about', 
+    label: 'About',
+    subItems: [
+      { href: '/about', label: 'Company' },
+      { href: '/about', label: 'Leadership' },
+      { href: '/about', label: 'Culture' }
+    ]
+  },
   { href: '/our-team', label: 'Our Team' },
-  { href: '/insights', label: 'Blog' },
-  { href: '/careers', label: 'Careers' },
+  { 
+    href: '/insights', 
+    label: 'Blog',
+    subItems: [
+      { href: '/insights', label: 'Insights' },
+      { href: '/insights', label: 'News' },
+      { href: '/insights', label: 'Case Studies' }
+    ]
+  },
+  { 
+    href: '/careers', 
+    label: 'Careers',
+    subItems: [
+      { href: '/careers', label: 'Open Roles' },
+      { href: '/careers', label: 'Life at Company' },
+      { href: '/careers', label: 'Hiring Process' }
+    ]
+  },
 ];
 
 export default function Navbar() {
@@ -77,15 +123,32 @@ export default function Navbar() {
           </Link>
 
           <ul className="nav-links">
-            {NAV_LINKS.map(({ href, label }) => (
-              <li key={href}>
+            {NAV_LINKS.map(({ href, label, subItems }) => (
+              <li key={href} className={subItems ? 'has-dropdown' : ''}>
                 <Link
                   href={href}
                   onClick={(e) => handleNavClick(e, href)}
-                  className={pathname === href ? 'active' : ''}
+                  className={`nav-link ${pathname === href || (subItems && pathname.startsWith(href)) ? 'active' : ''}`}
                 >
                   {label}
+                  {subItems && <ChevronIcon />}
                 </Link>
+                {subItems && (
+                  <div className="dropdown-menu">
+                    <div className="dropdown-inner">
+                      {subItems.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          href={subItem.href}
+                          onClick={(e) => handleNavClick(e, subItem.href)}
+                          className={pathname === subItem.href ? 'active dropdown-item' : 'dropdown-item'}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -111,15 +174,30 @@ export default function Navbar() {
       {/* Mobile overlay menu */}
       <div className={`mobile-menu ${menuOpen ? 'mobile-menu-open' : ''}`}>
         <div className="mobile-menu-inner">
-          {NAV_LINKS.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={(e) => handleNavClick(e, href)}
-              className={`mobile-link ${pathname === href ? 'active' : ''}`}
-            >
-              {label}
-            </Link>
+          {NAV_LINKS.map(({ href, label, subItems }) => (
+            <div key={href} className="mobile-link-wrapper">
+              <Link
+                href={href}
+                onClick={(e) => handleNavClick(e, href)}
+                className={`mobile-link ${pathname === href || (subItems && pathname.startsWith(href)) ? 'active' : ''}`}
+              >
+                {label}
+              </Link>
+              {subItems && (
+                <div className="mobile-dropdown">
+                  {subItems.map(subItem => (
+                    <Link
+                      key={subItem.label}
+                      href={subItem.href}
+                      onClick={(e) => handleNavClick(e, subItem.href)}
+                      className={`mobile-sublink ${pathname === subItem.href ? 'active' : ''}`}
+                    >
+                      {subItem.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
           <Link href="/contact" className="mobile-link mobile-link-cta" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact Us
