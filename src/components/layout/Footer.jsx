@@ -45,9 +45,9 @@ export default function Footer() {
         <div className="f-col">
           <h5>Connect</h5>
           <ul>
-            <li><a href="#">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/company/technology-risk-ltd/posts/?feedView=all">LinkedIn</a></li>
             <li><a href="#">Twitter / X</a></li>
-            <li><a href="mailto:hello@trpglobal.com">hello@trpglobal.com</a></li>
+            <li><a href="mailto:contactus@techriskpartners.com">contactus@techriskpartners.com</a></li>
             <li><a href="#">Privacy Policy</a></li>
           </ul>
         </div>
