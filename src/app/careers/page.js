@@ -20,10 +20,10 @@ const PERKS = [
   { icon: '/assets/icons/Careers/Continuous%20Learning.png', title: 'Continuous Learning', desc: 'Keep Learning. Keep Leading. From Oracle certifications to real-world problem-solving, learning is built into everything we do. You won’t just gain knowledge, you’ll apply it where it matters most.' },
   { icon: '/assets/icons/Careers/Flexible%20Work.png', title: 'Flexible Work', desc: 'Work Your Best, Your Way. Great work doesn’t follow a fixed schedule. With flexible hours and hybrid options, we focus on outcomes, giving you the freedom to perform at your best.' },
   { icon: '/assets/icons/Careers/Career%20Growth.png', title: 'Career Growth', desc: 'Grow Faster Than You Thought Possible. Clear paths, real responsibility, and mentorship from industry leaders, your growth here is intentional. You don’t wait for opportunities, you step into them.' },
-  { icon: HeartPulse, title: 'Health & Wellness', desc: 'Comprehensive premium health coverage, generous wellness stipends, and dedicated mental health days.' },
-  { icon: Trophy, title: 'Performance Rewards', desc: 'Competitive base compensation with performance-based bi-annual bonuses and profit-sharing.' },
-  { icon: Laptop, title: 'Premium Tech Gear', desc: 'Choose your preferred powerful workstation setup (Apple or PC) with noise-canceling headphones.' },
-  { icon: Rocket, title: 'Impactful Solutions', desc: 'Directly influence the risk frameworks of Fortune 500 companies in a fast-paced environment.' },
+  { icon: '/assets/icons/Careers/cardiogram.png', title: 'Health & Wellness', desc: 'Comprehensive premium health coverage, generous wellness stipends, and dedicated mental health days.' },
+  { icon: '/assets/icons/Careers/trophy.png', title: 'Performance Rewards', desc: 'Competitive base compensation with performance-based bi-annual bonuses and profit-sharing.' },
+  { icon: '/assets/icons/Careers/laptop-computer.png', title: 'Premium Tech Gear', desc: 'Choose your preferred powerful workstation setup (Apple or PC) with noise-canceling headphones.' },
+  { icon: '/assets/icons/Careers/solution.png', title: 'Impactful Solutions', desc: 'Directly influence the risk frameworks of Fortune 500 companies in a fast-paced environment.' },
 ];
 
 const FILTERS = ['all', 'Oracle', 'SAP', 'Technology', 'Risk'];
