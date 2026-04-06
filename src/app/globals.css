@@ -57,6 +57,12 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 body {
@@ -68,18 +74,7 @@ body {
   transition: background 0.4s, color 0.4s;
 }
 
-::-webkit-scrollbar {
-  width: 4px;
-}
 
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--red);
-  border-radius: 2px;
-}
 
 img {
   display: block;
@@ -124,8 +119,9 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: var(--red);
+  height: 4px;
+  background: linear-gradient(to right, #ff4e13, #ffb300, #47ad05);
+  background-size: 100vw 100%;
   width: 0;
   z-index: 3000;
   transition: width 0.1s;

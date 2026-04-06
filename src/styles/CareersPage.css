@@ -66,14 +66,18 @@
 }
 
 .job-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
   padding: 24px 0;
   border-bottom: 1px solid var(--border);
-  
   transition: background 0.2s, border-color 0.4s;
+}
+
+.job-item > div:first-child {
+  flex: 1 1 250px;
 }
 
 .job-item:hover .job-title { color: var(--red); }
@@ -101,6 +105,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .job-tag {

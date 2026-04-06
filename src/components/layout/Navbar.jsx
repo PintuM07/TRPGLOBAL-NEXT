@@ -71,6 +71,7 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
 
   useEffect(() => {
     const handler = () => {
@@ -86,6 +87,7 @@ export default function Navbar() {
   // Close mobile menu on route change
   useEffect(() => {
     setMenuOpen(false);
+    setOpenMobileDropdown(null);
   }, [pathname]);
 
   // Prevent body scroll when menu is open
@@ -176,25 +178,50 @@ export default function Navbar() {
         <div className="mobile-menu-inner">
           {NAV_LINKS.map(({ href, label, subItems }) => (
             <div key={href} className="mobile-link-wrapper">
-              <Link
-                href={href}
-                onClick={(e) => handleNavClick(e, href)}
-                className={`mobile-link ${pathname === href || (subItems && pathname.startsWith(href)) ? 'active' : ''}`}
-              >
-                {label}
-              </Link>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Link
+                  href={href}
+                  onClick={(e) => handleNavClick(e, href)}
+                  className={`mobile-link ${pathname === href || (subItems && pathname.startsWith(href)) ? 'active' : ''}`}
+                  style={{ flex: 1 }}
+                >
+                  {label}
+                </Link>
+                {subItems && (
+                  <button 
+                    onClick={() => setOpenMobileDropdown(openMobileDropdown === href ? null : href)}
+                    style={{ 
+                      background: 'none', border: 'none', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--fg)',
+                      transform: openMobileDropdown === href ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease'
+                    }}
+                  >
+                    <ChevronIcon />
+                  </button>
+                )}
+              </div>
               {subItems && (
-                <div className="mobile-dropdown">
-                  {subItems.map(subItem => (
-                    <Link
-                      key={subItem.label}
-                      href={subItem.href}
-                      onClick={(e) => handleNavClick(e, subItem.href)}
-                      className={`mobile-sublink ${pathname === subItem.href ? 'active' : ''}`}
-                    >
-                      {subItem.label}
-                    </Link>
-                  ))}
+                <div 
+                  style={{
+                    display: 'grid',
+                    gridTemplateRows: openMobileDropdown === href ? '1fr' : '0fr',
+                    transition: 'grid-template-rows 0.3s ease-out',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <div style={{ minHeight: 0 }}>
+                    <div className="mobile-dropdown">
+                      {subItems.map(subItem => (
+                        <Link
+                          key={subItem.label}
+                          href={subItem.href}
+                          onClick={(e) => handleNavClick(e, subItem.href)}
+                          className={`mobile-sublink ${pathname === subItem.href ? 'active' : ''}`}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
