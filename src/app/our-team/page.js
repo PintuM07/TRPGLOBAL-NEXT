@@ -35,6 +35,13 @@ const LEADERS = [
     bio: 'Vikram architects TRP\'s AI and ML risk platforms. With a background in computational science and 15+ years in fintech, he drives the technical roadmap for next-gen risk solutions.',
     initials: 'VD',
   },
+  {
+    img: '/assets/Samson.jpg',
+    name: 'Sunil Kumar',
+    role: 'Partner - Information Security and Cyber Risk',
+    bio: 'Vikram architects TRP\'s AI and ML risk platforms. With a background in computational science and 15+ years in fintech, he drives the technical roadmap for next-gen risk solutions.',
+    initials: 'VD',
+  },
 ];
 
 const ACTIVITIES = [
@@ -179,15 +186,15 @@ function LeadersCarousel() {
               exit="exit"
               variants={{
                 hidden: { opacity: 0, y: 8 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0, 
-                  transition: { duration: 0.4, ease: "easeOut", staggerChildren: 0.015 } 
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.4, ease: "easeOut", staggerChildren: 0.015 }
                 },
-                exit: { 
-                  opacity: 0, 
-                  y: -8, 
-                  transition: { duration: 0.3, ease: "easeIn", staggerChildren: 0.01, staggerDirection: -1 } 
+                exit: {
+                  opacity: 0,
+                  y: -8,
+                  transition: { duration: 0.3, ease: "easeIn", staggerChildren: 0.01, staggerDirection: -1 }
                 }
               }}
             >
@@ -195,7 +202,7 @@ function LeadersCarousel() {
                 <h3 className="lc-card-name">{leader.name}</h3>
                 <p className="lc-card-role">{leader.role}</p>
               </div>
-              
+
               {/* Professional Text Reveal Effect */}
               <motion.div className="lc-card-bio">
                 {leader.bio.split(" ").map((word, i) => (
@@ -259,21 +266,21 @@ function LeadersCarousel() {
               exit="exit"
               variants={{
                 hidden: { opacity: 0, y: 8 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0, 
-                  transition: { duration: 0.4, ease: "easeOut", staggerChildren: 0.015 } 
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.4, ease: "easeOut", staggerChildren: 0.015 }
                 },
-                exit: { 
-                  opacity: 0, 
-                  y: -8, 
-                  transition: { duration: 0.3, ease: "easeIn", staggerChildren: 0.01, staggerDirection: -1 } 
+                exit: {
+                  opacity: 0,
+                  y: -8,
+                  transition: { duration: 0.3, ease: "easeIn", staggerChildren: 0.01, staggerDirection: -1 }
                 }
               }}
             >
               <h3 className="lc-card-name">{leader.name}</h3>
               <p className="lc-card-role">{leader.role}</p>
-              
+
               <motion.div className="lc-card-bio">
                 {leader.bio.split(" ").map((word, i) => (
                   <motion.span
