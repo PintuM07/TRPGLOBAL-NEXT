@@ -715,7 +715,7 @@
 }
 
 .svc-card-link {
-  color: var(--red);
+  color: var(--blue2);
   font-size: 0.82rem;
   font-weight: 600;
   display: flex;
@@ -963,7 +963,7 @@
 
 /* ── HOME CTA ── */
 .home-cta {
-  background: var(--red);
+  background: var(--blue2);
   padding: 72px 0;
   transition: background 0.4s;
 }
