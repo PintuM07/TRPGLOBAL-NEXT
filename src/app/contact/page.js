@@ -1,13 +1,33 @@
 'use client';
-
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { useReveal } from '@/lib/hooks/useReveal';
 
 const FAQS = [
-  { q: 'What industries does TRP Global serve?', a: 'TRP Global serves enterprises across financial services, manufacturing, retail, healthcare, and public sector across 18+ countries. Our Oracle and SAP expertise applies wherever complex ERP and GRC requirements exist.' },
-  { q: 'How does Oracle Risk Management and Compliance integrate with existing systems?', a: 'Oracle Risk Management and Compliance provides native connectors for Oracle Cloud, SAP S/4HANA, and major enterprise systems. REST APIs enable integration with any existing infrastructure. Full deployment typically takes 4–8 weeks.' },
-  { q: 'What is the typical engagement timeline?', a: 'Initial consultations run 1–2 weeks. Risk & Control Review takes 3–6 weeks depending on scope. Full implementation projects range from 3 to 12 months, always with clear milestones and reporting cadence.' },
-  { q: 'Does TRP Global offer post-implementation support?', a: 'Yes. We offer flexible managed services and support contracts including 24/7 monitoring, quarterly reviews, system upgrades, and dedicated account management for all enterprise clients.' },
+  {
+    q: 'Which industries does TRPGLOBAL work with?',
+    a: 'We work with industries like finance, manufacturing, healthcare, retail, and technology, offering tailored risk and compliance solutions.',
+  },
+  {
+    q: 'Can Oracle Risk Management work with my current systems?',
+    a: 'Yes, Oracle Risk Management integrates easily with existing ERP systems and business applications, allowing automation and better risk visibility without disrupting operations.',
+  },
+  {
+    q: 'How long does a risk management implementation take?',
+    a: 'It depends on the project size, but most implementations take anywhere from a few weeks to a few months.',
+  },
+  {
+    q: 'Do you provide support after implementation?',
+    a: 'Yes, we offer continuous support, system optimisation, and managed services to ensure long-term performance.',
+  },
+  {
+    q: 'What exactly does TRPGLOBAL do?',
+    a: 'TRPGLOBAL helps businesses manage risk, ensure compliance, and improve internal audit processes through ERM, GRC, and Oracle-based solutions.',
+  },
+  {
+    q: 'Why should I choose TRPGLOBAL?',
+    a: 'Because we don’t just advise, we implement, optimise, and deliver measurable results that reduce risk and improve compliance.',
+  },
 ];
 
 function FAQItem({ q, a }) {
@@ -61,13 +81,20 @@ export default function ContactPage() {
           <p className="body-text" style={{ marginBottom: 8 }}>Whether you&apos;re ready to begin a project or just exploring your options, our team is here to help.</p>
           <div className="contact-info-cards">
             {[
-              { icon: '📧', label: 'Email', val: 'hello@trpglobal.com' },
-              { icon: '🌍', label: 'Offices', val: 'Mumbai · New York · London · Singapore' },
-              { icon: '🕐', label: 'Working Hours', val: 'Mon–Fri · 9:00 AM – 6:00 PM IST' },
-              { icon: '🏢', label: 'Founded', val: '2018 · 50–200 Professionals · 18 Countries' },
+              { icon: '/assets/icons/contact/Email.png', label: 'Email', val: 'contactus@techriskpartners.com' },
+              { icon: '/assets/icons/contact/Offices.png', label: 'Offices', val: 'Mumbai · New York · London · Singapore' },
+              { icon: '/assets/icons/contact/Working-hours.png', label: 'Working Hours', val: 'Mon–Fri · 9:00 AM – 6:00 PM IST' },
+              { icon: '/assets/icons/contact/Founded.png', label: 'Founded', val: '2018 · 50–200 Professionals · 18 Countries' },
             ].map(c => (
               <div className="cic" key={c.label}>
-                <div className="cic-icon">{c.icon}</div>
+                <div className="cic-icon">
+                  <Image
+                    src={c.icon}
+                    alt={c.label}
+                    width={24}
+                    height={24}
+                  />
+                </div>
                 <div><div className="cic-label">{c.label}</div><div className="cic-val">{c.val}</div></div>
               </div>
             ))}
@@ -78,11 +105,11 @@ export default function ContactPage() {
           <div className="eyebrow" style={{ marginBottom: 24 }}>Send a Message</div>
           <form onSubmit={handleSubmit} noValidate>
             <div className="form-row">
-              <div className="form-field"><label className="fl">First Name *</label><input className="fi" type="text" name="fn" value={form.fn} onChange={handleChange} placeholder="Arun" required /></div>
-              <div className="form-field"><label className="fl">Last Name *</label><input className="fi" type="text" name="ln" value={form.ln} onChange={handleChange} placeholder="Majumdar" required /></div>
+              <div className="form-field"><label className="fl">First Name *</label><input className="fi" type="text" name="fn" value={form.fn} onChange={handleChange} placeholder="Enter Your First Name" required /></div>
+              <div className="form-field"><label className="fl">Last Name *</label><input className="fi" type="text" name="ln" value={form.ln} onChange={handleChange} placeholder="Enter Your Last Name" required /></div>
             </div>
-            <div className="form-field"><label className="fl">Work Email *</label><input className="fi" type="email" name="em" value={form.em} onChange={handleChange} placeholder="arun@company.com" required /></div>
-            <div className="form-field"><label className="fl">Company</label><input className="fi" type="text" name="co" value={form.co} onChange={handleChange} placeholder="Your Organisation" /></div>
+            <div className="form-field"><label className="fl">Work Email *</label><input className="fi" type="email" name="em" value={form.em} onChange={handleChange} placeholder="Enter Your Work Email" required /></div>
+            <div className="form-field"><label className="fl">Company</label><input className="fi" type="text" name="co" value={form.co} onChange={handleChange} placeholder="Enter Your Company Name" /></div>
             <div className="form-field"><label className="fl">Service Interest</label>
               <select className="fs" name="sv" value={form.sv} onChange={handleChange}>
                 <option value="">Select a service area</option>
