@@ -178,7 +178,7 @@ export default function CareersPage() {
                 >
                   <div className="perk-icon" style={{ 
                     marginBottom: '20px', 
-                    height: '72px', 
+                    height: '36px', 
                     display: 'flex', 
                     alignItems: 'center', 
                     justifyContent: 'flex-start'
@@ -188,7 +188,7 @@ export default function CareersPage() {
                     ) : (
                       (() => {
                         const IconComponent = p.icon;
-                        return <IconComponent size={64} strokeWidth={1.5} color="var(--red)" />;
+                        return <IconComponent size={32} strokeWidth={1.5} color="var(--red)" />;
                       })()
                     )}
                   </div>
