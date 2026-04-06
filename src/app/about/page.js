@@ -22,11 +22,6 @@ const VALUES = [
   },
 ];
 
-const TEAM = [
-  { img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80', initials: 'AM', name: 'Arun Majumdar', role: 'Chief Executive Officer', bio: 'Arun leads TRP Global\'s strategic vision with 20+ years in enterprise risk and ERP. He built TRP from the ground up, growing it to a 100+ enterprise client base across 18 countries.' },
-  { img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80', initials: 'SP', name: 'Sayantan Polley', role: 'Director', bio: 'Sayantan oversees delivery operations and Oracle practice leadership, with deep expertise in Oracle RMC and IAG driving successful implementations across 40+ enterprises globally.' },
-  { img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80', initials: 'RG', name: 'Rahul Ghosh', role: 'Partner', bio: 'Rahul leads the SAP and GRC practice, bringing deep experience in S/4HANA transformations and governance frameworks across financial services and manufacturing sectors.' },
-];
 
 export default function AboutPage() {
   const pageRef = useReveal();
@@ -90,27 +85,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="team-section">
-        <div className="container">
-          <div className="eyebrow rv">Leadership</div>
-          <h2 className="heading rv"><strong>Meet the Leaders</strong></h2>
-          <div className="team-grid">
-            {TEAM.map(member => (
-              <div className="team-card rv" key={member.name}>
-                <div className="team-img">
-                  <img src={member.img} alt={member.name} />
-                  <div className="team-initials">{member.initials}</div>
-                </div>
-                <div className="team-info">
-                  <div className="team-name">{member.name}</div>
-                  <div className="team-role">{member.role}</div>
-                  <p className="team-bio">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 }
