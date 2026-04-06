@@ -76,7 +76,7 @@ export const SERVICES_DATA = [
     icon: '/assets/icons/Services/AI_Agent.png',
     desc: 'Live AI agents performing real work within your risk guardrails and compliance requirements.',
     tags: ['AI Agent Studio', 'Automation', 'Guardrails'],
-    img: 'https://images.unsplash.com/photo-1620712948343-008423ed0d6b?w=700&auto=format&fit=crop&q=80',
+    img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=700&auto=format&fit=crop&q=80',
     detail: `Your operations team has a process that runs on emails, manual checks, and tribal knowledge that lives in three people's heads. Now picture that same process running through an AI agent - one that knows your compliance requirements, operates within your risk guardrails, and produces an audit trail your governance team can actually read. That's what we build in AI Agent Studio. Not a proof of concept. Not a demo that impresses once and stalls. A live agent, signed off by your risk function, doing real work inside your real environment.`
   }
 ];
