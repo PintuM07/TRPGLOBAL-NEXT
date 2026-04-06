@@ -21,6 +21,33 @@ const RMC_CARDS = [
   { icon: '/assets/icons/ORMC/Enterprise Security.png', title: 'Enterprise Security', desc: 'SOC 2 Type II certified. Role-based access control, end-to-end encryption, full audit trails, and multi-tenancy support.' },
 ];
 
+const RMC_MODULES = [
+  {
+    num: '01',
+    title: 'Oracle Advanced Access Controls',
+    desc: 'Your Oracle environment grants access to payroll, financials, vendor data, and strategic systems. Advanced Access Controls gives you continuous, granular visibility into who holds access across all of it — and whether every single permission is still justified. We configure it around your specific regulatory obligations and role taxonomy, so access governance becomes a daily operational discipline, not an annual scramble before the audit.',
+    cta: 'Audit-ready access posture. Every day, not just audit season.',
+  },
+  {
+    num: '02',
+    title: 'Oracle Advanced Financial Controls',
+    desc: 'Picture your finance director opening Monday morning to an automated alert — a flagged transactional anomaly that\'s been quietly accumulating risk for weeks. No manual review found it. No scheduled audit surfaced it. The system did, overnight, without anyone asking it to. That\'s Advanced Financial Controls working as it should. Continuous monitoring across your Oracle financials, detecting policy violations and segregation-of-duties conflicts the moment they occur — configured around the financial risk profile of your specific organisation.',
+    cta: 'Exposure caught in hours. Not discovered in the next audit.',
+  },
+  {
+    num: '03',
+    title: 'Financial Reporting Compliance',
+    desc: 'Your SOX or internal controls programme, running inside Oracle with automated control testing, issue tracking, and sign-off workflows that replace the manual overhead your team has been carrying for years. The rigour your external auditors require stays intact — the spreadsheets, email chains, and version conflicts don\'t. We build this around the compliance obligations your reporting environment is actually held to, so every sign-off is traceable, defensible, and ready the moment it\'s needed.',
+    cta: 'Evidence your auditors trust. Overhead your team doesn\'t feel.',
+  },
+  {
+    num: '04',
+    title: 'Oracle Advanced HCM Controls',
+    desc: 'Workforce-related financial risk hides in places periodic reviews don\'t reach — dormant accounts, payroll anomalies, role assignments that accumulated over years of system change. Advanced HCM Controls runs continuously across your Oracle HCM environment, surfacing ghost employees, access conflicts, and policy violations automatically. We implement it with the precision that makes it a genuine financial control — not a compliance checkbox that generates noise your team stops reading.',
+    cta: 'Financial exposure surfaced and closed. Continuously.',
+  },
+];
+
 export default function OracleRMCPage() {
   const pageRef = useReveal();
 
@@ -31,7 +58,7 @@ export default function OracleRMCPage() {
         <div className="pb-overlay"></div>
         <div className="pb-content">
           <div className="pb-eyebrow">Oracle Risk Management</div>
-          <h1 className="pb-title"><strong>Oracle Risk Management</strong><br />and Compliance</h1>
+          <h1 className="pb-title"><strong>Oracle Risk Management</strong><br />Cloud</h1>
         </div>
       </div>
 
@@ -39,7 +66,7 @@ export default function OracleRMCPage() {
         <div className="irm-left rv-l">
           <div className="eyebrow">Oracle RMC</div>
           <h2 className="heading" style={{ marginBottom: 16 }}><strong>Real-Time Risk Intelligence</strong><br />Across Your Enterprise</h2>
-          <p className="body-text" style={{ marginBottom: 28 }}>Oracle Risk Management and Compliance is an enterprise-grade risk engine. It monitors, detects, and responds to enterprise threats in real time — unifying data across Oracle, SAP, and all connected systems into a single risk intelligence layer.</p>
+          <p className="body-text" style={{ marginBottom: 28 }}>Oracle Risk Management Cloud is an enterprise-grade risk engine. It monitors, detects, and responds to enterprise threats in real time — unifying data across Oracle, SAP, and all connected systems into a single risk intelligence layer.</p>
           <div className="irm-features-list">
             {RMC_FEATURES.map(f => (
               <div className="irm-feat-item" key={f.title}>
@@ -55,6 +82,26 @@ export default function OracleRMCPage() {
         <div className="irm-right">
           <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&auto=format&fit=crop&q=80" alt="Data analytics" />
           <div className="irm-right-overlay"></div>
+        </div>
+      </div>
+
+      {/* ── FOUR MODULES ── */}
+      <div className="rmc-modules-section">
+        <div className="container">
+          <div className="eyebrow rv">What We Implement</div>
+          <h2 className="rmc-modules-heading rv">
+            Four modules. One connected <em>risk environment.</em>
+          </h2>
+          <div className="rmc-modules-grid">
+            {RMC_MODULES.map(mod => (
+              <div className="rmc-module-card rv" key={mod.num}>
+                <div className="rmc-module-num">{mod.num}</div>
+                <h3 className="rmc-module-title">{mod.title}</h3>
+                <p className="rmc-module-desc">{mod.desc}</p>
+                <div className="rmc-module-cta">→ {mod.cta}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
