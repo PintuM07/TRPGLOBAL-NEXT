@@ -22,25 +22,25 @@ const LEADERS = [
     initials: 'SP',
   },
   {
-    img: '/assets/Rahul.jpeg',
+    img: '/assets/JDG_8108.jpg',
     name: 'Rahul Ghosh',
     role: 'Partner — SAP & GRC',
     bio: 'Rahul leads the SAP and GRC practice, bringing deep experience in S/4HANA transformations and governance frameworks across financial services and manufacturing sectors.',
     initials: 'RG',
   },
   {
-    img: '/assets/Samson.jpg',
+    img: '/assets/Samson.png',
     name: 'Samson George',
     role: 'Associate Partner',
-    bio: 'Vikram architects TRP\'s AI and ML risk platforms. With a background in computational science and 15+ years in fintech, he drives the technical roadmap for next-gen risk solutions.',
-    initials: 'VD',
+    bio: 'Samson leads the Oracle Cloud Applications practice, driving strategy and delivery for Oracle’s next-gen ERP and CX suites across global markets.',
+    initials: 'SG',
   },
   {
-    img: '/assets/Samson.jpg',
+    img: '/assets/SunilSuit_PNG 1.png',
     name: 'Sunil Kumar',
     role: 'Partner - Information Security and Cyber Risk',
-    bio: 'Vikram architects TRP\'s AI and ML risk platforms. With a background in computational science and 15+ years in fintech, he drives the technical roadmap for next-gen risk solutions.',
-    initials: 'VD',
+    bio: 'Sunil leads the Information Security and Cyber Risk practice, bringing deep expertise in cybersecurity and risk management across financial services and manufacturing sectors',
+    initials: 'SK',
   },
 ];
 
@@ -321,7 +321,7 @@ function LeadersCarousel() {
           onClick={() => { handlePrev(); resetTimer(); }}
           aria-label="Previous leader"
         >
-          <ChevronLeft size={22} />
+          <ChevronLeft size={20} />
         </button>
 
         <div className="lc-dots">
@@ -340,7 +340,7 @@ function LeadersCarousel() {
           onClick={() => { handleNext(); resetTimer(); }}
           aria-label="Next leader"
         >
-          <ChevronRight size={22} />
+          <ChevronRight size={20} />
         </button>
       </div>
     </div>
@@ -444,29 +444,35 @@ export default function OurTeamPage() {
 
       {/* ── LEADERS ── */}
       <div className="ot-leaders-section">
-        <div className="container">
-          <div className="eyebrow rv">Leadership</div>
-          <h2 className="heading rv"><strong>Meet Our Leaders</strong></h2>
-          <div className="rv">
+        <div className="ot-leaders-grid">
+          <div className="ot-leaders-left rv-l">
+            <div className="eyebrow">Leadership</div>
+            <h2 className="heading"><strong>Meet Our</strong><br />Leaders</h2>
+            <p className="lead">Seasoned professionals from Big 4, Oracle, and SAP backgrounds driving strategic risk transformation across global enterprises.</p>
+          </div>
+          <div className="ot-leaders-right rv-r">
             <LeadersCarousel />
           </div>
         </div>
-      </div>
-
-      {/* ── ACTIVITIES ── */}
-      {/* <div className="ot-activities-section">
-        <div className="container">
-          <div className="ot-activities-header">
-            <div>
-              <div className="eyebrow rv">What We Do Together</div>
-              <h2 className="heading rv"><strong>Team Activities</strong></h2>
-            </div>
+        <div className="ot-leaders-stats">
+          <div className="ot-leader-stat rv">
+            <div className="ot-leader-stat-val">5+</div>
+            <div className="ot-leader-stat-label">Partners</div>
           </div>
-          <div className="rv">
-            <ActivitiesCarousel />
+          <div className="ot-leader-stat rv">
+            <div className="ot-leader-stat-val">160+</div>
+            <div className="ot-leader-stat-label">Years Combined Experience</div>
+          </div>
+          <div className="ot-leader-stat rv">
+            <div className="ot-leader-stat-val">18</div>
+            <div className="ot-leader-stat-label">Countries Served</div>
+          </div>
+          <div className="ot-leader-stat rv">
+            <div className="ot-leader-stat-val">100+</div>
+            <div className="ot-leader-stat-label">Enterprise Clients</div>
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* ── EVENTS ── */}
       <div className="ot-events-section">

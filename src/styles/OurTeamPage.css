@@ -35,7 +35,7 @@
 .ot-hero-right-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .ot-hero-caption {
@@ -59,14 +59,95 @@
 
 /* ── LEADERS SECTION ── */
 .ot-leaders-section {
-  padding: 80px 0;
+  padding: 0;
   border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+/* ── Leaders grid: info left + carousel right ── */
+.ot-leaders-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  min-height: 560px;
+}
+
+.ot-leaders-left {
+  padding: 64px 48px 64px 32px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
   transition: border-color 0.4s;
+}
+
+.ot-leaders-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -2px;
+  width: 3px;
+  height: 60px;
+  background: var(--red);
+}
+
+.ot-leaders-left .lead {
+  margin-top: 16px;
+  font-size: 0.92rem;
+}
+
+.ot-leaders-right {
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ── Leaders stats strip ── */
+.ot-leaders-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+
+.ot-leader-stat {
+  padding: 28px 32px;
+  border-right: 1px solid var(--border);
+  transition: background 0.3s, border-color 0.4s;
+}
+
+.ot-leader-stat:last-child {
+  border-right: none;
+}
+
+.ot-leader-stat:hover {
+  background: var(--card-hover);
+}
+
+.ot-leader-stat-val {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.ot-leader-stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* ── LEADERS CAROUSEL (Reference Style) ── */
 .lc-root {
-  margin-top: 48px;
+  width: 100%;
 }
 
 /* Desktop layout: image + overlapping card */
@@ -79,9 +160,9 @@
 
 /* Large avatar image */
 .lc-avatar {
-  width: 470px;
-  height: 470px;
-  border-radius: 20px;
+  width: 400px;
+  height: 440px;
+  border-radius: 16px;
   overflow: hidden;
   background: var(--bg3);
   flex-shrink: 0;
@@ -104,14 +185,15 @@
 /* Overlapping card */
 .lc-card {
   background: var(--card-bg);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-  padding: 40px;
-  margin-left: -80px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+  border: 1px solid var(--border);
+  padding: 36px;
+  margin-left: -60px;
   z-index: 10;
   flex: 1;
-  max-width: 540px;
-  transition: background 0.4s, box-shadow 0.4s;
+  max-width: 460px;
+  transition: background 0.4s, box-shadow 0.4s, border-color 0.4s;
 }
 
 [data-theme="dark"] .lc-card {
@@ -119,11 +201,11 @@
 }
 
 .lc-card-header {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .lc-card-name {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--fg);
   margin-bottom: 6px;
@@ -132,15 +214,15 @@
 }
 
 .lc-card-role {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  color: var(--muted);
+  color: var(--red);
   transition: color 0.4s;
 }
 
 .lc-card-bio {
-  font-size: 0.95rem;
-  line-height: 1.75;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: var(--fg2);
   transition: color 0.4s;
 }
@@ -148,8 +230,8 @@
 /* Social Icons */
 .lc-social {
   display: flex;
-  gap: 16px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 24px;
 }
 
 .lc-mobile .lc-social {
@@ -161,8 +243,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--bg2);
   color: var(--fg2);
@@ -215,15 +297,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
-  margin-top: 32px;
+  gap: 20px;
+  margin-top: 28px;
 }
 
 .lc-nav-btn {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--bg2);
+  background: var(--card-bg);
   border: 1px solid var(--border);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   display: flex;
@@ -255,8 +337,8 @@
 }
 
 .lc-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   border: none;
   padding: 0;
@@ -266,12 +348,12 @@
 }
 
 .lc-dot-active {
-  background: var(--fg);
-  transform: scale(1.15);
+  background: var(--red);
+  transform: scale(1.2);
 }
 
 [data-theme="dark"] .lc-dot-active {
-  background: #fff;
+  background: var(--red);
 }
 
 /* ── ACTIVITIES SECTION ── */
@@ -353,13 +435,13 @@
 }
 
 .ot-activity-card:hover {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
   border-color: var(--border2);
   transform: translateY(-4px);
 }
 
 [data-theme="dark"] .ot-activity-card:hover {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
 }
 
 .ot-activity-icon {
@@ -404,12 +486,12 @@
 
 .ot-event-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
   border-color: var(--red);
 }
 
 [data-theme="dark"] .ot-event-card:hover {
-  box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
 .ot-event-img {
@@ -432,7 +514,7 @@
 .ot-event-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.35) 100%);
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.35) 100%);
   pointer-events: none;
 }
 
@@ -494,6 +576,39 @@
     min-height: 280px;
   }
 
+  /* Leaders: stack layout */
+  .ot-leaders-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ot-leaders-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 48px 20px;
+    text-align: center;
+  }
+
+  .ot-leaders-left::after {
+    display: none;
+  }
+
+  .ot-leaders-right {
+    padding: 32px 20px;
+  }
+
+  .ot-leaders-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ot-leader-stat:nth-child(2) {
+    border-right: none;
+  }
+
+  .ot-leader-stat:nth-child(1),
+  .ot-leader-stat:nth-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+
   /* Leaders: switch to mobile layout */
   .lc-desktop {
     display: none;
@@ -525,8 +640,16 @@
     flex: 0 0 85vw;
   }
 
+  .ot-leaders-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .ot-leaders-section,
   .ot-activities-section,
+  .ot-events-section {
+    padding: 0;
+  }
+
   .ot-events-section {
     padding: 56px 0;
   }
