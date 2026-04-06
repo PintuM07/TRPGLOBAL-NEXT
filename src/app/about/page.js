@@ -84,7 +84,22 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-
+      <div className="video-section">
+        <div className="container">
+          <div className="eyebrow rv">Discover</div>
+          <h2 className="heading rv"><strong>Experts in Talk</strong></h2>
+          <div className="video-wrapper rv">
+            <video
+              className="about-video"
+              controls
+              poster="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80"
+            >
+              <source src="/assets/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
 
     </div>
   );
