@@ -3,11 +3,23 @@
 import React from 'react';
 import { useReveal } from '@/lib/hooks/useReveal';
 import { AnimatedCounter } from '@/lib/hooks/useAnimatedCounter';
-
+import Image from "next/image";
 const VALUES = [
-  { icon: '🎯', title: 'Client-First Always', desc: 'Every engagement is shaped around the client\'s actual needs — not a pre-packaged solution. We start by listening and define success by your metrics.' },
-  { icon: '🏆', title: 'Deep Expertise', desc: 'Our consultants hold Oracle, SAP, and GRC certifications. We don\'t learn on your time — we bring mastery from day one of every engagement.' },
-  { icon: '📈', title: 'Measurable Outcomes', desc: 'We define success metrics at the start of every project and hold ourselves accountable to delivering against them through every phase.' },
+  {
+    icon: '/assets/icons/about/client-first.png',
+    title: 'Client-First Always',
+    desc: "Every engagement is shaped around the client’s actual needs—not a pre-packaged solution. We start by listening and define success by your metrics.",
+  },
+  {
+    icon: '/assets/icons/about/deep-expertise.png',
+    title: 'Deep Expertise',
+    desc: "Our consultants hold Oracle, SAP, and GRC certifications. We don’t learn on your time—we bring mastery from day one.",
+  },
+  {
+    icon: '/assets/icons/about/measurable-outcomes.png',
+    title: 'Measurable Outcomes',
+    desc: "We define success metrics at the start of every project and hold ourselves accountable through every phase.",
+  },
 ];
 
 const TEAM = [
