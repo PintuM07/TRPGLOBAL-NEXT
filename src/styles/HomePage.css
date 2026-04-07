@@ -1005,7 +1005,7 @@
 
 .home-cta-btn-white {
   background: #fff;
-  color: var(--red);
+  color: var(--blue2);
   border: none;
 
   font-size: 0.875rem;
@@ -1270,8 +1270,15 @@
 }
 
 @keyframes showcaseFadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Image area — tighter height */
@@ -1373,8 +1380,13 @@
 }
 
 @keyframes progressFill {
-  from { width: 0%; }
-  to   { width: 100%; }
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
 }
 
 /* ── RESPONSIVE ── */
@@ -1390,12 +1402,15 @@
     grid-template-columns: 260px 1fr;
     gap: 20px;
   }
+
   .showcase-details {
     padding: 24px 28px 28px;
   }
+
   .showcase-img-wrap {
     height: 200px;
   }
+
   .showcase-title {
     font-size: 1.2rem;
   }
@@ -1465,7 +1480,23 @@
   .showcase-nav-item {
     min-width: 140px;
   }
+
   .showcase-img-wrap {
     height: 160px;
   }
+}
+
+.cc-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cc-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
