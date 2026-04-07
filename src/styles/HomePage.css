@@ -1005,7 +1005,7 @@
 
 .home-cta-btn-white {
   background: #fff;
-  color: var(--red);
+  color: var(--blue2);
   border: none;
 
   font-size: 0.875rem;
@@ -1282,8 +1282,20 @@
 }
 
 @keyframes showcaseFadeIn {
+<<<<<<< HEAD
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
+=======
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+>>>>>>> 0001179b1d2ad3af9af740f6146814ee07cd20cd
 }
 
 /* ── Image area ── */
@@ -1433,6 +1445,7 @@
 
 .showcase-cta-primary:hover { gap: 10px; opacity: 0.85; }
 
+<<<<<<< HEAD
 /* Service counter */
 .showcase-counter {
   font-size: 0.75rem;
@@ -1441,6 +1454,16 @@
   color: var(--muted);
   opacity: 0.5;
   font-variant-numeric: tabular-nums;
+=======
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+>>>>>>> 0001179b1d2ad3af9af740f6146814ee07cd20cd
 }
 
 /* ── RESPONSIVE ── */
@@ -1449,10 +1472,29 @@
 }
 
 @media (max-width: 1024px) {
+<<<<<<< HEAD
   .showcase-container { grid-template-columns: 240px 1fr; gap: 20px; }
   .showcase-details   { padding: 24px 26px 28px; }
   .showcase-img-wrap  { height: 220px; }
   .showcase-title     { font-size: 1.2rem; }
+=======
+  .showcase-container {
+    grid-template-columns: 260px 1fr;
+    gap: 20px;
+  }
+
+  .showcase-details {
+    padding: 24px 28px 28px;
+  }
+
+  .showcase-img-wrap {
+    height: 200px;
+  }
+
+  .showcase-title {
+    font-size: 1.2rem;
+  }
+>>>>>>> 0001179b1d2ad3af9af740f6146814ee07cd20cd
 }
 
 @media (max-width: 768px) {
@@ -1500,6 +1542,32 @@
 }
 
 @media (max-width: 480px) {
+<<<<<<< HEAD
   .showcase-nav-item { min-width: 130px; }
   .showcase-img-wrap  { height: 170px; }
 }
+=======
+  .showcase-nav-item {
+    min-width: 140px;
+  }
+
+  .showcase-img-wrap {
+    height: 160px;
+  }
+}
+
+.cc-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cc-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+>>>>>>> 0001179b1d2ad3af9af740f6146814ee07cd20cd

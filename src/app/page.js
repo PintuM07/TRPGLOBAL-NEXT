@@ -453,13 +453,15 @@ export default function HomePage() {
           </div>
           <div className="clients-grid">
             {[
-              { init: 'FS', name: 'Financial Services Group', industry: 'Banking & Finance' },
-              { init: 'MG', name: 'Manufacturing Global', industry: 'Industrial Manufacturing' },
-              { init: 'HC', name: 'HealthCorp International', industry: 'Healthcare & Life Sciences' },
-              { init: 'RT', name: 'Retail Technologies', industry: 'Retail & e-Commerce' },
+              { init: 'FS', name: 'Financial Services Group', industry: 'Banking & Finance', icon: '/assets/icons/Home/business-partner.png' },
+              { init: 'MG', name: 'Manufacturing Global', industry: 'Industrial Manufacturing', icon: '/assets/icons/Home/global-industry.png' },
+              { init: 'HC', name: 'HealthCorp International', industry: 'Healthcare & Life Sciences', icon: '/assets/icons/Home/health-insurance.png' },
+              { init: 'RT', name: 'Retail Technologies', industry: 'Retail & e-Commerce', icon: '/assets/icons/Home/procurement.png' },
             ].map(c => (
               <div className="client-card rv" key={c.init}>
-                <div className="cc-initial">{c.init}</div>
+                <div className="cc-icon">
+                  <img src={c.icon} alt={c.name} />
+                </div>
                 <div className="cc-name">{c.name}</div>
                 <div className="cc-industry">{c.industry}</div>
               </div>
