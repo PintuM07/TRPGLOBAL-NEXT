@@ -1,9 +1,89 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useReveal } from '@/lib/hooks/useReveal';
 import { AnimatedCounter } from '@/lib/hooks/useAnimatedCounter';
 import Image from "next/image";
+
+function ExpertVideo() {
+  const videoRef = useRef(null);
+  const playTimeoutRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasStartedOnce, setHasStartedOnce] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (videoRef.current) {
+            if (entry.isIntersecting) {
+              // Only show loading if it's the very first time starting the video
+              if (!hasStartedOnce) {
+                setIsLoading(true);
+                playTimeoutRef.current = setTimeout(() => {
+                  videoRef.current.play().then(() => {
+                    setHasStartedOnce(true);
+                    setIsLoading(false);
+                  }).catch(err => {
+                    console.log("Autoplay blocked or failed:", err);
+                    setIsLoading(false);
+                  });
+                }, 2500);
+              } else {
+                // If it already started once, just play normally (resuming scroll-play)
+                videoRef.current.play().catch(() => {});
+              }
+            } else {
+              // Clear pending timeout and pause
+              if (playTimeoutRef.current) {
+                clearTimeout(playTimeoutRef.current);
+                setIsLoading(false);
+              }
+              videoRef.current.pause();
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+      if (playTimeoutRef.current) {
+        clearTimeout(playTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <>
+      {isLoading && (
+        <div className="video-loading-overlay">
+          <div className="video-spinner"></div>
+        </div>
+      )}
+      <video
+        ref={videoRef}
+        className="about-video"
+        controls
+        muted
+        loop
+        playsInline
+        poster="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80"
+      >
+        <source src="/assets/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </>
+  );
+}
+
 const VALUES = [
   {
     icon: '/assets/icons/about/client-first Always.png',
@@ -89,14 +169,7 @@ export default function AboutPage() {
           <div className="eyebrow rv">Discover</div>
           <h2 className="heading rv"><strong>Experts in Talk</strong></h2>
           <div className="video-wrapper rv">
-            <video
-              className="about-video"
-              controls
-              poster="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80"
-            >
-              <source src="/assets/video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <ExpertVideo />
           </div>
         </div>
       </div>
