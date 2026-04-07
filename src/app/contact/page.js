@@ -82,9 +82,9 @@ export default function ContactPage() {
           <div className="contact-info-cards">
             {[
               { icon: '/assets/icons/contact/Email.png', label: 'Email', val: 'contactus@techriskpartners.com' },
-              { icon: '/assets/icons/contact/Offices.png', label: 'Offices', val: 'Mumbai · New York · London · Singapore' },
-              { icon: '/assets/icons/contact/Working-hours.png', label: 'Working Hours', val: 'Mon–Fri · 9:00 AM – 6:00 PM IST' },
-              { icon: '/assets/icons/contact/Founded.png', label: 'Founded', val: '2018 · 50–200 Professionals · 18 Countries' },
+              { icon: '/assets/icons/contact/Offices.png', label: 'Offices', val: 'United Kingdom · United Arab Emirates · Germany · India' },
+              { icon: '/assets/icons/contact/Working-hours.png', label: 'Working Hours', val: 'Mon–Fri · 9:30 AM – 6:30 PM GMT' },
+              // { icon: '/assets/icons/contact/Founded.png', label: 'Founded', val: '2018 · 50–200 Professionals · 18 Countries' },
             ].map(c => (
               <div className="cic" key={c.label}>
                 <div className="cic-icon">
@@ -110,18 +110,19 @@ export default function ContactPage() {
             </div>
             <div className="form-field"><label className="fl">Work Email *</label><input className="fi" type="email" name="em" value={form.em} onChange={handleChange} placeholder="Enter Your Work Email" required /></div>
             <div className="form-field"><label className="fl">Company</label><input className="fi" type="text" name="co" value={form.co} onChange={handleChange} placeholder="Enter Your Company Name" /></div>
-            <div className="form-field"><label className="fl">Service Interest</label>
-              <select className="fs" name="sv" value={form.sv} onChange={handleChange}>
-                <option value="">Select a service area</option>
-                <option>Risk Management &amp; Security</option>
-                <option>Oracle Services</option>
-                <option>SAP Services</option>
-                <option>Digital Transformation</option>
-                <option>Oracle Risk Management &amp; Compliance</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div className="form-field"><label className="fl">Message *</label><textarea className="ft" name="mg" value={form.mg} onChange={handleChange} placeholder="Tell us about your challenge..." required></textarea></div>
+            <div className="form-field">
+  <label className="fl">Service Interest</label>
+  <select className="fs" name="sv" value={form.sv} onChange={handleChange}>
+    <option value="">Select a service area</option>
+    <option>Risk Management & Security</option>
+    <option>Oracle Services</option>
+    <option>SAP Services</option>
+    <option>Digital Transformation</option>
+    <option>Oracle Risk Management & Compliance</option>
+    <option>Other</option>
+  </select>
+</div>
+            <div className="form-field"><label className="fl">Write us a message *</label><textarea className="ft" name="mg" value={form.mg} onChange={handleChange} placeholder="Tell us about your challenge..." required></textarea></div>
             <button className="btn-primary" type="submit" style={{ width: '100%', justifyContent: 'center', opacity: submitting ? 0.6 : 1 }}>
               {submitting ? 'Sending...' : <>Send Message <span className="arrow">→</span></>}
             </button>
