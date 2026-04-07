@@ -78,6 +78,70 @@ function DashWidget() {
   );
 }
 
+function ServiceShowcase() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const timerRef = useRef(null);
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % SERVICES_DATA.length);
+    }, 6000);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const handleManualClick = (index) => {
+    setActiveIndex(index);
+    startTimer();
+  };
+
+  const activeService = SERVICES_DATA[activeIndex];
+
+  return (
+    <div className="showcase-container rv">
+      {/* Left List */}
+      <div className="showcase-sidebar">
+        {SERVICES_DATA.map((srv, idx) => (
+          <button 
+            key={srv.id} 
+            className={`showcase-nav-item ${idx === activeIndex ? 'active' : ''}`}
+            onClick={() => handleManualClick(idx)}
+          >
+            <span className="sci-num">{srv.num.split(' / ')[0]}</span>
+            <span className="sci-name">{srv.name}</span>
+          </button>
+        ))}
+      </div>
+      
+      {/* Right Content */}
+      <div className="showcase-content">
+        <div className="showcase-anim-wrap" key={activeIndex}>
+          <div className="showcase-img-wrap">
+            <img src={activeService.img} alt={activeService.name} className="showcase-img" />
+            <div className="showcase-img-overlay"></div>
+          </div>
+          <div className="showcase-details">
+            <div className="showcase-card-header">
+              <div className="showcase-icon-box">
+                <img src={activeService.icon} alt="" />
+              </div>
+              <h3 className="showcase-title">{activeService.name}</h3>
+            </div>
+            <p className="showcase-desc">{activeService.desc}</p>
+            <div className="showcase-actions">
+              <Link href="/services" className="btn-text" style={{ color: 'var(--red)', fontWeight: '600' }}>Learn More <span className="arrow">→</span></Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const router = useRouter();
   const pageRef = useRef(null);
@@ -243,25 +307,7 @@ export default function HomePage() {
               <Link href="/services" className="btn-text" style={{ paddingBottom: 8, whiteSpace: 'nowrap' }}>All Services <span className="arrow">→</span></Link>
             </div>
           </div>
-          <div className="svc-cards">
-            {SERVICES_DATA.map(card => (
-              <Link href="/services" className="svc-card rv" key={card.name} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className="svc-card-img"><img src={card.img} alt={card.name} /></div>
-                <div className="svc-card-body">
-                  <div className="svc-card-icon">
-                    <img
-                      src={card.icon}
-                      alt={card.name}
-                      className="w-8 h-8 object-contain"
-                    />
-                  </div>
-                  <h3>{card.name}</h3>
-                  <p>{card.desc}</p>
-                  <span className="svc-card-link">Learn more <span className="arrow">→</span></span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <ServiceShowcase />
         </div>
       </div>
 
