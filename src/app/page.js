@@ -269,8 +269,8 @@ export default function HomePage() {
       <div className="irm-feature">
         <div className="irm-f-left rv-l">
           <div className="eyebrow">Oracle Risk Management</div>
-          <h2 className="heading" style={{ marginBottom: 16 }}><strong>Oracle Risk Management</strong> and Compliance</h2>
-          <p className="body-text" style={{ marginBottom: 24 }}>Oracle Risk Management and Compliance delivers real-time risk visibility, automated compliance workflows, and fraud detection across your entire enterprise technology stack.</p>
+          <h2 className="heading" style={{ marginBottom: 16 }}><strong>Oracle Risk Management</strong> Cloud</h2>
+          <p className="body-text" style={{ marginBottom: 24 }}>Oracle Risk Management Cloud delivers real-time risk visibility, automated compliance workflows, and fraud detection across your entire enterprise technology stack.</p>
           <DashWidget />
           <div style={{ marginTop: 28 }}>
             <Link href="/oracle-rmc" className="btn-primary">Explore Oracle RMC <span className="arrow">→</span></Link>
