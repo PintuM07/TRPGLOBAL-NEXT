@@ -208,7 +208,7 @@ export default function HomePage() {
       <div className="intro-split">
         <div className="intro-left rv-l">
           <div className="eyebrow">Who We Are</div>
-          <h2 className="heading" style={{ marginBottom: 20 }}><strong>WE Refined AI-Powered,</strong><br />Enterprise Risk Management.</h2>
+          <h2 className="heading" style={{ marginBottom: 20 }}><strong>We Refined AI-Powered,</strong><br />Enterprise Risk Management.</h2>
           <p className="lead" style={{ marginBottom: 20 }}>TRPGLOBAL helps enterprises transform how they manage risk, compliance, and security in a rapidly evolving digital landscape.</p>
           <p className="body-text" style={{ marginBottom: 32 }}>By combining deep expertise in Oracle and SAP with Agentic AI, automated compliance, and real-time risk intelligence, we enable organisations to move beyond manual processes to smarter, audit-ready operations.
             <br />
