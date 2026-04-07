@@ -78,29 +78,46 @@ function DashWidget() {
   );
 }
 
-const TILE_HEIGHT = 62; // px — compact tile height
-const TILE_GAP = 8;     // px — gap between tiles
-const VISIBLE_TILES = 4;
-
 function ServiceShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const timerRef = useRef(null);
   const sidebarRef = useRef(null);
+  const sectionRef = useRef(null);
+  const cardRef = useRef(null);
+  const isLockedRef = useRef(false);      // whether scroll is captured by this section
+  const scrollCooldownRef = useRef(false); // debounce rapid wheel events
+  const userInteractingRef = useRef(false); // pause autoplay on hover/click
+  const [cardHeight, setCardHeight] = useState(0);
 
-  // Smooth-scroll the sidebar so active tile is visible
+  const total = SERVICES_DATA.length;
+
+  // Measure card height and sync sidebar
+  useEffect(() => {
+    const measure = () => {
+      if (cardRef.current) setCardHeight(cardRef.current.offsetHeight);
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [activeIndex]);
+
+  // Smooth-scroll sidebar so active tile is visible
   useEffect(() => {
     const sidebar = sidebarRef.current;
     if (!sidebar) return;
-    // When the active tile is the 3rd or beyond in the visible area,
-    // scroll so the tile is centred in the viewport.
-    const targetScroll = activeIndex * (TILE_HEIGHT + TILE_GAP);
-    sidebar.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    const tiles = sidebar.querySelectorAll('.showcase-nav-item');
+    const tile = tiles[activeIndex];
+    if (tile) tile.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }, [activeIndex]);
 
+  // Auto-rotation
   const startTimer = () => {
     clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
-      setActiveIndex(prev => (prev + 1) % SERVICES_DATA.length);
+      if (!userInteractingRef.current) {
+        goTo(prev => (prev + 1) % total);
+      }
     }, 6000);
   };
 
@@ -109,23 +126,85 @@ function ServiceShowcase() {
     return () => clearInterval(timerRef.current);
   }, []);
 
+  const goTo = (indexOrFn) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveIndex(typeof indexOrFn === 'function' ? indexOrFn : () => indexOrFn);
+      setIsTransitioning(false);
+    }, 120);
+  };
+
   const handleManualClick = (index) => {
-    setActiveIndex(index);
+    goTo(index);
     startTimer();
   };
+
+  // Section scroll-lock interaction
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Observe when section enters/leaves viewport
+    const io = new IntersectionObserver(([entry]) => {
+      isLockedRef.current = entry.isIntersecting;
+    }, { threshold: 0.55 });
+    io.observe(section);
+
+    const handleWheel = (e) => {
+      if (!isLockedRef.current) return;
+      if (scrollCooldownRef.current) { e.preventDefault?.(); e.stopPropagation?.(); return; }
+
+      const goingDown = e.deltaY > 0;
+
+      if (goingDown && activeIndex < total - 1) {
+        e.preventDefault();
+        e.stopPropagation();
+        scrollCooldownRef.current = true;
+        goTo(prev => Math.min(prev + 1, total - 1));
+        startTimer();
+        setTimeout(() => { scrollCooldownRef.current = false; }, 700);
+        return;
+      }
+
+      if (!goingDown && activeIndex > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        scrollCooldownRef.current = true;
+        goTo(prev => Math.max(prev - 1, 0));
+        startTimer();
+        setTimeout(() => { scrollCooldownRef.current = false; }, 700);
+        return;
+      }
+      // at boundary — let page scroll through
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      io.disconnect();
+    };
+  }, [activeIndex, total]);
 
   const activeService = SERVICES_DATA[activeIndex];
 
   return (
-    <div className="showcase-container rv">
-      {/* Left scrollable nav panel – shows 4 tiles, rest scroll in */}
-      <div className="showcase-sidebar" ref={sidebarRef}>
+    <div
+      className="showcase-container rv"
+      ref={sectionRef}
+      onMouseEnter={() => { userInteractingRef.current = true; }}
+      onMouseLeave={() => { userInteractingRef.current = false; }}
+    >
+      {/* Left tile navigation — height synced to right card */}
+      <div
+        className="showcase-sidebar"
+        ref={sidebarRef}
+        style={cardHeight ? { height: cardHeight } : {}}
+      >
         {SERVICES_DATA.map((srv, idx) => (
           <button
             key={srv.id}
             className={`showcase-nav-item ${idx === activeIndex ? 'active' : ''}`}
             onClick={() => handleManualClick(idx)}
-            style={{ minHeight: TILE_HEIGHT }}
           >
             <span className="sci-num">{srv.num.split(' / ')[0]}</span>
             <span className="sci-name">{srv.name}</span>
@@ -133,33 +212,44 @@ function ServiceShowcase() {
         ))}
       </div>
 
-      {/* Right full-width preview card */}
-      <div className="showcase-content">
-        <div className="showcase-anim-wrap" key={activeIndex}>
+      {/* Right premium preview card */}
+      <div className="showcase-content" ref={cardRef}>
+        <div
+          className={`showcase-anim-wrap ${isTransitioning ? 'showcase-fading' : ''}`}
+          key={activeIndex}
+        >
+          {/* Image region */}
           <div className="showcase-img-wrap">
             <img src={activeService.img} alt={activeService.name} className="showcase-img" />
             <div className="showcase-img-overlay" />
+            {/* Service number badge over image */}
+            <div className="showcase-img-badge">
+              <span className="sib-num">{activeService.num.split(' / ')[0]}</span>
+              <span className="sib-cat">{activeService.num.split(' / ')[1]}</span>
+            </div>
           </div>
-          {/* Progress bar — resets its animation on every key change */}
-          <div className="showcase-progress-bar">
-            <div className="showcase-progress-fill" key={`progress-${activeIndex}`} />
-          </div>
+
+          {/* Details */}
           <div className="showcase-details">
             <div className="showcase-card-header">
               <div className="showcase-icon-box">
                 <img src={activeService.icon} alt="" />
               </div>
-              <h3 className="showcase-title">{activeService.name}</h3>
+              <div>
+                <div className="showcase-eyebrow">Core Capability</div>
+                <h3 className="showcase-title">{activeService.name}</h3>
+              </div>
             </div>
+
             <p className="showcase-desc">{activeService.desc}</p>
+
             <div className="showcase-actions">
-              <Link
-                href="/services"
-                className="btn-text"
-                style={{ color: 'var(--red)', fontWeight: '600' }}
-              >
+              <Link href="/services" className="showcase-cta-primary">
                 Learn More <span className="arrow">→</span>
               </Link>
+              <span className="showcase-counter">
+                {String(activeIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+              </span>
             </div>
           </div>
         </div>
