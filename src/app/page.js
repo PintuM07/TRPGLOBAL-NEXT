@@ -78,9 +78,24 @@ function DashWidget() {
   );
 }
 
+const TILE_HEIGHT = 62; // px — compact tile height
+const TILE_GAP = 8;     // px — gap between tiles
+const VISIBLE_TILES = 4;
+
 function ServiceShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
   const timerRef = useRef(null);
+  const sidebarRef = useRef(null);
+
+  // Smooth-scroll the sidebar so active tile is visible
+  useEffect(() => {
+    const sidebar = sidebarRef.current;
+    if (!sidebar) return;
+    // When the active tile is the 3rd or beyond in the visible area,
+    // scroll so the tile is centred in the viewport.
+    const targetScroll = activeIndex * (TILE_HEIGHT + TILE_GAP);
+    sidebar.scrollTo({ top: targetScroll, behavior: 'smooth' });
+  }, [activeIndex]);
 
   const startTimer = () => {
     clearInterval(timerRef.current);
@@ -103,26 +118,31 @@ function ServiceShowcase() {
 
   return (
     <div className="showcase-container rv">
-      {/* Left List */}
-      <div className="showcase-sidebar">
+      {/* Left scrollable nav panel – shows 4 tiles, rest scroll in */}
+      <div className="showcase-sidebar" ref={sidebarRef}>
         {SERVICES_DATA.map((srv, idx) => (
-          <button 
-            key={srv.id} 
+          <button
+            key={srv.id}
             className={`showcase-nav-item ${idx === activeIndex ? 'active' : ''}`}
             onClick={() => handleManualClick(idx)}
+            style={{ minHeight: TILE_HEIGHT }}
           >
             <span className="sci-num">{srv.num.split(' / ')[0]}</span>
             <span className="sci-name">{srv.name}</span>
           </button>
         ))}
       </div>
-      
-      {/* Right Content */}
+
+      {/* Right full-width preview card */}
       <div className="showcase-content">
         <div className="showcase-anim-wrap" key={activeIndex}>
           <div className="showcase-img-wrap">
             <img src={activeService.img} alt={activeService.name} className="showcase-img" />
-            <div className="showcase-img-overlay"></div>
+            <div className="showcase-img-overlay" />
+          </div>
+          {/* Progress bar — resets its animation on every key change */}
+          <div className="showcase-progress-bar">
+            <div className="showcase-progress-fill" key={`progress-${activeIndex}`} />
           </div>
           <div className="showcase-details">
             <div className="showcase-card-header">
@@ -133,7 +153,13 @@ function ServiceShowcase() {
             </div>
             <p className="showcase-desc">{activeService.desc}</p>
             <div className="showcase-actions">
-              <Link href="/services" className="btn-text" style={{ color: 'var(--red)', fontWeight: '600' }}>Learn More <span className="arrow">→</span></Link>
+              <Link
+                href="/services"
+                className="btn-text"
+                style={{ color: 'var(--red)', fontWeight: '600' }}
+              >
+                Learn More <span className="arrow">→</span>
+              </Link>
             </div>
           </div>
         </div>
