@@ -85,8 +85,6 @@ function ServiceShowcase() {
   const sidebarRef = useRef(null);
   const sectionRef = useRef(null);
   const cardRef = useRef(null);
-  const isLockedRef = useRef(false);      // whether scroll is captured by this section
-  const scrollCooldownRef = useRef(false); // debounce rapid wheel events
   const userInteractingRef = useRef(false); // pause autoplay on hover/click
   const [cardHeight, setCardHeight] = useState(0);
 
@@ -102,14 +100,6 @@ function ServiceShowcase() {
     return () => window.removeEventListener('resize', measure);
   }, [activeIndex]);
 
-  // Smooth-scroll sidebar so active tile is visible
-  useEffect(() => {
-    const sidebar = sidebarRef.current;
-    if (!sidebar) return;
-    const tiles = sidebar.querySelectorAll('.showcase-nav-item');
-    const tile = tiles[activeIndex];
-    if (tile) tile.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  }, [activeIndex]);
 
   // Auto-rotation
   const startTimer = () => {
@@ -118,7 +108,7 @@ function ServiceShowcase() {
       if (!userInteractingRef.current) {
         goTo(prev => (prev + 1) % total);
       }
-    }, 6000);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -131,7 +121,7 @@ function ServiceShowcase() {
     setTimeout(() => {
       setActiveIndex(typeof indexOrFn === 'function' ? indexOrFn : () => indexOrFn);
       setIsTransitioning(false);
-    }, 120);
+    }, 60);
   };
 
   const handleManualClick = (index) => {
@@ -139,51 +129,7 @@ function ServiceShowcase() {
     startTimer();
   };
 
-  // Section scroll-lock interaction
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
 
-    // Observe when section enters/leaves viewport
-    const io = new IntersectionObserver(([entry]) => {
-      isLockedRef.current = entry.isIntersecting;
-    }, { threshold: 0.55 });
-    io.observe(section);
-
-    const handleWheel = (e) => {
-      if (!isLockedRef.current) return;
-      if (scrollCooldownRef.current) { e.preventDefault?.(); e.stopPropagation?.(); return; }
-
-      const goingDown = e.deltaY > 0;
-
-      if (goingDown && activeIndex < total - 1) {
-        e.preventDefault();
-        e.stopPropagation();
-        scrollCooldownRef.current = true;
-        goTo(prev => Math.min(prev + 1, total - 1));
-        startTimer();
-        setTimeout(() => { scrollCooldownRef.current = false; }, 700);
-        return;
-      }
-
-      if (!goingDown && activeIndex > 0) {
-        e.preventDefault();
-        e.stopPropagation();
-        scrollCooldownRef.current = true;
-        goTo(prev => Math.max(prev - 1, 0));
-        startTimer();
-        setTimeout(() => { scrollCooldownRef.current = false; }, 700);
-        return;
-      }
-      // at boundary — let page scroll through
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      io.disconnect();
-    };
-  }, [activeIndex, total]);
 
   const activeService = SERVICES_DATA[activeIndex];
 
