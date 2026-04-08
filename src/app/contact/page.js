@@ -102,7 +102,7 @@ export default function ContactPage() {
         </div>
 
         <div className="cl-right rv-r">
-          <div className="eyebrow" style={{ marginBottom: 24 }}>Send a Message</div>
+          <div className="eyebrow" style={{ marginBottom: 24 }}>Discuss Your Requirements</div>
           <form onSubmit={handleSubmit} noValidate>
             <div className="form-row">
               <div className="form-field"><label className="fl">First Name *</label><input className="fi" type="text" name="fn" value={form.fn} onChange={handleChange} placeholder="Enter Your First Name" required /></div>
@@ -111,20 +111,20 @@ export default function ContactPage() {
             <div className="form-field"><label className="fl">Work Email *</label><input className="fi" type="email" name="em" value={form.em} onChange={handleChange} placeholder="Enter Your Work Email" required /></div>
             <div className="form-field"><label className="fl">Company</label><input className="fi" type="text" name="co" value={form.co} onChange={handleChange} placeholder="Enter Your Company Name" /></div>
             <div className="form-field">
-  <label className="fl">Service Interest</label>
-  <select className="fs" name="sv" value={form.sv} onChange={handleChange}>
-    <option value="">Select a service area</option>
-    <option>Risk Management & Security</option>
-    <option>Oracle Services</option>
-    <option>SAP Services</option>
-    <option>Digital Transformation</option>
-    <option>Oracle Risk Management & Compliance</option>
-    <option>Other</option>
-  </select>
-</div>
+              <label className="fl">Service Interest</label>
+              <select className="fs" name="sv" value={form.sv} onChange={handleChange}>
+                <option value="">Select a service area</option>
+                <option>Risk Management & Security</option>
+                <option>Oracle Services</option>
+                <option>SAP Services</option>
+                <option>Digital Transformation</option>
+                <option>Oracle Risk Management & Compliance</option>
+                <option>Other</option>
+              </select>
+            </div>
             <div className="form-field"><label className="fl">Write us a message *</label><textarea className="ft" name="mg" value={form.mg} onChange={handleChange} placeholder="Tell us about your challenge..." required></textarea></div>
             <button className="btn-primary" type="submit" style={{ width: '100%', justifyContent: 'center', opacity: submitting ? 0.6 : 1 }}>
-              {submitting ? 'Sending...' : <>Send Message <span className="arrow">→</span></>}
+              {submitting ? 'Sending...' : <>Request a Consultation <span className="arrow">→</span></>}
             </button>
             {formMsg.text && <div className={`form-msg ${formMsg.type}`}>{formMsg.text}</div>}
           </form>
