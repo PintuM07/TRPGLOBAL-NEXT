@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="footer-inner">
         <div className="f-brand">
           <Link href="/">
-            <Logo size="md" className="f-logo-wrap" as="span" />
+            <Logo size="lg" className="f-logo-wrap" as="span" />
           </Link>
           <p className="f-tagline">
             IT consulting &amp; risk management for enterprises that demand excellence. Oracle. SAP. Oracle Risk Management and Compliance.
