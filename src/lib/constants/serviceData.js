@@ -6,7 +6,7 @@ export const SERVICES_DATA = [
     icon: '/assets/icons/Services/secure.png',
     desc: 'Deep-layer access path mapping and configuration audit for absolute environment security.',
     tags: ['Security', 'Audit', 'Access Path'],
-    img: '/assets/icons/Services/Oracle Security.jpg',
+    img: '/assets/icons/Services/Oracle Security1.jpg',
     detail: `Your Oracle environment runs payroll, manages identities, and holds the contracts your business was built on. We treat it accordingly - going three layers deeper than any standard review, mapping every access path, every module connection, every configuration decision that creates exposure in a regulated environment. When we're done, your CISO and your auditor are looking at the same environment and agreeing, for the first time, that it's genuinely secure.`
   },
   {
