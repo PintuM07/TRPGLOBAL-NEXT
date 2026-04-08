@@ -25,7 +25,6 @@ export default function Footer() {
           <ul>
             <li><Link href="/services">Risk Management</Link></li>
             <li><Link href="/services">Oracle Services</Link></li>
-            <li><Link href="/services">SAP Services</Link></li>
             <li><Link href="/services">Digital Transformation</Link></li>
             <li><Link href="/oracle-rmc">Oracle RMC</Link></li>
           </ul>
@@ -56,7 +55,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="fb-left">
           <span>© {year} TRP Global — TechRiskPartners. All rights reserved.</span>
-          <span>Founded 2018 · Oracle &amp; SAP Partner · 100+ Enterprises</span>
+          <span>Founded 2018 · Oracle Partner · 100+ Enterprises</span>
         </div>
         <div className="fb-right">
           <Link href="/login" className="admin-link-btn">Admin Access</Link>
