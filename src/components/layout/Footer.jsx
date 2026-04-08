@@ -91,8 +91,7 @@ export default function Footer() {
           <div className="f-col f-panel f-newsletter">
             <h5>Newsletter</h5>
             <p className="f-newsletter-text">
-              Stay connected with insights on risk, enterprise transformation, Oracle,
-              SAP, and compliance.
+              Stay connected with insights on risk, enterprise transformation, Oracle, and compliance.
             </p>
 
             <form className="f-newsletter-form" onSubmit={(e) => e.preventDefault()}>
