@@ -4,12 +4,22 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useReveal } from '@/lib/hooks/useReveal';
 import { AnimatedCounter } from '@/lib/hooks/useAnimatedCounter';
 import Image from "next/image";
+import { Volume2, VolumeX } from 'lucide-react';
 
 function ExpertVideo() {
   const videoRef = useRef(null);
   const playTimeoutRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasStartedOnce, setHasStartedOnce] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = (e) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,7 +72,7 @@ function ExpertVideo() {
   }, []);
 
   return (
-    <>
+    <div className="video-container" style={{ position: 'relative', width: '100%', height: '100%', display: 'flex' }}>
       {isLoading && (
         <div className="video-loading-overlay">
           <div className="video-spinner"></div>
@@ -71,8 +81,7 @@ function ExpertVideo() {
       <video
         ref={videoRef}
         className="about-video"
-        controls
-        muted
+        muted={isMuted}
         loop
         playsInline
         poster="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80"
@@ -80,7 +89,40 @@ function ExpertVideo() {
         <source src="/assets/video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-    </>
+      <button 
+        onClick={toggleMute}
+        className="mute-toggle-btn"
+        style={{
+          position: 'absolute',
+          bottom: '24px',
+          right: '24px',
+          background: 'rgba(0, 0, 0, 0.6)',
+          color: 'white',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: '50%',
+          width: '50px',
+          height: '50px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          zIndex: 10,
+          backdropFilter: 'blur(4px)',
+          transition: 'transform 0.2s ease, background 0.2s ease'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.05)';
+          e.currentTarget.style.background = 'rgba(0, 0, 0, 0.8)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.background = 'rgba(0, 0, 0, 0.6)';
+        }}
+        aria-label={isMuted ? "Unmute video" : "Mute video"}
+      >
+        {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+      </button>
+    </div>
   );
 }
 
