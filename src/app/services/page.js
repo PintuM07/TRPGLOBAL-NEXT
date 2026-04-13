@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useReveal } from '@/lib/hooks/useReveal';
 import { SERVICES_DATA } from '@/lib/constants/serviceData';
@@ -11,7 +11,25 @@ export default function ServicesPage() {
   const pageRef = useReveal();
   const [selectedService, setSelectedService] = useState(null);
 
-  const services = SERVICES_DATA.slice(0, 6);
+  useEffect(() => {
+    // Graceful check for window to ensure CSR runs cleanly
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const activeId = searchParams.get('service');
+      if (activeId) {
+        const foundSvc = SERVICES_DATA.find(s => s.id === activeId);
+        if (foundSvc) {
+          setSelectedService(foundSvc);
+          setTimeout(() => {
+             const section = document.getElementById('services-grid-section');
+             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      }
+    }
+  }, []);
+
+  const services = SERVICES_DATA;
 
   const steps = [
     { num: '01.', title: 'Risk Assessment & Gap Analysis', desc: 'We evaluate your current risk landscape, internal controls, and compliance gaps using structured frameworks and Oracle RMC capabilities.' },
@@ -87,7 +105,7 @@ export default function ServicesPage() {
       </section>
 
       {/* SECTION 1: SERVICES WE OFFER */}
-      <section className="svc-section">
+      <section id="services-grid-section" className="svc-section">
         <div className="container">
           <div className="svc-section-header align-center">
             <span className="svc-eyebrow">SERVICES WE OFFER</span>
@@ -97,9 +115,9 @@ export default function ServicesPage() {
             {services.map((svc) => (
               <div className="svc-card" key={svc.id} onClick={() => setSelectedService(svc)} style={{ cursor: 'pointer' }}>
                 {svc.icon ? (
-                  <img src={svc.icon} alt={svc.name} className="svc-card-icon" />
+                  <img src={svc.icon} alt={svc.name} className="svc-card-icon" style={{ marginBottom: 24 }} />
                 ) : (
-                  <div className="svc-icon-box"></div>
+                  <div className="svc-icon-box" style={{ marginBottom: 24 }}></div>
                 )}
                 <h3 className="svc-card-title">{svc.name}</h3>
                 <p className="svc-card-desc">{svc.desc}</p>

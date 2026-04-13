@@ -190,7 +190,7 @@ function ServiceShowcase() {
             <p className="showcase-desc">{activeService.desc}</p>
 
             <div className="showcase-actions">
-              <Link href="/services" className="showcase-cta-primary">
+              <Link href={`/services?service=${activeService.id}`} className="showcase-cta-primary">
                 Learn More <span className="arrow">→</span>
               </Link>
               <span className="showcase-counter">
