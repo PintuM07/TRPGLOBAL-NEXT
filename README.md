@@ -1,12 +1,12 @@
-# TRP Global — Enterprise Risk & ERP Excellence
+# TRP GLOBAL — Enterprise Risk & ERP Excellence
 
-![TRP Global Banner](https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&auto=format&fit=crop&q=80)
+![TRP GLOBAL Banner](https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&auto=format&fit=crop&q=80)
 
-TRP Global is a high-performance enterprise web application designed for a leading consultancy specializing in **ERP Risk Management, Compliance, and AI-driven Risk Solutions**. Built with a Big 4-style aesthetic, the platform reflects prestige, reliability, and technical sophistication.
+TRP GLOBAL is a high-performance enterprise web application designed for a leading consultancy specializing in **ERP Risk Management, Compliance, and AI-driven Risk Solutions**. Built with a Big 4-style aesthetic, the platform reflects prestige, reliability, and technical sophistication.
 
 ## 🚀 Overview
 
-The TRP Global platform serves as a comprehensive corporate portal, showcasing expertise across Oracle and SAP ecosystems. It transitions from a traditional consultancy model to a tech-forward partner, highlighting advanced capabilities in:
+The TRP GLOBAL platform serves as a comprehensive corporate portal, showcasing expertise across Oracle and SAP ecosystems. It transitions from a traditional consultancy model to a tech-forward partner, highlighting advanced capabilities in:
 - **Oracle Risk Management Cloud (RMC)**
 - **AI Data Platforms & Agent Studios**
 - **S/4HANA Transformations**
@@ -67,7 +67,7 @@ A data-driven services engine (defined in `serviceData.js`) that dynamically gen
 - AI Agent Studio showcases for automated risk guardrails.
 
 ### 3. Enterprise Content Strategy
-Dedicated sections for **Insights** and **Case Studies**, allowing TRP Global to showcase thought leadership in the ERP space.
+Dedicated sections for **Insights** and **Case Studies**, allowing TRP GLOBAL to showcase thought leadership in the ERP space.
 
 ### 4. Professional "Our Team" Page
 A premium leadership showcase featuring:
@@ -103,7 +103,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ## 🎨 Design Philosophy
 
-TRP Global follows a **Minimalist Enterprise** aesthetic:
+TRP GLOBAL follows a **Minimalist Enterprise** aesthetic:
 - **Color Palette**: Sophisticated dark modes, stark white spaces, and vibrant accent highlights.
 - **Typography**: Editorial-grade sans-serif pairings for readability and authority.
 - **Interactions**: Glassmorphism, subtle gradients, and high-frequency micro-interactions that make the platform feel alive.
@@ -112,5 +112,5 @@ TRP Global follows a **Minimalist Enterprise** aesthetic:
 
 ## 📄 License
 
-This project is private and proprietary to TRP Global. 
-© 2026 TRP Global. All rights reserved.
+This project is private and proprietary to TRP GLOBAL. 
+© 2026 TRP GLOBAL. All rights reserved.

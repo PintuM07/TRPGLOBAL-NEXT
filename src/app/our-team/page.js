@@ -11,7 +11,7 @@ const LEADERS = [
     img: '/assets/Arun.png',
     name: 'Arun Majumdar',
     role: 'Group CEO & Senior Partner',
-    bio: 'Arun leads TRP Global\'s strategic vision with 20+ years in enterprise risk and ERP. He built TRP from the ground up, growing it to a 100+ enterprise client base across 18 countries.',
+    bio: 'Arun leads TRP GLOBAL\'s strategic vision with 20+ years in enterprise risk and ERP. He built TRP from the ground up, growing it to a 100+ enterprise client base across 18 countries.',
     initials: 'AM',
   },
   {
@@ -53,7 +53,7 @@ const ACTIVITIES = [
   {
     icon: '🎓',
     title: 'Certification Programs',
-    desc: 'Structured certification paths for Oracle Cloud, SAP GRC, and CISA — fully sponsored by TRP Global.',
+    desc: 'Structured certification paths for Oracle Cloud, SAP GRC, and CISA — fully sponsored by TRP GLOBAL.',
   },
   {
     icon: '🤝',
@@ -90,7 +90,7 @@ const EVENTS = [
     title: 'Oracle CloudWorld Partner Day',
     date: 'September 2024',
     location: 'Las Vegas, USA',
-    desc: 'TRP Global showcased our Oracle RMC accelerator at Oracle\'s premier cloud conference alongside global partners.',
+    desc: 'TRP GLOBAL showcased our Oracle RMC accelerator at Oracle\'s premier cloud conference alongside global partners.',
   },
   {
     img: 'https://images.unsplash.com/photo-1591115765373-5207764f72e4?w=800&auto=format&fit=crop&q=80',
@@ -115,7 +115,7 @@ const EVENTS = [
   },
   {
     img: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop&q=80',
-    title: 'TRP Global Anniversary Gala',
+    title: 'TRP GLOBAL Anniversary Gala',
     date: 'June 2024',
     location: 'New Delhi, India',
     desc: 'Celebrating six years of enterprise excellence with clients, partners, and the entire TRP family at a black-tie gala evening.',
@@ -432,7 +432,7 @@ export default function OurTeamPage() {
         <div className="ot-hero-right rv-r">
           <img
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80"
-            alt="TRP Global team collaboration"
+            alt="TRP GLOBAL team collaboration"
           />
           <div className="ot-hero-right-overlay" />
           <div className="ot-hero-caption">

@@ -154,9 +154,9 @@ export default function AboutPage() {
         <div className="ah-left rv-l">
           <div className="eyebrow">Our Story</div>
           <h1 className="display" style={{ marginBottom: 20 }}><strong>Built for</strong><br />Enterprise Excellence</h1>
-          <p className="lead" style={{ marginBottom: 20 }}>Founded in 2018, TRP Global (TechRiskPartners) is a specialist IT consulting and risk management company helping businesses manage security, compliance, and digital transformation.</p>
+          <p className="lead" style={{ marginBottom: 20 }}>Founded in 2018, TRP GLOBAL (TechRiskPartners) is a specialist IT consulting and risk management company helping businesses manage security, compliance, and digital transformation.</p>
           <p className="body-text" style={{ marginBottom: 16 }}>We are not a product company — we are a consulting and implementation partner. We embed deeply with your teams, understand your systems, and deliver outcomes measured in reduced risk, not delivered slides.</p>
-          <p className="body-text">With 50–200 professionals serving 100+ global enterprises across 18 countries, TRP Global brings both the scale to handle complex engagements and the focus to treat every client as a priority.</p>
+          <p className="body-text">With 50–200 professionals serving 100+ global enterprises across 18 countries, TRP GLOBAL brings both the scale to handle complex engagements and the focus to treat every client as a priority.</p>
         </div>
         <div className="ah-right rv-r">
           <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&auto=format&fit=crop&q=80" alt="Professional team meeting" />

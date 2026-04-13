@@ -25,7 +25,7 @@ export default function LoginPage() {
       <div className="login-card rv go">
         <div className="eyebrow">Secure Access</div>
         <h1 className="heading">Admin <strong>Login</strong></h1>
-        <p className="body-text">Enter your credentials to access the TRP Global management console.</p>
+        <p className="body-text">Enter your credentials to access the TRP GLOBAL management console.</p>
         <form onSubmit={handleLogin} className="login-form">
           <div className="form-group">
             <label htmlFor="email">Email Address</label>

@@ -8,7 +8,7 @@ export default function Logo({ size = 'sm', className = '', as: Tag = 'div', ...
     <Tag className={`logo logo--${size} ${className}`.trim()} {...rest}>
       <img
         src="/assets/TRPGLOBAL_NEWUPDATE 2 5.png"
-        alt="TRP Global"
+        alt="TRP GLOBAL"
         className="logo-img"
         draggable={false}
       />

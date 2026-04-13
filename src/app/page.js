@@ -340,7 +340,7 @@ export default function HomePage() {
             <br />
             <strong>Trusted by 100+ global clients to deliver secure, scalable, and future-ready risk solutions.</strong>
           </p>
-          <Link href="/about" className="btn-text" style={{ color: 'var(--red)' }}>Learn about TRP Global <span className="arrow">→</span></Link>
+          <Link href="/about" className="btn-text" style={{ color: 'var(--red)' }}>Learn about TRP GLOBAL <span className="arrow">→</span></Link>
         </div>
         <div className="intro-right rv-r">
           <div className="intro-img">
