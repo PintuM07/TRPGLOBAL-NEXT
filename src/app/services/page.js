@@ -114,11 +114,9 @@ export default function ServicesPage() {
           <div className="svc-grid">
             {services.map((svc) => (
               <div className="svc-card" key={svc.id} onClick={() => setSelectedService(svc)} style={{ cursor: 'pointer' }}>
-                {svc.icon ? (
-                  <img src={svc.icon} alt={svc.name} className="svc-card-icon" style={{ marginBottom: 24 }} />
-                ) : (
-                  <div className="svc-icon-box" style={{ marginBottom: 24 }}></div>
-                )}
+                <div className="svc-icon-box" style={{ marginBottom: 24 }}>
+                  {svc.icon && <img src={svc.icon} alt={svc.name} className="svc-card-icon" />}
+                </div>
                 <h3 className="svc-card-title">{svc.name}</h3>
                 <p className="svc-card-desc">{svc.desc}</p>
                 <a href="#" className="svc-card-link" onClick={(e) => e.preventDefault()}>
