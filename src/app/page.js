@@ -10,18 +10,18 @@ const VIDEO_SRC = '/assets/HeroVideo.mp4';
 
 const SLIDES = [
   {
-    heading: <><strong>Agentic AI for Oracle  </strong><br />Risk & Compliance.</>,
-    sub: 'TRPGLOBAL partners with 100+ global clients to deliver Agentic AI that automates Oracle risk and compliance with real-time risk intelligence and continuous controls monitoring.',
+    heading: <><strong>Agentic AI for Oracle  </strong><br />Risk & Compliance</>,
+    sub: 'TRPGLOBAL partners with 100+ global clients to deliver Agentic AI that automates Oracle risk and compliance with real-time risk intelligence and continuous controls monitoring',
     accent: 'slide-accent-blue',
   },
   {
-    heading: <><strong>Zero-Trust Access Governance,</strong><br />Automated.</>,
-    sub: 'Achieve automated compliance with continuous monitoring, real-time visibility, and audit-ready access controls & no manual reviews.',
+    heading: <><strong>Zero-Trust Access Governance</strong><br />Automated</>,
+    sub: 'Achieve automated compliance with continuous monitoring, real-time visibility, and audit-ready access controls & no manual reviews',
     accent: 'slide-accent-red',
   },
   {
-    heading: <><strong>AI Agents Built for Governance  &</strong><br /><strong>Audit.</strong></>,
-    sub: 'Deploy Agentic AI with built-in AI audit trails, powered by the Oracle AI Data Platform for secure, compliant automation.',
+    heading: <><strong>AI Agents Built for Governance  &</strong><br /><strong>Audit</strong></>,
+    sub: 'Deploy Agentic AI with built-in AI audit trails, powered by the Oracle AI Data Platform for secure, compliant automation',
     accent: 'slide-accent-teal',
   },
 ];
