@@ -6,7 +6,7 @@ import { useReveal } from '@/lib/hooks/useReveal';
 const SPOTLIGHT_ARTICLES = [
   { cat: 'REMOTE WORK', title: '4 Ways to Close the Opportunity Gap and Help Remote Workers Thrive', author: 'Jennifer Ernst Beaudry', img: 'https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=150&auto=format&fit=crop&q=80' },
   { cat: 'EMPLOYEE ENGAGEMENT', title: 'What Are Stay Interviews? 20 Questions to Ask Employees.', author: 'Andy Przystanski', img: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=150&auto=format&fit=crop&q=80' },
-  { cat: 'HR DEVELOPMENT', title: '10 HR Podcasts to Subscribe to in 2024', author: 'TRP Global Team', img: 'https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=150&auto=format&fit=crop&q=80' },
+  { cat: 'HR DEVELOPMENT', title: '10 HR Podcasts to Subscribe to in 2024', author: 'TRP GLOBAL Team', img: 'https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=150&auto=format&fit=crop&q=80' },
 ];
 
 const GRID_ARTICLES = [

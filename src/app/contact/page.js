@@ -70,7 +70,7 @@ export default function ContactPage() {
         <div className="pb-overlay"></div>
         <div className="pb-content">
           <div className="pb-eyebrow">Get in Touch</div>
-          <h1 className="pb-title"><strong>Contact</strong><br />TRP Global</h1>
+          <h1 className="pb-title"><strong>Contact</strong><br />TRP GLOBAL</h1>
         </div>
       </div>
 

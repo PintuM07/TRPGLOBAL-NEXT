@@ -16,11 +16,11 @@ import Footer from '@/components/layout/Footer';
 import { ProgressBar, BackToTop, PageTransition } from '@/components/ui/PageUtils';
 
 export const metadata = {
-  title: 'TRP Global — TechRiskPartners | Enterprise Risk Management & IT Consulting',
-  description: 'TRP Global (TechRiskPartners) is a specialist IT consulting and risk management company. Oracle, SAP, and AI-powered solutions for 100+ global enterprises across 18 countries.',
-  keywords: 'TRP Global, enterprise risk management, Oracle consulting, SAP consulting, IT audit, compliance, digital transformation',
+  title: 'TRP GLOBAL — TechRiskPartners | Enterprise Risk Management & IT Consulting',
+  description: 'TRP GLOBAL (TechRiskPartners) is a specialist IT consulting and risk management company. Oracle, SAP, and AI-powered solutions for 100+ global enterprises across 18 countries.',
+  keywords: 'TRP GLOBAL, enterprise risk management, Oracle consulting, SAP consulting, IT audit, compliance, digital transformation',
   openGraph: {
-    title: 'TRP Global — TechRiskPartners',
+    title: 'TRP GLOBAL — TechRiskPartners',
     description: 'Enterprise Risk Management & IT Consulting for global enterprises.',
     type: 'website',
   },

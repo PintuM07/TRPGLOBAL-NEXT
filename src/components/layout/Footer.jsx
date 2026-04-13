@@ -115,7 +115,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div className="fb-left">
-            <span>© {year} TRP Global — TechRiskPartners. All rights reserved.</span>
+            <span>© {year} TRP GLOBAL — TechRiskPartners. All rights reserved.</span>
             <span>Founded 2018 · Oracle Partner · 100+ Enterprises</span>
           </div>
 
