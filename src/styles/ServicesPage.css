@@ -164,8 +164,8 @@
 /* SECTION 1: SERVICES WE OFFER */
 .svc-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
 .svc-card {
@@ -216,36 +216,44 @@
   color: #fff;
 }
 
-.svc-card-icon {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  margin-bottom: 24px;
-}
-
 .svc-icon-box {
   width: 48px;
   height: 48px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background-color: var(--border);
-  margin-bottom: 24px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0;
   transition: background-color 0.4s ease;
+  line-height: 0;
+}
+
+.svc-card-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .svc-card-highlight .svc-icon-box,
 .svc-card:hover .svc-icon-box {
   background-color: rgba(255,255,255,0.2);
+  border-color: transparent;
 }
 
 .svc-card-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 12px;
   color: var(--fg);
 }
 
 .svc-card-desc {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--muted);
   line-height: 1.6;
   margin-bottom: 24px;

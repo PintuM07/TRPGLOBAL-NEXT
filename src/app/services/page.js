@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useReveal } from '@/lib/hooks/useReveal';
 import { SERVICES_DATA } from '@/lib/constants/serviceData';
@@ -11,7 +11,25 @@ export default function ServicesPage() {
   const pageRef = useReveal();
   const [selectedService, setSelectedService] = useState(null);
 
-  const services = SERVICES_DATA.slice(0, 6);
+  useEffect(() => {
+    // Graceful check for window to ensure CSR runs cleanly
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const activeId = searchParams.get('service');
+      if (activeId) {
+        const foundSvc = SERVICES_DATA.find(s => s.id === activeId);
+        if (foundSvc) {
+          setSelectedService(foundSvc);
+          setTimeout(() => {
+             const section = document.getElementById('services-grid-section');
+             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      }
+    }
+  }, []);
+
+  const services = SERVICES_DATA;
 
   const steps = [
     { num: '01.', title: 'Risk Assessment & Gap Analysis', desc: 'We evaluate your current risk landscape, internal controls, and compliance gaps using structured frameworks and Oracle RMC capabilities.' },
@@ -55,10 +73,10 @@ export default function ServicesPage() {
           <div className="svc-expertise-top">
             <div className="svc-expertise-top-left">
               <div className="svc-eyebrow" style={{ color: 'var(--red, #f97316)' }}>DISCOVER THE ART</div>
-              <h2 className="svc-h2" style={{ color: '#fff' }}>Our Expertise: Crafting Results-Driven Solutions For Your Business.</h2>
+              <h2 className="svc-h2" style={{ color: '#fff' }}>Our Expertise: Delivering Intelligent Risk & Compliance Solutions.</h2>
             </div>
             <div className="svc-expertise-top-right">
-               <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', lineHeight: 1.6 }}>We bring specialized GRC knowledge to every configuration decision, ensuring your systems reflect your actual reality, not just a vendor template.</p>
+               <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', lineHeight: 1.6 }}>We help enterprises strengthen governance, automate controls, and reduce risk through Oracle RMC, AI, and ERP solutions.</p>
             </div>
           </div>
           <div className="svc-expertise-cards">
@@ -68,8 +86,8 @@ export default function ServicesPage() {
                </div>
                <div className="svc-exp-box">
                  <Star className="svc-exp-icon" size={24} />
-                 <h4>Strategic Planning</h4>
-                 <p>Aligning implementation roadmaps directly with your compliance obligations.</p>
+                 <h4>Oracle RMC</h4>
+                 <p>Implement and optimize Oracle RMC to strengthen compliance, automate controls monitoring, and improve enterprise-wide risk visibility.</p>
                </div>
              </div>
              <div className="svc-exp-card">
@@ -78,8 +96,8 @@ export default function ServicesPage() {
                </div>
                <div className="svc-exp-box">
                  <Star className="svc-exp-icon" size={24} />
-                 <h4>Implementation</h4>
-                 <p>Deploying Oracle controls without taking standard shortcuts that undermine value.</p>
+                 <h4>AI Risk Intelligence</h4>
+                 <p>Leverage AI agents to detect anomalies, automate workflows, and enable proactive risk mitigation across business processes.</p>
                </div>
              </div>
           </div>
@@ -87,7 +105,7 @@ export default function ServicesPage() {
       </section>
 
       {/* SECTION 1: SERVICES WE OFFER */}
-      <section className="svc-section">
+      <section id="services-grid-section" className="svc-section">
         <div className="container">
           <div className="svc-section-header align-center">
             <span className="svc-eyebrow">SERVICES WE OFFER</span>
@@ -96,11 +114,9 @@ export default function ServicesPage() {
           <div className="svc-grid">
             {services.map((svc) => (
               <div className="svc-card" key={svc.id} onClick={() => setSelectedService(svc)} style={{ cursor: 'pointer' }}>
-                {svc.icon ? (
-                  <img src={svc.icon} alt={svc.name} className="svc-card-icon" />
-                ) : (
-                  <div className="svc-icon-box"></div>
-                )}
+                <div className="svc-icon-box" style={{ marginBottom: 24 }}>
+                  {svc.icon && <img src={svc.icon} alt={svc.name} className="svc-card-icon" />}
+                </div>
                 <h3 className="svc-card-title">{svc.name}</h3>
                 <p className="svc-card-desc">{svc.desc}</p>
                 <a href="#" className="svc-card-link" onClick={(e) => e.preventDefault()}>
@@ -145,12 +161,15 @@ export default function ServicesPage() {
       {/* SECTION 3: WHY CHOOSE US */}
       <section className="svc-section">
         <div className="container">
+          <div className="svc-section-header align-center">
+            <span className="svc-eyebrow">WHY CHOOSE US</span>
+            <h2 className="svc-h2">Discover Why Enterprises Trust TRPGLOBAL for Risk & Compliance</h2>
+          </div>
           <div className="svc-why-layout">
+            <div className="svc-why-right">
+              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1000" alt="Expert consultation" className="svc-why-img" />
+            </div>
             <div className="svc-why-left">
-              <div className="svc-section-header">
-                <span className="svc-eyebrow">WHY CHOOSE US</span>
-                <h2 className="svc-h2">Discover Why Enterprises Trust TRPGLOBAL for Risk & Compliance</h2>
-              </div>
               <div className="svc-why-grid">
                 {whyChooseUs.map((wu, idx) => (
                   <div className="svc-why-card" key={idx}>
@@ -162,9 +181,6 @@ export default function ServicesPage() {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="svc-why-right">
-              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1000" alt="Expert consultation" className="svc-why-img" />
             </div>
           </div>
         </div>
