@@ -9,7 +9,7 @@ import './Navbar.css';
 
 const ChevronIcon = () => (
   <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" className="dropdown-chevron">
-    <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -59,12 +59,12 @@ export default function Navbar() {
       if (menuOpen) setMenuOpen(false);
       return;
     }
-    
+
     e.preventDefault();
     if (menuOpen) setMenuOpen(false);
-    
+
     window.dispatchEvent(new Event('start-transition'));
-    
+
     setTimeout(() => {
       router.push(href);
     }, 450);
@@ -97,7 +97,7 @@ export default function Navbar() {
               {theme === 'light' ? '🌙' : '☀'}
             </button>
             <Link href="/contact" className="nav-cta" onClick={(e) => handleNavClick(e, '/contact')}>
-              Contact
+              Contact Us
             </Link>
             <button
               className={`hamburger ${menuOpen ? 'open' : ''}`}
