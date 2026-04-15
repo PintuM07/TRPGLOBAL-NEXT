@@ -31,17 +31,21 @@ function ExpertVideo() {
               if (!hasStartedOnce) {
                 setIsLoading(true);
                 playTimeoutRef.current = setTimeout(() => {
-                  videoRef.current.play().then(() => {
-                    setHasStartedOnce(true);
-                    setIsLoading(false);
-                  }).catch(err => {
-                    console.log("Autoplay blocked or failed:", err);
-                    setIsLoading(false);
-                  });
+                  if (videoRef.current) {
+                    videoRef.current.play().then(() => {
+                      setHasStartedOnce(true);
+                      setIsLoading(false);
+                    }).catch(err => {
+                      console.log("Autoplay blocked or failed:", err);
+                      setIsLoading(false);
+                    });
+                  }
                 }, 2500);
               } else {
                 // If it already started once, just play normally (resuming scroll-play)
-                videoRef.current.play().catch(() => {});
+                if (videoRef.current) {
+                  videoRef.current.play().catch(() => {});
+                }
               }
             } else {
               // Clear pending timeout and pause
