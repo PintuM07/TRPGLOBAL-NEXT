@@ -21,8 +21,8 @@ export default function ServicesPage() {
         if (foundSvc) {
           setSelectedService(foundSvc);
           setTimeout(() => {
-             const section = document.getElementById('services-grid-section');
-             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const section = document.getElementById('services-grid-section');
+            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 100);
         }
       }
@@ -45,11 +45,68 @@ export default function ServicesPage() {
     { title: 'Our accelerators compress timelines — not quality', desc: 'Proprietary implementation frameworks mean faster deployment without the configuration shortcuts that quietly undermine value downstream.', icon: <Star size={24} /> },
   ];
 
+  // const testimonials = [
+  //   { client: 'Sarah M.', role: 'Chief Risk Officer', text: 'TRPGLOBAL transformed our approach to Oracle RMC. Their blend of compliance expertise and technical deep-dive was exactly what we needed.', rating: 5, avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150' },
+  //   { client: 'David T.', role: 'Head of Audit', text: 'The visibility we now have into our risk landscape is unprecedented. Their team delivered exactly what they promised.', rating: 5, avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150' },
+  //   { client: 'Elena R.', role: 'VP of Finance', text: 'A truly phenomenal partnership. Their accelerators allowed us to reach our audit goals months ahead of schedule without sacrificing quality.', rating: 5, avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150' },
+  // ];
+
+
   const testimonials = [
-    { client: 'Sarah M.', role: 'Chief Risk Officer', text: 'TRPGLOBAL transformed our approach to Oracle RMC. Their blend of compliance expertise and technical deep-dive was exactly what we needed.', rating: 5, avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150' },
-    { client: 'David T.', role: 'Head of Audit', text: 'The visibility we now have into our risk landscape is unprecedented. Their team delivered exactly what they promised.', rating: 5, avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150' },
-    { client: 'Elena R.', role: 'VP of Finance', text: 'A truly phenomenal partnership. Their accelerators allowed us to reach our audit goals months ahead of schedule without sacrificing quality.', rating: 5, avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150' },
+    { client: 'Sarah M.', role: 'Chief Risk Officer (Banking)', text: 'TRPGLOBAL transformed our risk governance model. Their Oracle RMC expertise helped us align with regulatory expectations seamlessly.', rating: 5, avatar: 'https://randomuser.me/api/portraits/women/1.jpg' },
+    { client: 'David T.', role: 'Head of Audit (Financial Services)', text: 'Strong execution and great domain understanding. We improved audit visibility significantly within weeks.', rating: 4, avatar: 'https://randomuser.me/api/portraits/men/2.jpg' },
+    { client: 'Elena R.', role: 'VP Finance (Retail)', text: 'Their automation approach reduced manual compliance efforts drastically. A great partner overall.', rating: 5, avatar: 'https://randomuser.me/api/portraits/women/3.jpg' },
+    { client: 'Rahul P.', role: 'IT Security Manager (Technology)', text: 'Helped us integrate risk monitoring into our IT systems effectively. Very knowledgeable team.', rating: 4, avatar: 'https://randomuser.me/api/portraits/men/4.jpg' },
+    { client: 'Anita D.', role: 'Compliance Lead (Healthcare)', text: 'Their structured approach ensured we met strict healthcare compliance standards without delays.', rating: 5, avatar: 'https://randomuser.me/api/portraits/women/5.jpg' },
+
+    ...Array.from({ length: 195 }, (_, i) => {
+      const industries = [
+        'Banking',
+        'Financial Services',
+        'Insurance',
+        'Healthcare',
+        'Retail',
+        'Manufacturing',
+        'Technology',
+        'Telecom',
+        'Pharmaceutical',
+        'Logistics'
+      ];
+
+      const roles = [
+        'Chief Risk Officer',
+        'Audit Manager',
+        'Finance Director',
+        'Compliance Officer',
+        'IT Manager',
+        'Operations Head',
+        'Internal Auditor'
+      ];
+
+      const texts = [
+        'Their expertise helped us strengthen internal controls and reduce compliance gaps.',
+        'A reliable partner who understands both business and technical challenges.',
+        'We saw immediate improvements in reporting accuracy and audit readiness.',
+        'The implementation was smooth and aligned perfectly with our industry needs.',
+        'They provided actionable insights that improved our risk posture.',
+        'Professional team with excellent delivery and communication.',
+        'Their accelerators significantly reduced our project timeline.',
+        'Helped us achieve better visibility across enterprise risk processes.'
+      ];
+
+      const industry = industries[i % industries.length];
+      const role = roles[i % roles.length];
+
+      return {
+        client: `Client ${i + 6}`,
+        role: `${role} (${industry})`,
+        text: texts[i % texts.length],
+        rating: i % 3 === 0 ? 4 : 5, // mix of 4 & 5 ratings
+        avatar: `https://randomuser.me/api/portraits/${i % 2 === 0 ? 'men' : 'women'}/${(i % 99) + 6}.jpg`
+      };
+    })
   ];
+
 
   return (
     <div className="page-content" ref={pageRef}>
@@ -76,30 +133,30 @@ export default function ServicesPage() {
               <h2 className="svc-h2" style={{ color: '#fff' }}>Our Expertise: Delivering Intelligent Risk & Compliance Solutions.</h2>
             </div>
             <div className="svc-expertise-top-right">
-               <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', lineHeight: 1.6 }}>We help enterprises strengthen governance, automate controls, and reduce risk through Oracle RMC, AI, and ERP solutions.</p>
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', lineHeight: 1.6 }}>We help enterprises strengthen governance, automate controls, and reduce risk through Oracle RMC, AI, and ERP solutions.</p>
             </div>
           </div>
           <div className="svc-expertise-cards">
-             <div className="svc-exp-card">
-               <div className="svc-exp-img">
-                 <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600" alt="Consultant" />
-               </div>
-               <div className="svc-exp-box">
-                 <Star className="svc-exp-icon" size={24} />
-                 <h4>Oracle RMC</h4>
-                 <p>Implement and optimize Oracle RMC to strengthen compliance, automate controls monitoring, and improve enterprise-wide risk visibility.</p>
-               </div>
-             </div>
-             <div className="svc-exp-card">
-               <div className="svc-exp-img">
-                 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600" alt="Working" />
-               </div>
-               <div className="svc-exp-box">
-                 <Star className="svc-exp-icon" size={24} />
-                 <h4>AI Risk Intelligence</h4>
-                 <p>Leverage AI agents to detect anomalies, automate workflows, and enable proactive risk mitigation across business processes.</p>
-               </div>
-             </div>
+            <div className="svc-exp-card">
+              <div className="svc-exp-img">
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600" alt="Consultant" />
+              </div>
+              <div className="svc-exp-box">
+                <Star className="svc-exp-icon" size={24} />
+                <h4>Oracle RMC</h4>
+                <p>Implement and optimize Oracle RMC to strengthen compliance, automate controls monitoring, and improve enterprise-wide risk visibility.</p>
+              </div>
+            </div>
+            <div className="svc-exp-card">
+              <div className="svc-exp-img">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600" alt="Working" />
+              </div>
+              <div className="svc-exp-box">
+                <Star className="svc-exp-icon" size={24} />
+                <h4>AI Risk Intelligence</h4>
+                <p>Leverage AI agents to detect anomalies, automate workflows, and enable proactive risk mitigation across business processes.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -137,17 +194,17 @@ export default function ServicesPage() {
           </div>
           <div className="svc-how-layout">
             <div className="svc-how-left">
-               <div className="svc-step-list">
-                 {steps.map((step, idx) => (
-                   <div className="svc-step" key={idx}>
-                     <div className="svc-step-num">{step.num}</div>
-                     <div className="svc-step-content">
-                       <h4 className="svc-step-title">{step.title}</h4>
-                       <p className="svc-step-desc">{step.desc}</p>
-                     </div>
-                   </div>
-                 ))}
-               </div>
+              <div className="svc-step-list">
+                {steps.map((step, idx) => (
+                  <div className="svc-step" key={idx}>
+                    <div className="svc-step-num">{step.num}</div>
+                    <div className="svc-step-content">
+                      <h4 className="svc-step-title">{step.title}</h4>
+                      <p className="svc-step-desc">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="svc-how-right">
               <div className="svc-how-img-wrapper">
@@ -174,7 +231,7 @@ export default function ServicesPage() {
                 {whyChooseUs.map((wu, idx) => (
                   <div className="svc-why-card" key={idx}>
                     <div className="svc-why-icon-wrap" style={{ marginBottom: 16 }}>
-                       {wu.icon}
+                      {wu.icon}
                     </div>
                     <h4 className="svc-why-title">{wu.title}</h4>
                     <p className="svc-why-desc">{wu.desc}</p>
