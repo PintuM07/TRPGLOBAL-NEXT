@@ -1,11 +1,57 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useReveal } from '@/lib/hooks/useReveal';
 import { SERVICES_DATA } from '@/lib/constants/serviceData';
 import { ArrowRight, Star, X } from 'lucide-react';
 import '@/styles/ServicesPage.css';
+
+// Custom hook to manage random testimonials with localStorage persistence
+function useTestimonials(testimonials) {
+  const [currentTestimonials, setCurrentTestimonials] = useState([]);
+
+  const selectRandom = (array, count) => {
+    const shuffled = [...array].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const stored = localStorage.getItem('testimonials');
+    let selected = [];
+    const now = Date.now();
+
+    if (stored) {
+      const { selected: storedSelected, timestamp } = JSON.parse(stored);
+      if (now - timestamp < 3600000) { // Within 1 hour
+        selected = storedSelected;
+      }
+    }
+
+    if (selected.length === 0) {
+      selected = selectRandom(testimonials, 3);
+      localStorage.setItem('testimonials', JSON.stringify({ selected, timestamp: now }));
+    }
+
+    setCurrentTestimonials(selected);
+  }, [testimonials]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const interval = setInterval(() => {
+      const selected = selectRandom(testimonials, 3);
+      setCurrentTestimonials(selected);
+      localStorage.setItem('testimonials', JSON.stringify({ selected, timestamp: Date.now() }));
+    }, 3600000); // 1 hour
+
+    return () => clearInterval(interval);
+  }, [testimonials]);
+
+  return currentTestimonials;
+}
 
 export default function ServicesPage() {
   const pageRef = useReveal();
@@ -38,6 +84,8 @@ export default function ServicesPage() {
     { num: '04.', title: 'Ongoing Support & Reporting', desc: 'We provide dedicated long-term support, routine compliance audits, and proactive system upgrades to maintain secure operations.' }
   ];
 
+
+
   const whyChooseUs = [
     { title: 'Compliance expertise, not just Oracle expertise', desc: 'We bring GRC knowledge to every configuration decision — so the system reflects your risk reality, not a vendor template.', icon: <Star size={24} /> },
     { title: 'We configure for your organisation specifically', desc: 'Your risk appetite. Your regulatory obligations. Your audit function. Every implementation starts with understanding yours before touching a single setting.', icon: <Star size={24} /> },
@@ -52,60 +100,70 @@ export default function ServicesPage() {
   // ];
 
 
-  const testimonials = [
-    { client: 'Sarah M.', role: 'Chief Risk Officer (Banking)', text: 'TRPGLOBAL transformed our risk governance model. Their Oracle RMC expertise helped us align with regulatory expectations seamlessly.', rating: 5, avatar: 'https://randomuser.me/api/portraits/women/1.jpg' },
-    { client: 'David T.', role: 'Head of Audit (Financial Services)', text: 'Strong execution and great domain understanding. We improved audit visibility significantly within weeks.', rating: 4, avatar: 'https://randomuser.me/api/portraits/men/2.jpg' },
-    { client: 'Elena R.', role: 'VP Finance (Retail)', text: 'Their automation approach reduced manual compliance efforts drastically. A great partner overall.', rating: 5, avatar: 'https://randomuser.me/api/portraits/women/3.jpg' },
-    { client: 'Rahul P.', role: 'IT Security Manager (Technology)', text: 'Helped us integrate risk monitoring into our IT systems effectively. Very knowledgeable team.', rating: 4, avatar: 'https://randomuser.me/api/portraits/men/4.jpg' },
-    { client: 'Anita D.', role: 'Compliance Lead (Healthcare)', text: 'Their structured approach ensured we met strict healthcare compliance standards without delays.', rating: 5, avatar: 'https://randomuser.me/api/portraits/women/5.jpg' },
+  const testimonials = useMemo(() => {
+    const firstNames = ['Amit', 'Priya', 'Raj', 'Anjali', 'Vikram', 'Sunita', 'Arjun', 'Kavita', 'Rohan', 'Meera', 'Suresh', 'Pooja', 'Deepak', 'Nisha', 'Karan', 'Sneha', 'Manoj', 'Ritu', 'Aryan', 'Alka'];
+    const lastNames = ['Sharma', 'Verma', 'Gupta', 'Singh', 'Kumar', 'Patel', 'Jain', 'Agarwal', 'Chaudhary', 'Nair', 'Iyer', 'Rao', 'Das', 'Banerjee', 'Saha', 'Roy', 'Chatterjee', 'Mukherjee', 'Bhattacharya', 'Sarkar'];
 
-    ...Array.from({ length: 195 }, (_, i) => {
-      const industries = [
-        'Banking',
-        'Financial Services',
-        'Insurance',
-        'Healthcare',
-        'Retail',
-        'Manufacturing',
-        'Technology',
-        'Telecom',
-        'Pharmaceutical',
-        'Logistics'
-      ];
+    return [
+      { client: 'Sarah M.', role: 'Chief Risk Officer (Banking)', text: 'TRPGLOBAL transformed our risk governance model. Their Oracle RMC expertise helped us align with regulatory expectations seamlessly.', rating: 5, avatar: 'https://ui-avatars.com/api/?name=Sarah+M.&background=random&color=fff&size=100' },
+      { client: 'David T.', role: 'Head of Audit (Financial Services)', text: 'Strong execution and great domain understanding. We improved audit visibility significantly within weeks.', rating: 4, avatar: 'https://ui-avatars.com/api/?name=David+T.&background=random&color=fff&size=100' },
+      { client: 'Elena R.', role: 'VP Finance (Retail)', text: 'Their automation approach reduced manual compliance efforts drastically. A great partner overall.', rating: 5, avatar: 'https://ui-avatars.com/api/?name=Elena+R.&background=random&color=fff&size=100' },
+      { client: 'Rahul P.', role: 'IT Security Manager (Technology)', text: 'Helped us integrate risk monitoring into our IT systems effectively. Very knowledgeable team.', rating: 4, avatar: 'https://ui-avatars.com/api/?name=Rahul+P.&background=random&color=fff&size=100' },
+      { client: 'Anita D.', role: 'Compliance Lead (Healthcare)', text: 'Their structured approach ensured we met strict healthcare compliance standards without delays.', rating: 5, avatar: 'https://ui-avatars.com/api/?name=Anita+D.&background=random&color=fff&size=100' },
 
-      const roles = [
-        'Chief Risk Officer',
-        'Audit Manager',
-        'Finance Director',
-        'Compliance Officer',
-        'IT Manager',
-        'Operations Head',
-        'Internal Auditor'
-      ];
+      ...Array.from({ length: 195 }, (_, i) => {
+        const industries = [
+          'Banking',
+          'Financial Services',
+          'Insurance',
+          'Healthcare',
+          'Retail',
+          'Manufacturing',
+          'Technology',
+          'Telecom',
+          'Pharmaceutical',
+          'Logistics'
+        ];
 
-      const texts = [
-        'Their expertise helped us strengthen internal controls and reduce compliance gaps.',
-        'A reliable partner who understands both business and technical challenges.',
-        'We saw immediate improvements in reporting accuracy and audit readiness.',
-        'The implementation was smooth and aligned perfectly with our industry needs.',
-        'They provided actionable insights that improved our risk posture.',
-        'Professional team with excellent delivery and communication.',
-        'Their accelerators significantly reduced our project timeline.',
-        'Helped us achieve better visibility across enterprise risk processes.'
-      ];
+        const roles = [
+          'Chief Risk Officer',
+          'Audit Manager',
+          'Finance Director',
+          'Compliance Officer',
+          'IT Manager',
+          'Operations Head',
+          'Internal Auditor'
+        ];
 
-      const industry = industries[i % industries.length];
-      const role = roles[i % roles.length];
+        const texts = [
+          'Their expertise helped us strengthen internal controls and reduce compliance gaps.',
+          'A reliable partner who understands both business and technical challenges.',
+          'We saw immediate improvements in reporting accuracy and audit readiness.',
+          'The implementation was smooth and aligned perfectly with our industry needs.',
+          'They provided actionable insights that improved our risk posture.',
+          'Professional team with excellent delivery and communication.',
+          'Their accelerators significantly reduced our project timeline.',
+          'Helped us achieve better visibility across enterprise risk processes.'
+        ];
 
-      return {
-        client: `Client ${i + 6}`,
-        role: `${role} (${industry})`,
-        text: texts[i % texts.length],
-        rating: i % 3 === 0 ? 4 : 5, // mix of 4 & 5 ratings
-        avatar: `https://randomuser.me/api/portraits/${i % 2 === 0 ? 'men' : 'women'}/${(i % 99) + 6}.jpg`
-      };
-    })
-  ];
+        const industry = industries[i % industries.length];
+        const role = roles[i % roles.length];
+        const firstName = firstNames[i % firstNames.length];
+        const lastName = lastNames[i % lastNames.length];
+        const client = `${firstName} ${lastName}`;
+
+        return {
+          client,
+          role: `${role} (${industry})`,
+          text: texts[i % texts.length],
+          rating: i % 3 === 0 ? 4 : 5, // mix of 4 & 5 ratings
+          avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(client)}&background=random&color=fff&size=100`
+        };
+      })
+    ];
+  }, []);
+
+  const currentTestimonials = useTestimonials(testimonials);
 
 
   return (
@@ -268,7 +326,7 @@ export default function ServicesPage() {
             <h2 className="svc-h2">Client Success Stories in Risk Management, Compliance & ERP Solutions</h2>
           </div>
           <div className="svc-test-grid">
-            {testimonials.map((test, idx) => (
+            {currentTestimonials.map((test, idx) => (
               <div className="svc-test-card" key={idx}>
                 <div className="svc-test-stars">
                   {[...Array(test.rating)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
