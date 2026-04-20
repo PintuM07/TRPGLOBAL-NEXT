@@ -89,13 +89,13 @@ const BLOG_ARTICLES = [
   },
 ];
 
-/* Hero gallery images — using Unsplash for reliability */
+/* Hero gallery images — using local blog images with rearranged design */
 const HERO_GALLERY = [
-  { src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80', alt: 'Consulting team', height: 'short' },
-  { src: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&auto=format&fit=crop&q=80', alt: 'Enterprise meeting', height: 'tall' },
-  { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=80', alt: 'Data analytics', height: 'medium' },
-  { src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&auto=format&fit=crop&q=80', alt: 'Strategy session', height: 'short' },
-  { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80', alt: 'Risk management', height: 'tall' },
+  { src: '/assets/icons/Blog/126769.jpg', alt: 'Data analytics', height: 'short' },
+  { src: '/assets/icons/Blog/2151877160.jpg', alt: 'Strategy session', height: 'tall' },
+  { src: '/assets/icons/Blog/86127.jpg', alt: 'Enterprise meeting', height: 'medium' },
+  { src: '/assets/icons/Blog/2151967428.jpg', alt: 'Consulting team', height: 'short' },
+  { src: '/assets/icons/Blog/1 2.jpg', alt: 'Risk management', height: 'tall' },
 ];
 
 /* ─── BLOG CARD COMPONENT ───────────────────────────────────────── */
