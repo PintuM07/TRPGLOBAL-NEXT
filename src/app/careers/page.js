@@ -3,7 +3,7 @@
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useReveal } from '@/lib/hooks/useReveal';
-import { ChevronLeft, ChevronRight, HeartPulse, Trophy, Laptop, Rocket } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Users, Trophy, BookOpen, Handshake } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const JOBS = [
@@ -16,14 +16,14 @@ const JOBS = [
 ];
 
 const PERKS = [
-  { icon: '/assets/icons/Careers/Global%20Exposure.png', title: 'Global Exposure', desc: 'See Your Work Make an Impact Worldwide. Work with global enterprises across industries and regions, solving complex challenges that go beyond borders. Here, your experience isn’t limited; it expands with every engagement.' },
-  { icon: '/assets/icons/Careers/Continuous%20Learning.png', title: 'Continuous Learning', desc: 'Keep Learning. Keep Leading. From Oracle certifications to real-world problem-solving, learning is built into everything we do. You won’t just gain knowledge, you’ll apply it where it matters most.' },
-  { icon: '/assets/icons/Careers/Flexible%20Work.png', title: 'Flexible Work', desc: 'Work Your Best, Your Way. Great work doesn’t follow a fixed schedule. With flexible hours and hybrid options, we focus on outcomes, giving you the freedom to perform at your best.' },
-  { icon: '/assets/icons/Careers/Career%20Growth.png', title: 'Career Growth', desc: 'Grow Faster Than You Thought Possible. Clear paths, real responsibility, and mentorship from industry leaders, your growth here is intentional. You don’t wait for opportunities, you step into them.' },
-  { icon: '/assets/icons/Careers/cardiogram.png', title: 'Health & Wellness', desc: 'Comprehensive premium health coverage, generous wellness stipends, and dedicated mental health days.' },
-  { icon: '/assets/icons/Careers/trophy.png', title: 'Performance Rewards', desc: 'Competitive base compensation with performance-based bi-annual bonuses and profit-sharing.' },
-  { icon: '/assets/icons/Careers/laptop-computer.png', title: 'Premium Tech Gear', desc: 'Choose your preferred powerful workstation setup (Apple or PC) with noise-canceling headphones.' },
-  { icon: '/assets/icons/Careers/solution.png', title: 'Impactful Solutions', desc: 'Directly influence the risk frameworks of Fortune 500 companies in a fast-paced environment.' },
+  { icon: '/assets/icons/Careers/Global%20Exposure.png', title: 'Global Exposure', desc: 'Work with global enterprises across industries, solving challenges that go beyond borders.' },
+  { icon: '/assets/icons/Careers/Continuous%20Learning.png', title: 'Continuous Learning', desc: 'From Oracle certifications to real-world problem-solving, learning is built into everything we do.' },
+  { icon: '/assets/icons/Careers/Flexible%20Work.png', title: 'Flexible Work', desc: 'Flexible hours and hybrid options. We focus on outcomes, not schedules.' },
+  { icon: '/assets/icons/Careers/Career%20Growth.png', title: 'Career Growth', desc: 'Clear paths, real responsibility, and mentorship from industry leaders.' },
+  { icon: Users, title: 'Mentorship Access', desc: 'Direct guidance from senior leaders and industry experts who are invested in your growth.' },
+  { icon: Trophy, title: 'Performance Rewards', desc: 'Competitive base pay, bi-annual bonuses, and profit-sharing that grows with your performance.' },
+  { icon: BookOpen, title: 'Learning & Development', desc: 'Access to certifications, training programs, and workshops to keep your skills sharp and your career moving forward.' },
+  { icon: Handshake, title: 'Collaborative Culture', desc: 'Work alongside a team that challenges, supports, and pushes each other to do their best work every day.' },
 ];
 
 const FILTERS = ['all', 'Oracle', 'SAP', 'Technology', 'Risk'];
