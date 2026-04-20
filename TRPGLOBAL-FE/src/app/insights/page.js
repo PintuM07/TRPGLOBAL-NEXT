@@ -8,86 +8,7 @@ import { useReveal } from '@/lib/hooks/useReveal';
 
 const CATEGORIES = ['All', 'Risk Management', 'Oracle Security', 'Compliance', 'Digital Transformation', 'Case Studies'];
 
-const FEATURED_ARTICLE = {
-  cat: 'ORACLE RMC',
-  tag: 'Featured',
-  title: 'Oracle RMC 24.1: Advanced Anomaly Detection & Audit Workflows',
-  excerpt: 'The latest Oracle Risk Management Cloud release brings advanced anomaly detection, improved audit workflows, and expanded compliance templates for global regulations — a deep-dive for enterprise risk teams.',
-  author: 'TRP Global Research Team',
-  date: 'December 2024',
-  read: '8 min read',
-  img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80',
-  category: 'Oracle Security',
-};
-
-const BLOG_ARTICLES = [
-  {
-    img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80',
-    cat: 'Compliance · Security',
-    title: 'SOX Compliance in the Age of Cloud ERP',
-    excerpt: 'Cloud ERP deployments introduce new SOX control challenges. We break down the key control gaps and how Oracle and SAP GRC tools address them in modern enterprise environments.',
-    date: 'Dec 2024',
-    dateOrder: 202412,
-    read: '7 min read',
-    category: 'Compliance',
-    author: 'Dr. Priya Sharma',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=700&auto=format&fit=crop&q=80',
-    cat: 'Oracle · APEX',
-    title: 'Building Enterprise Apps with Oracle APEX in 2025',
-    excerpt: 'Oracle APEX has matured into a serious low-code platform for enterprise risk dashboards and audit tooling. Here\'s what\'s possible today for compliance-driven development teams.',
-    date: 'Nov 2024',
-    dateOrder: 202411,
-    read: '5 min read',
-    category: 'Oracle Security',
-    author: 'Vikram Anand',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=700&auto=format&fit=crop&q=80',
-    cat: 'Risk · Strategy',
-    title: 'The True Cost of Poor Access Governance',
-    excerpt: 'Segregation of duties failures cost enterprises millions per incident. We quantify the full cost and the ROI of proper access governance frameworks within Oracle and SAP ecosystems.',
-    date: 'Oct 2024',
-    dateOrder: 202410,
-    read: '6 min read',
-    category: 'Risk Management',
-    author: 'Michael Chen',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&auto=format&fit=crop&q=80',
-    cat: 'SAP GRC',
-    title: 'SAP GRC 12.0: What\'s New for Enterprise Risk Teams',
-    excerpt: 'A comprehensive breakdown of the latest SAP GRC release, including improved risk dashboards, automated control testing, and AI-driven policy recommendations.',
-    date: 'Oct 2024',
-    dateOrder: 202410,
-    read: '9 min read',
-    category: 'SAP GRC',
-    author: 'Elena Kowalski',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&auto=format&fit=crop&q=80',
-    cat: 'Digital Transformation',
-    title: 'AI in Enterprise Risk: From Promise to Production',
-    excerpt: 'How leading firms are deploying AI models for real-time anomaly detection, intelligent audit sampling, and predictive compliance reporting across global operations.',
-    date: 'Sep 2024',
-    dateOrder: 202409,
-    read: '10 min read',
-    category: 'Digital Transformation',
-    author: 'James Okafor',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=700&auto=format&fit=crop&q=80',
-    cat: 'Case Study',
-    title: 'How a Global Bank Reduced Audit Findings by 60%',
-    excerpt: 'A Fortune 500 financial institution partnered with TRP Global to redesign its Oracle RMC implementation. The result: 60% fewer audit findings within 6 months.',
-    date: 'Aug 2024',
-    dateOrder: 202408,
-    read: '12 min read',
-    category: 'Case Studies',
-    author: 'TRP Global Research Team',
-  },
-];
+/* Note: Data is dynamically handled via Strapi API */
 
 /* Hero gallery images — using local blog images with rearranged design */
 const HERO_GALLERY = [
@@ -99,7 +20,7 @@ const HERO_GALLERY = [
 ];
 
 /* ─── BLOG CARD COMPONENT ───────────────────────────────────────── */
-function BlogCard({ article, index }) {
+function BlogCard({ article, index, onReadMore }) {
   return (
     <article
       className="ibp-card ibp-card-enter"
@@ -122,7 +43,7 @@ function BlogCard({ article, index }) {
             <div className="ibp-card-author-dot" />
             <span>{article.author}</span>
           </div>
-          <button className="ibp-card-link" aria-label={`Read ${article.title}`}>
+          <button className="ibp-card-link" aria-label={`Read ${article.title}`} onClick={onReadMore}>
             Read Article <span className="ibp-arrow">→</span>
           </button>
         </div>
@@ -133,8 +54,9 @@ function BlogCard({ article, index }) {
 
 export default function InsightsPage() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [blogArticles, setBlogArticles] = useState(BLOG_ARTICLES);
-  const [featuredArticle, setFeaturedArticle] = useState(FEATURED_ARTICLE);
+  const [blogArticles, setBlogArticles] = useState([]);
+  const [featuredArticle, setFeaturedArticle] = useState(null);
+  const [selectedArticle, setSelectedArticle] = useState(null); // For popup modal
   const pageRef = useReveal();
 
   React.useEffect(() => {
@@ -147,6 +69,7 @@ export default function InsightsPage() {
             cat: item.ShortHeading || 'General',
             title: item.Title,
             excerpt: item.ShortDiscription,
+            longDesc: item.LongDesc, // Captured from Strapi
             date: new Date(item.Date || item.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
             dateOrder: parseInt(new Date(item.Date || item.createdAt).toISOString().slice(0, 7).replace('-', ''), 10),
             read: '5 min read',
@@ -273,49 +196,20 @@ export default function InsightsPage() {
         <section className="ibp-featured-section">
           <div className="container">
             <article className="ibp-featured ibp-featured-enter">
-
-              {/* LEFT — Image */}
               <div className="ibp-featured-img-wrap">
                 <img src={featuredArticle.img} alt={featuredArticle.title} />
                 <div className="ibp-featured-overlay" />
-                {/* Premium badge */}
                 <div className="ibp-featured-badge">
                   <span className="ibp-badge-dot" />
-                  Featured Story
+                  Featured
                 </div>
-                {/* Category chip bottom-left */}
-                <div className="ibp-featured-img-cat">{featuredArticle.cat}</div>
               </div>
-
-              {/* RIGHT — Content */}
               <div className="ibp-featured-body">
-
-                {/* Top label row */}
-                <div className="ibp-featured-label-row">
-                  <span className="ibp-featured-cat">{featuredArticle.cat}</span>
-                  <span className="ibp-featured-read-pill">{featuredArticle.read}</span>
-                </div>
-
-                {/* Title */}
                 <h2 className="ibp-featured-title">{featuredArticle.title}</h2>
-
-                {/* Divider accent */}
-                <div className="ibp-featured-divider" />
-
-                {/* Rich description */}
-                <p className="ibp-featured-excerpt">
-                  {featuredArticle.excerpt || 'The latest Oracle Risk Management Cloud release introduces advanced anomaly detection, streamlined audit workflows, and expanded compliance automation — empowering enterprise risk teams to move from reactive to proactive governance at scale.'}
-                </p>
-
-                {/* Highlight tags */}
-                <div className="ibp-featured-tags">
-                  <span className="ibp-ftag">Anomaly Detection</span>
-                  <span className="ibp-ftag">Audit Workflows</span>
-                  <span className="ibp-ftag">Compliance</span>
-                  <span className="ibp-ftag">Enterprise GRC</span>
+                <div className="ibp-featured-cat-row">
+                  <span className="ibp-featured-cat">{featuredArticle.cat}</span>
                 </div>
-
-                {/* Meta + CTA */}
+                <p className="ibp-featured-excerpt">{featuredArticle.excerpt}</p>
                 <div className="ibp-featured-meta">
                   <div className="ibp-featured-author">
                     <div className="ibp-author-avatar">
@@ -329,12 +223,11 @@ export default function InsightsPage() {
                       <div className="ibp-author-meta">{featuredArticle.date} · {featuredArticle.read}</div>
                     </div>
                   </div>
-                  <button className="ibp-featured-btn">
-                    Read Full Article
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                  <button className="ibp-featured-btn" onClick={() => setSelectedArticle(featuredArticle)}>
+                    <span>Read Full Article</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </button>
                 </div>
-
               </div>
             </article>
           </div>
@@ -366,7 +259,7 @@ export default function InsightsPage() {
           {filtered.length > 0 ? (
             <div className="ibp-grid" key={activeCategory}>
               {filtered.map((article, i) => (
-                <BlogCard key={article.title} article={article} index={i} />
+                <BlogCard key={article.title} article={article} index={i} onReadMore={() => setSelectedArticle(article)} />
               ))}
             </div>
           ) : (
@@ -407,6 +300,39 @@ export default function InsightsPage() {
           </div>
         </div>
       </section>
+
+      {/* ══ ARTICLE POPUP MODAL ════════════════════════════════════════ */}
+      {selectedArticle && (
+        <div className="ibp-modal-overlay" onClick={() => setSelectedArticle(null)}>
+          <div className="ibp-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="ibp-modal-close" onClick={() => setSelectedArticle(null)}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
+            </button>
+            <div className="ibp-modal-header-img">
+              <img src={selectedArticle.img} alt={selectedArticle.title} />
+              <div className="ibp-modal-badge">{selectedArticle.cat}</div>
+            </div>
+            <div className="ibp-modal-body">
+              <div className="ibp-modal-meta">
+                <span className="ibp-modal-date">{selectedArticle.date}</span>
+                <span className="ibp-modal-author">by {selectedArticle.author}</span>
+              </div>
+              <h2 className="ibp-modal-title">{selectedArticle.title}</h2>
+              <div className="ibp-modal-divider" />
+              <div className="ibp-modal-long-desc">
+                 {/* Safely rendering the long desc paragraphs by splitting on newlines if it's text. */}
+                 {selectedArticle.longDesc ? (
+                   selectedArticle.longDesc.split('\n').map((para, idx) => (
+                     <p key={idx}>{para}</p>
+                   ))
+                 ) : (
+                   <p>{selectedArticle.excerpt}</p>
+                 )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
