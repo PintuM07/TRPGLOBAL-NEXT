@@ -131,16 +131,43 @@ function BlogCard({ article, index }) {
   );
 }
 
-/* ─── PAGE COMPONENT ─────────────────────────────────────────────── */
 export default function InsightsPage() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [blogArticles, setBlogArticles] = useState(BLOG_ARTICLES);
+  const [featuredArticle, setFeaturedArticle] = useState(FEATURED_ARTICLE);
   const pageRef = useReveal();
+
+  React.useEffect(() => {
+    fetch('http://localhost:1337/api/blogs?populate=*')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.data && data.data.length > 0) {
+          const fetchedLogs = data.data.map(item => ({
+            img: item.HeaderImage?.url ? `http://localhost:1337${item.HeaderImage.url}` : 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80',
+            cat: item.ShortHeading || 'General',
+            title: item.Title,
+            excerpt: item.ShortDiscription,
+            date: new Date(item.Date || item.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+            dateOrder: parseInt(new Date(item.Date || item.createdAt).toISOString().slice(0, 7).replace('-', ''), 10),
+            read: '5 min read',
+            category: item.ShortHeading || 'General',
+            author: item.Author || 'TRP Global',
+          }));
+          
+          setBlogArticles(fetchedLogs);
+          if (fetchedLogs.length > 0) {
+            setFeaturedArticle(fetchedLogs[0]); // Optional: use the newest fetched blog as featured
+          }
+        }
+      })
+      .catch(err => console.error("Failed to fetch blogs from Strapi:", err));
+  }, []);
 
   // 'All' tab → sort by most recent date first
   // Category tabs → show matching articles in original order
   const filtered = activeCategory === 'All'
-    ? [...BLOG_ARTICLES].sort((a, b) => b.dateOrder - a.dateOrder)
-    : BLOG_ARTICLES.filter(a => a.category === activeCategory);
+    ? [...blogArticles].sort((a, b) => b.dateOrder - a.dateOrder)
+    : blogArticles.filter(a => a.category === activeCategory);
 
   return (
     <div className="ibp-root" ref={pageRef}>
@@ -169,12 +196,12 @@ export default function InsightsPage() {
 
             {/* Eyebrow */}
             <div className="ibp-hero-eyebrow">
-              <span className="ibp-eyebrow-pill">TRP GLOBAL INSIGHTS</span>
+              <span className="ibp-eyebrow-pill">TRPGLOBAL INSIGHTS</span>
             </div>
 
             {/* Main heading */}
             <h1 className="ibp-hero-title">
-              Insights,<br />
+              Insights<br />
               <strong>Ideas &amp; Innovation</strong>
             </h1>
 
@@ -242,24 +269,53 @@ export default function InsightsPage() {
       </div>
 
       {/* ══ FEATURED ARTICLE ══════════════════════════════════════════ */}
-      {activeCategory === 'All' && (
+      {activeCategory === 'All' && featuredArticle && (
         <section className="ibp-featured-section">
           <div className="container">
             <article className="ibp-featured ibp-featured-enter">
+
+              {/* LEFT — Image */}
               <div className="ibp-featured-img-wrap">
-                <img src={FEATURED_ARTICLE.img} alt={FEATURED_ARTICLE.title} />
+                <img src={featuredArticle.img} alt={featuredArticle.title} />
                 <div className="ibp-featured-overlay" />
+                {/* Premium badge */}
                 <div className="ibp-featured-badge">
                   <span className="ibp-badge-dot" />
-                  Featured
+                  Featured Story
                 </div>
+                {/* Category chip bottom-left */}
+                <div className="ibp-featured-img-cat">{featuredArticle.cat}</div>
               </div>
+
+              {/* RIGHT — Content */}
               <div className="ibp-featured-body">
-                <div className="ibp-featured-cat-row">
-                  <span className="ibp-featured-cat">{FEATURED_ARTICLE.cat}</span>
+
+                {/* Top label row */}
+                <div className="ibp-featured-label-row">
+                  <span className="ibp-featured-cat">{featuredArticle.cat}</span>
+                  <span className="ibp-featured-read-pill">{featuredArticle.read}</span>
                 </div>
-                <h2 className="ibp-featured-title">{FEATURED_ARTICLE.title}</h2>
-                <p className="ibp-featured-excerpt">{FEATURED_ARTICLE.excerpt}</p>
+
+                {/* Title */}
+                <h2 className="ibp-featured-title">{featuredArticle.title}</h2>
+
+                {/* Divider accent */}
+                <div className="ibp-featured-divider" />
+
+                {/* Rich description */}
+                <p className="ibp-featured-excerpt">
+                  {featuredArticle.excerpt || 'The latest Oracle Risk Management Cloud release introduces advanced anomaly detection, streamlined audit workflows, and expanded compliance automation — empowering enterprise risk teams to move from reactive to proactive governance at scale.'}
+                </p>
+
+                {/* Highlight tags */}
+                <div className="ibp-featured-tags">
+                  <span className="ibp-ftag">Anomaly Detection</span>
+                  <span className="ibp-ftag">Audit Workflows</span>
+                  <span className="ibp-ftag">Compliance</span>
+                  <span className="ibp-ftag">Enterprise GRC</span>
+                </div>
+
+                {/* Meta + CTA */}
                 <div className="ibp-featured-meta">
                   <div className="ibp-featured-author">
                     <div className="ibp-author-avatar">
@@ -269,15 +325,16 @@ export default function InsightsPage() {
                       </svg>
                     </div>
                     <div>
-                      <div className="ibp-author-name">{FEATURED_ARTICLE.author}</div>
-                      <div className="ibp-author-meta">{FEATURED_ARTICLE.date} · {FEATURED_ARTICLE.read}</div>
+                      <div className="ibp-author-name">{featuredArticle.author}</div>
+                      <div className="ibp-author-meta">{featuredArticle.date} · {featuredArticle.read}</div>
                     </div>
                   </div>
                   <button className="ibp-featured-btn">
                     Read Full Article
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </button>
                 </div>
+
               </div>
             </article>
           </div>

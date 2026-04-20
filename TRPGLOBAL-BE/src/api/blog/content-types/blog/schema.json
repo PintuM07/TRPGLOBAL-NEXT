@@ -29,7 +29,6 @@
     },
     "ShortDiscription": {
       "type": "text",
-      "maxLength": 50,
       "required": true
     },
     "LongDesc": {
@@ -42,7 +41,6 @@
     },
     "Author": {
       "type": "string",
-      "maxLength": 20,
       "required": true
     }
   }
