@@ -42,6 +42,20 @@ const LEADERS = [
     bio: 'Sunil leads the Information Security and Cyber Risk practice, bringing deep expertise in cybersecurity and risk management across financial services and manufacturing sectors',
     initials: 'SK',
   },
+  {
+    img: '/assets/Amrita Ganguly.png',
+    name: 'Amrita Ganguly',
+    role: 'Associate Partner - Oracle Cloud Solutions',
+    bio: 'Amrita drives Oracle Cloud implementations and digital transformations, specializing in ERP migrations and risk management solutions for global enterprises.',
+    initials: 'AG',
+  },
+  {
+    img: '/assets/Srijita Chatterjee.jpg',
+    name: 'Srijita Chatterjee',
+    role: 'Senior Consultant - SAP GRC',
+    bio: 'Srijita leads SAP GRC implementations and compliance frameworks, with extensive experience in governance, risk, and compliance across multinational corporations.',
+    initials: 'SC',
+  },
 ];
 
 const ACTIVITIES = [
