@@ -6,7 +6,7 @@ import { useReveal } from '@/lib/hooks/useReveal';
 
 /* ─── DATA ─────────────────────────────────────────────────────── */
 
-const CATEGORIES = ['All', 'Risk Management', 'Oracle Security', 'SAP GRC', 'Compliance', 'Digital Transformation', 'Case Studies'];
+const CATEGORIES = ['All', 'Risk Management', 'Oracle Security', 'Compliance', 'Digital Transformation', 'Case Studies'];
 
 const FEATURED_ARTICLE = {
   cat: 'ORACLE RMC',

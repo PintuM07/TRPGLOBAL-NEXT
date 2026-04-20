@@ -8,7 +8,7 @@ const RMC_FEATURES = [
   { title: 'Real-Time Monitoring', desc: 'Continuous scanning across all integrated systems with sub-50ms anomaly alerts and automated triage.' },
   { title: 'AI Fraud Detection', desc: 'Adaptive ML models trained on enterprise risk data, improving accuracy over time with minimal false positives.' },
   { title: 'Compliance Automation', desc: 'Pre-built GDPR, SOX, ISO 27001 frameworks with automated reporting, eliminating manual effort.' },
-  { title: 'Universal Integration', desc: 'Native connectors for Oracle Cloud, SAP S/4HANA, and REST APIs for any existing infrastructure.' },
+  { title: 'Universal Integration', desc: 'Native connectors for Oracle Cloud and REST APIs for any existing infrastructure.' },
   { title: 'Executive Dashboard', desc: 'Single pane of glass across all risk domains with customizable widgets and drill-down views.' },
 ];
 
@@ -66,7 +66,7 @@ export default function OracleRMCPage() {
         <div className="irm-left rv-l">
           <div className="eyebrow">Oracle RMC</div>
           <h2 className="heading" style={{ marginBottom: 16 }}><strong>Real-Time Risk Intelligence</strong><br />Across Your Enterprise</h2>
-          <p className="body-text" style={{ marginBottom: 28 }}>Oracle Risk Management Cloud is an enterprise-grade risk engine. It monitors, detects, and responds to enterprise threats in real time — unifying data across Oracle, SAP, and all connected systems into a single risk intelligence layer.</p>
+          <p className="body-text" style={{ marginBottom: 28 }}>Oracle Risk Management Cloud is an enterprise-grade risk engine. It monitors, detects, and responds to enterprise threats in real time — unifying data across Oracle-connected systems into a single risk-intelligence layer.</p>
           <div className="irm-features-list">
             {RMC_FEATURES.map(f => (
               <div className="irm-feat-item" key={f.title}>
