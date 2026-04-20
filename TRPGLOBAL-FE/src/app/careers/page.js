@@ -8,11 +8,9 @@ import { motion } from 'framer-motion';
 
 const JOBS = [
   { title: 'Oracle RMC Consultant', dept: 'Oracle Practice', loc: 'Global / Remote', tag: 'Oracle', filter: 'Oracle' },
-  { title: 'SAP GRC Functional Analyst', dept: 'SAP Practice', loc: 'Hybrid', tag: 'SAP', filter: 'SAP' },
   { title: 'Oracle APEX Developer', dept: 'Technology', loc: 'Remote', tag: 'Technology', filter: 'Technology' },
   { title: 'AI / ML Risk Engineer', dept: 'Oracle RMC', loc: 'Remote', tag: 'Technology', filter: 'Technology' },
   { title: 'Cyber Security Analyst', dept: 'Security Practice', loc: 'Hybrid', tag: 'Risk', filter: 'Risk' },
-  { title: 'S/4HANA Implementation Lead', dept: 'SAP Practice', loc: 'On-site / Travel', tag: 'SAP', filter: 'SAP' },
 ];
 
 const PERKS = [
@@ -26,7 +24,7 @@ const PERKS = [
   { icon: Handshake, title: 'Collaborative Culture', desc: 'Work alongside a team that challenges, supports, and pushes each other to do their best work every day.' },
 ];
 
-const FILTERS = ['all', 'Oracle', 'SAP', 'Technology', 'Risk'];
+const FILTERS = ['all', 'Oracle', 'Technology', 'Risk'];
 
 export default function CareersPage() {
   const pageRef = useReveal();
@@ -61,17 +59,17 @@ export default function CareersPage() {
         <div className="ch-left rv-l">
           <div className="eyebrow">Join Our Team</div>
           <h1 className="display" style={{ marginBottom: 20 }}><strong>Shape the Future</strong><br />of Enterprise Risk</h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             style={{ marginBottom: 15, fontSize: '1.05rem', lineHeight: '1.6', color: 'var(--muted)' }}
           >
             We are a growing team of enterprise risk and technology specialists helping global organisations navigate complex risk, compliance, and digital transformation challenges.
           </motion.p>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55, ease: [0.25, 0.1, 0.25, 1] }}
             style={{ marginBottom: 25, fontSize: '1.05rem', lineHeight: '1.6', color: 'var(--muted)' }}
           >
@@ -119,27 +117,27 @@ export default function CareersPage() {
       <div className="perks-section">
         <div className="container">
           <div className="eyebrow rv">Why Join TRPGLOBAL</div>
-          
+
           <div className="rv" style={{ display: 'flex', flexDirection: 'column', marginBottom: 40 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
               <h2 className="heading" style={{ margin: 0, flex: '1 1 300px' }}><strong>Think This Is Just Another Consulting Job?</strong></h2>
               <div style={{ display: 'flex', gap: '8px' }}>
-                <button 
-                  onClick={handlePrevPerk} 
+                <button
+                  onClick={handlePrevPerk}
                   disabled={!canGoPrevPerk}
                   style={{
-                    width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                    width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center',
                     borderRadius: '50%', border: '1px solid var(--border)', background: canGoPrevPerk ? '#fff' : 'transparent',
                     color: canGoPrevPerk ? '#000' : 'var(--muted)', cursor: canGoPrevPerk ? 'pointer' : 'not-allowed', transition: 'all 0.2s'
                   }}
                 >
                   <ChevronLeft size={18} />
                 </button>
-                <button 
-                  onClick={handleNextPerk} 
+                <button
+                  onClick={handleNextPerk}
                   disabled={!canGoNextPerk}
                   style={{
-                    width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                    width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center',
                     borderRadius: '50%', border: '1px solid var(--border)', background: canGoNextPerk ? '#fff' : 'transparent',
                     color: canGoNextPerk ? '#000' : 'var(--muted)', cursor: canGoNextPerk ? 'pointer' : 'not-allowed', transition: 'all 0.2s'
                   }}
@@ -154,8 +152,8 @@ export default function CareersPage() {
           </div>
 
           <div className="perks-carousel-wrapper" style={{ overflow: 'hidden', padding: '12px 0', margin: '-12px 0' }}>
-            <div 
-              className="perks-grid-slider" 
+            <div
+              className="perks-grid-slider"
               style={{
                 display: 'flex',
                 gap: '20px',
@@ -164,11 +162,11 @@ export default function CareersPage() {
               }}
             >
               {PERKS.map(p => (
-                <div 
-                  className="perk-card" 
-                  key={p.title} 
-                  style={{ 
-                    flexShrink: 0, 
+                <div
+                  className="perk-card"
+                  key={p.title}
+                  style={{
+                    flexShrink: 0,
                     width: `calc(${100 / perksToShow}% - ${(perksToShow - 1) * 20 / perksToShow}px)`,
                     display: 'flex', flexDirection: 'column',
                     transition: 'all 0.3s ease'
@@ -176,11 +174,11 @@ export default function CareersPage() {
                   onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = 'var(--red)'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.borderColor = 'var(--border)'; }}
                 >
-                  <div className="perk-icon" style={{ 
-                    marginBottom: '20px', 
-                    height: '36px', 
-                    display: 'flex', 
-                    alignItems: 'center', 
+                  <div className="perk-icon" style={{
+                    marginBottom: '20px',
+                    height: '36px',
+                    display: 'flex',
+                    alignItems: 'center',
                     justifyContent: 'flex-start'
                   }}>
                     {typeof p.icon === 'string' ? (

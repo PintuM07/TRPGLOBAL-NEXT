@@ -15,9 +15,9 @@ const ChevronIcon = () => (
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
   { href: '/oracle-rmc', label: 'Oracle RMC' },
-  { href: '/about', label: 'About' },
   { href: '/our-team', label: 'Our Team' },
   { href: '/insights', label: 'Blog' },
   { href: '/careers', label: 'Careers' },

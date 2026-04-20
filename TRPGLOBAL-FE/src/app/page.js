@@ -320,7 +320,7 @@ export default function HomePage() {
             <div className="client-marquee-track">
               {[...Array(4)].map((_, copy) => (
                 <div className="trust-marquee-set client-marquee-set" key={copy} aria-hidden={copy > 0}>
-                  {['Cisco Systems', 'IBM Americas', 'Dell Technologies', 'Hewlett Packard Enterprise', 'VMware', 'Red Hat', 'Intel Corp', 'Oracle Global', 'SAP SE', 'Microsoft Enterprise'].map(c => (
+                  {['Cisco Systems', 'IBM Americas', 'Dell Technologies', 'Hewlett Packard Enterprise', 'VMware', 'Red Hat', 'Intel Corp', 'Oracle Global', 'Microsoft Enterprise'].map(c => (
                     <span className="trust-logo client-logo" key={c}><span className="trust-dot client-dot"></span>{c}</span>
                   ))}
                 </div>
@@ -340,7 +340,7 @@ export default function HomePage() {
             <br />
             <strong>Trusted by 100+ global clients to deliver secure, scalable, and future-ready risk solutions.</strong>
           </p>
-          <Link href="/about" className="btn-text" style={{ color: 'var(--red)' }}>Learn about TRP GLOBAL <span className="arrow">→</span></Link>
+          <Link href="/about" className="btn-text" style={{ color: 'var(--red)' }}>Learn about TRPGLOBAL <span className="arrow">→</span></Link>
         </div>
         <div className="intro-right rv-r">
           <div className="intro-img">
