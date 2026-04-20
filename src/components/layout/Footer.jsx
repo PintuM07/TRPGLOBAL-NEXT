@@ -19,8 +19,9 @@ export default function Footer() {
 
             <p className="f-tagline">
               IT consulting &amp; risk management for enterprises that demand excellence.
-              Oracle. SAP. Oracle Risk Management and Compliance.
             </p>
+
+            <p className="f-trust">Oracle Partner&nbsp;•&nbsp;100+ Enterprises&nbsp;•&nbsp;Since 2018</p>
 
             <div className="f-socials">
               <a
