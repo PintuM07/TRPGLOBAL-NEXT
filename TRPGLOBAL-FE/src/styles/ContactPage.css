@@ -1,0 +1,266 @@
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+
+.cl-left {
+  padding: 72px 64px 72px 32px;
+  border-right: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+
+.cl-right {
+  padding: 72px 32px 72px 64px;
+}
+
+.contact-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.cic {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg2);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.cic-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cic-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+  transition: color 0.4s;
+}
+
+.cic-val {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--fg);
+  transition: color 0.4s;
+}
+
+/* Form */
+.form-field {
+  margin-bottom: 24px;
+}
+
+.fl {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.4s;
+}
+
+.fi,
+.fs,
+.ft {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  padding: 12px 16px;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.25s, background 0.4s, color 0.4s;
+  appearance: none;
+}
+
+.fi::placeholder,
+.ft::placeholder {
+  color: var(--muted2);
+}
+
+.fi:focus,
+.fs:focus,
+.ft:focus {
+  border-color: var(--red);
+  background: var(--bg);
+}
+
+.ft {
+  resize: none;
+  height: 110px;
+}
+
+.fs option {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-msg {
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.form-msg.ok {
+  color: #22c55e;
+}
+
+.form-msg.err {
+  color: #ef4444;
+}
+
+/* FAQ */
+.faq-section {
+  padding: 72px 0;
+  background: var(--bg2);
+  transition: background 0.4s;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 840px;
+}
+
+.faq-i {
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  background: none;
+  border: none;
+
+  text-align: left;
+  gap: 16px;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.faq-q span:first-child {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--fg);
+  transition: color 0.4s;
+}
+
+.faq-icon {
+  font-size: 1.2rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 0.3s, color 0.4s;
+}
+
+.faq-icon.open {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faq-a p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--muted);
+  padding-bottom: 22px;
+  transition: color 0.4s;
+}
+
+.fs{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%236b7280' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5.23 7.21L10 11.98l4.77-4.77 1.06 1.06L10 14.1 4.17 8.27z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+
+  padding-right: 35px;
+}
+
+
+@media (max-width: 1024px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cl-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 48px 20px;
+  }
+
+  .cl-right {
+    padding: 48px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cic {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cic-icon {
+  min-width: 40px;
+  height: 40px;
+  background: #f5f7fa;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cic-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.cic-label {
+  font-size: 13px;
+  color: #888;
+}
+
+.cic-val {
+  font-size: 14px;
+  font-weight: 500;
+}

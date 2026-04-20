@@ -1,0 +1,44 @@
+﻿assets\Arun.png
+assets\JDG_8108.JPG
+assets\Samson.png
+assets\Sayantan.jpg
+assets\SunilSuit_PNG 1.png
+assets\TRPGLOBAL_NEWUPDATE 2 5.png
+assets\icons\About\AI Agent Studio.jpg
+assets\icons\About\Client-First Always.png
+assets\icons\About\Deep Expertise.png
+assets\icons\About\Measurable Outcomes.png
+assets\icons\About\Oracle Access Governance.jpg
+assets\icons\About\Oracle Advanced HCM Controls.jpg
+assets\icons\About\Oracle AI Data Platform.jpg
+assets\icons\About\Oracle Cloud Success Navigator.jpg
+assets\icons\About\Oracle Guided Learning.jpg
+assets\icons\About\Oracle Risk Management Cloud.jpg
+assets\icons\About\Oracle Security.jpg
+assets\icons\Careers\cardiogram.png
+assets\icons\Careers\Career Growth.png
+assets\icons\Careers\Continuous Learning.png
+assets\icons\Careers\Flexible Work.png
+assets\icons\Careers\Global Exposure.png
+assets\icons\Careers\laptop-computer.png
+assets\icons\Careers\solution.png
+assets\icons\Careers\trophy.png
+assets\icons\Contact\Email.png
+assets\icons\Contact\Founded.png
+assets\icons\Contact\Offices.png
+assets\icons\Contact\working-hours.png
+assets\icons\ORMC\Anomaly Detection.png
+assets\icons\ORMC\Compliance Frameworks.png
+assets\icons\ORMC\Enterprise Connectors.png
+assets\icons\ORMC\Enterprise Security.png
+assets\icons\ORMC\Machine Learning Engine.png
+assets\icons\ORMC\Risk Analytics.png
+assets\icons\Services\AI_Agent.png
+assets\icons\Services\OCN.png
+assets\icons\Services\OGL.png
+assets\icons\Services\Oracle_Access_Governance.png
+assets\icons\Services\Oracle_advanced_HCM controls.png
+assets\icons\Services\Oracle_AI.png
+assets\icons\Services\Oracle_security.png
+assets\icons\Services\ORMC.png
+assets\icons\Services\secure.png
