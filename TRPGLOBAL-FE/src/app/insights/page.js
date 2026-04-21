@@ -308,26 +308,34 @@ export default function InsightsPage() {
             <button className="ibp-modal-close" onClick={() => setSelectedArticle(null)}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
             </button>
-            <div className="ibp-modal-header-img">
-              <img src={selectedArticle.img} alt={selectedArticle.title} />
-              <div className="ibp-modal-badge">{selectedArticle.cat}</div>
-            </div>
-            <div className="ibp-modal-body">
-              <div className="ibp-modal-meta">
-                <span className="ibp-modal-date">{selectedArticle.date}</span>
-                <span className="ibp-modal-author">by {selectedArticle.author}</span>
+
+            <div className="ibp-modal-hero">
+              <img src={selectedArticle.img} alt={selectedArticle.title} className="ibp-modal-hero-img" />
+              <div className="ibp-modal-hero-overlay" />
+              <div className="ibp-modal-hero-content">
+                <div className="ibp-modal-badge">{selectedArticle.cat}</div>
+                <h2 className="ibp-modal-title">{selectedArticle.title}</h2>
+                <div className="ibp-modal-meta">
+                  <span className="ibp-modal-date">{selectedArticle.date}</span>
+                  <span className="ibp-modal-meta-sep">·</span>
+                  <span className="ibp-modal-author">by {selectedArticle.author}</span>
+                  <span className="ibp-modal-meta-sep">·</span>
+                  <span className="ibp-modal-read">{selectedArticle.read}</span>
+                </div>
               </div>
-              <h2 className="ibp-modal-title">{selectedArticle.title}</h2>
-              <div className="ibp-modal-divider" />
-              <div className="ibp-modal-long-desc">
-                 {/* Safely rendering the long desc paragraphs by splitting on newlines if it's text. */}
-                 {selectedArticle.longDesc ? (
-                   selectedArticle.longDesc.split('\n').map((para, idx) => (
-                     <p key={idx}>{para}</p>
-                   ))
-                 ) : (
-                   <p>{selectedArticle.excerpt}</p>
-                 )}
+            </div>
+
+            <div className="ibp-modal-body">
+              <div className="ibp-modal-prose">
+                <div className="ibp-modal-divider" />
+                {/* Safely rendering the long desc paragraphs by splitting on newlines if it's text. */}
+                {selectedArticle.longDesc ? (
+                  selectedArticle.longDesc.split('\n').filter(p => p.trim()).map((para, idx) => (
+                    <p key={idx}>{para}</p>
+                  ))
+                ) : (
+                  <p>{selectedArticle.excerpt}</p>
+                )}
               </div>
             </div>
           </div>
