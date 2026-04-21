@@ -83,7 +83,7 @@ export default function ContactPage() {
             {[
               { icon: '/assets/icons/Contact/Email.png', label: 'Email', val: 'contactus@techriskpartners.com' },
               { icon: '/assets/icons/Contact/Offices.png', label: 'Offices', val: 'United Kingdom · United Arab Emirates · Germany · India' },
-              { icon: '/assets/icons/Contact/Working-hours.png', label: 'Working Hours', val: 'Mon–Fri · 9:30 AM – 6:30 PM GMT' },
+              { icon: '/assets/icons/Contact/working-hours.png', label: 'Working Hours', val: 'Mon–Fri · 9:30 AM – 6:30 PM GMT' },
               // { icon: '/assets/icons/contact/Founded.png', label: 'Founded', val: '2018 · 50–200 Professionals · 18 Countries' },
             ].map(c => (
               <div className="cic" key={c.label}>
