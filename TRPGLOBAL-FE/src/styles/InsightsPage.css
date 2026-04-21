@@ -866,7 +866,7 @@
   transition: color 0.2s;
   /* clamp to 2 lines — prevents long Strapi titles from breaking card height */
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -882,7 +882,7 @@
   margin-bottom: 20px;
   flex: 1;                 /* pushes footer down — fills remaining body space */
   display: -webkit-box;
-  -webkit-line-clamp: 3;   /* hard cap at 3 lines regardless of Strapi content length */
+  /* -webkit-line-clamp: 3; */   /* hard cap at 3 lines regardless of Strapi content length */
   -webkit-box-orient: vertical;
   overflow: hidden;
   min-height: calc(0.875rem * 1.7 * 3); /* reserves space for exactly 3 lines always */
