@@ -11,17 +11,17 @@ const VIDEO_SRC = '/assets/HeroVideo.mp4';
 const SLIDES = [
   {
     heading: <><strong>Agentic AI for Oracle  </strong><br />Risk & Compliance</>,
-    sub: 'TRPGLOBAL partners with 100+ global clients to deliver Agentic AI that automates Oracle risk and compliance with real-time risk intelligence and continuous controls monitoring',
+    sub: 'TRPGLOBAL partners with 100+ global clients to deliver Agentic AI that automates Oracle risk and compliance with real-time risk intelligence and continuous controls monitoring.',
     accent: 'slide-accent-blue',
   },
   {
     heading: <><strong>Zero-Trust Access Governance</strong><br />Automated</>,
-    sub: 'Achieve automated compliance with continuous monitoring, real-time visibility, and audit-ready access controls & no manual reviews',
+    sub: 'Achieve automated compliance with continuous monitoring, real-time visibility, and audit-ready access controls & no manual reviews.',
     accent: 'slide-accent-red',
   },
   {
     heading: <><strong>AI Agents Built for Governance  &</strong><br /><strong>Audit</strong></>,
-    sub: 'Deploy Agentic AI with built-in AI audit trails, powered by the Oracle AI Data Platform for secure, compliant automation',
+    sub: 'Deploy Agentic AI with built-in AI audit trails, powered by the Oracle AI Data Platform for secure, compliant automation.',
     accent: 'slide-accent-teal',
   },
 ];
@@ -336,11 +336,11 @@ export default function HomePage() {
           <div className="eyebrow">Who We Are</div>
           <h2 className="heading" style={{ marginBottom: 20 }}><strong>We Refined AI-Powered,</strong><br />Enterprise Risk Management.</h2>
           <p className="lead" style={{ marginBottom: 20 }}>TRPGLOBAL helps enterprises transform how they manage risk, compliance, and security in a rapidly evolving digital landscape.</p>
-          <p className="body-text" style={{ marginBottom: 32 }}>By combining deep expertise in Oracle and SAP with Agentic AI, automated compliance, and real-time risk intelligence, we enable organisations to move beyond manual processes to smarter, audit-ready operations.
+          <p className="body-text" style={{ marginBottom: 32 }}>By combining deep expertise in Oracle and Agentic AI, automated compliance, and real-time risk intelligence, we enable organisations to move beyond manual processes to smarter, audit-ready operations.
             <br />
             <strong>Trusted by 100+ global clients to deliver secure, scalable, and future-ready risk solutions.</strong>
           </p>
-          <Link href="/about" className="btn-text" style={{ color: 'var(--red)' }}>Learn about TRPGLOBAL <span className="arrow">→</span></Link>
+          <Link href="/about" className="btn-text" style={{ color: 'var(--red)' }}>Learn more about TRPGLOBAL <span className="arrow">→</span></Link>
         </div>
         <div className="intro-right rv-r">
           <div className="intro-img">
