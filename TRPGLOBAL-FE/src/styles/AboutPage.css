@@ -246,15 +246,17 @@
     gap: 32px;
   }
 
-  .vals-grid,
+  .vals-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
   .team-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 640px) {
-
-  .vals-grid,
   .team-grid {
     grid-template-columns: 1fr;
   }
@@ -266,9 +268,9 @@
 
 .val-icon {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .val-icon img {
