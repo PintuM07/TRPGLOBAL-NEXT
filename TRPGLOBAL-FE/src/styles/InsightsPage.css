@@ -221,6 +221,7 @@
   align-items: flex-end;
   gap: 12px;
   height: 420px;
+  max-width: 100%; /* Bounds the flex container */
   animation: ibpSlideUp 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -242,11 +243,11 @@
 }
 
 /* Widths — creates the staggered horizontal look */
-.ibp-gallery-card:nth-child(1) { width: 130px; }
-.ibp-gallery-card:nth-child(2) { width: 170px; }
-.ibp-gallery-card:nth-child(3) { width: 155px; }
-.ibp-gallery-card:nth-child(4) { width: 130px; }
-.ibp-gallery-card:nth-child(5) { width: 160px; }
+.ibp-gallery-card:nth-child(1) { width: 130px; flex-shrink: 1; min-width: 0; }
+.ibp-gallery-card:nth-child(2) { width: 170px; flex-shrink: 1; min-width: 0; }
+.ibp-gallery-card:nth-child(3) { width: 155px; flex-shrink: 1; min-width: 0; }
+.ibp-gallery-card:nth-child(4) { width: 130px; flex-shrink: 1; min-width: 0; }
+.ibp-gallery-card:nth-child(5) { width: 160px; flex-shrink: 1; min-width: 0; }
 
 /* Heights — echelon effect matching reference */
 .ibp-gallery-short  { height: 230px; }
@@ -1083,6 +1084,10 @@
     justify-content: center;
   }
 
+  .ibp-gallery-short  { height: 160px; }
+  .ibp-gallery-medium { height: 210px; }
+  .ibp-gallery-tall   { height: 280px; }
+
   .ibp-hero-text {
     max-width: 600px;
   }
@@ -1133,11 +1138,11 @@
     gap: 8px;
   }
 
-  .ibp-gallery-card:nth-child(1) { width: 100px; }
-  .ibp-gallery-card:nth-child(2) { width: 130px; }
-  .ibp-gallery-card:nth-child(3) { width: 120px; }
-  .ibp-gallery-card:nth-child(4) { width: 100px; }
-  .ibp-gallery-card:nth-child(5) { width: 120px; }
+  .ibp-gallery-card:nth-child(1) { width: 100px; flex-shrink: 1; min-width: 0; }
+  .ibp-gallery-card:nth-child(2) { width: 130px; flex-shrink: 1; min-width: 0; }
+  .ibp-gallery-card:nth-child(3) { width: 120px; flex-shrink: 1; min-width: 0; }
+  .ibp-gallery-card:nth-child(4) { width: 100px; flex-shrink: 1; min-width: 0; }
+  .ibp-gallery-card:nth-child(5) { width: 120px; flex-shrink: 1; min-width: 0; }
 
   .ibp-gallery-short  { height: 150px; }
   .ibp-gallery-medium { height: 170px; }
