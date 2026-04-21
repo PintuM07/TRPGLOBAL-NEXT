@@ -71,10 +71,15 @@ export default function Footer() {
           <div className="f-col f-panel">
             <h5>Services</h5>
             <ul>
-              <li><Link href="/services">Risk Management</Link></li>
-              <li><Link href="/services">Oracle Services</Link></li>
-              <li><Link href="/services">Digital Transformation</Link></li>
-              <li><Link href="/oracle-rmc">Oracle RMC</Link></li>
+
+              <li><Link href="/services">Oracle Security</Link></li>
+              <li><Link href="/services">Oracle Risk Management Cloud</Link></li>
+              <li><Link href="/services"> Oracle Advance HCM Control</Link></li>
+              <li><Link href="/oracle-rmc">Oracle Guided Learning</Link></li>
+              <li><Link href="/services">Oracle Ai Data Platform</Link></li>
+              <li><Link href="/services">Oracle Cloud Success Navigator</Link></li>
+              <li><Link href="/services">Oracle Access Governance</Link></li>
+              <li><Link href="/oracle-rmc">AI Agent Studio</Link></li>
             </ul>
           </div>
 
