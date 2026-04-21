@@ -163,7 +163,8 @@ export default function AboutPage() {
           <p className="body-text">With 50–200 professionals serving 100+ global enterprises across 18 countries, TRP GLOBAL brings both the scale to handle complex engagements and the focus to treat every client as a priority.</p>
         </div>
         <div className="ah-right rv-r">
-          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&auto=format&fit=crop&q=80" alt="Professional team meeting" />
+          {/* <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&auto=format&fit=crop&q=80" alt="Professional team meeting" /> */}
+          <img src="/assets/AboutPagePhoto.jpg" alt="Professional team meeting" />
           <div className="ah-right-overlay"></div>
           <div className="ah-caption">
             <div className="ah-caption-title">Global Expertise, Local Delivery</div>
