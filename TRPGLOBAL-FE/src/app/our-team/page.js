@@ -440,7 +440,7 @@ export default function OurTeamPage() {
             A diverse team of 50–200 enterprise risk specialists, technologists, and consultants united by a single mission: making organizations more secure, compliant, and resilient.
           </p>
           <p className="body-text">
-            From Oracle and SAP certifications to AI-driven risk models, our people bring deep expertise and a relentless focus on delivering measurable outcomes for every client engagement.
+            From Oracle Certifications to AI-driven risk models, our people bring deep expertise and a relentless focus on delivering measurable outcomes for every client engagement.
           </p>
         </div>
         <div className="ot-hero-right rv-r">
@@ -462,7 +462,7 @@ export default function OurTeamPage() {
           <div className="ot-leaders-left rv-l">
             <div className="eyebrow">Leadership</div>
             <h2 className="heading"><strong>Meet Our</strong><br />Leaders</h2>
-            <p className="lead">Seasoned professionals from Big 4, Oracle, and SAP backgrounds driving strategic risk transformation across global enterprises.</p>
+            <p className="lead">Seasoned professionals from Big 4 and Oracle backgrounds driving strategic risk transformation across global enterprises..</p>
           </div>
           <div className="ot-leaders-right rv-r">
             <LeadersCarousel />
