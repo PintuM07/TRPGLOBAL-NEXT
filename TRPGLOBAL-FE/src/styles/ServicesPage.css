@@ -556,6 +556,10 @@
     grid-template-columns: 1fr;
     gap: 50px;
   }
+
+  .svc-test-grid {
+    grid-template-columns: 1fr;
+  }
   
   .svc-how-img {
     aspect-ratio: 16/9;
@@ -572,8 +576,7 @@
   }
   
   .svc-grid,
-  .svc-why-grid,
-  .svc-test-grid {
+  .svc-why-grid {
     grid-template-columns: 1fr;
   }
   
