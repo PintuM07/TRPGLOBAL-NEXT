@@ -81,9 +81,9 @@ export default function ContactPage() {
           <p className="body-text" style={{ marginBottom: 8 }}>Whether you&apos;re ready to begin a project or just exploring your options, our team is here to help.</p>
           <div className="contact-info-cards">
             {[
-              { icon: '/assets/icons/contact/Email.png', label: 'Email', val: 'contactus@techriskpartners.com' },
-              { icon: '/assets/icons/contact/Offices.png', label: 'Offices', val: 'United Kingdom · United Arab Emirates · Germany · India' },
-              { icon: '/assets/icons/contact/Working-hours.png', label: 'Working Hours', val: 'Mon–Fri · 9:30 AM – 6:30 PM GMT' },
+              { icon: '/assets/icons/Contact/Email.png', label: 'Email', val: 'contactus@techriskpartners.com' },
+              { icon: '/assets/icons/Contact/Offices.png', label: 'Offices', val: 'United Kingdom · United Arab Emirates · Germany · India' },
+              { icon: '/assets/icons/Contact/Working-hours.png', label: 'Working Hours', val: 'Mon–Fri · 9:30 AM – 6:30 PM GMT' },
               // { icon: '/assets/icons/contact/Founded.png', label: 'Founded', val: '2018 · 50–200 Professionals · 18 Countries' },
             ].map(c => (
               <div className="cic" key={c.label}>
