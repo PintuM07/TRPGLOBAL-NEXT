@@ -44,7 +44,7 @@ function ExpertVideo() {
               } else {
                 // If it already started once, just play normally (resuming scroll-play)
                 if (videoRef.current) {
-                  videoRef.current.play().catch(() => {});
+                  videoRef.current.play().catch(() => { });
                 }
               }
             } else {
@@ -93,7 +93,7 @@ function ExpertVideo() {
         <source src="/assets/video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <button 
+      <button
         onClick={toggleMute}
         className="mute-toggle-btn"
         style={{
@@ -132,7 +132,7 @@ function ExpertVideo() {
 
 const VALUES = [
   {
-    icon: '/assets/icons/about/Client-First%20Always.png',
+    icon: '/assets/icons/about/Client-First.png',
     title: 'Client-First Always',
     desc: "Every engagement is shaped around the client’s actual needs—not a pre-packaged solution. We start by listening and define success by your metrics.",
   },
