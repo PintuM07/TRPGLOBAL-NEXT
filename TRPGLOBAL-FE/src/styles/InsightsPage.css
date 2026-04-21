@@ -305,8 +305,8 @@
   position: sticky;
   top: 60px; /* same height as navbar */
   z-index: 100;
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   transition: background 0.4s, border-color 0.4s;
 }
 
@@ -429,8 +429,8 @@
   align-items: center;
   gap: 7px;
   background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   color: #111;
   font-size: 0.68rem;
   font-weight: 700;
@@ -554,9 +554,7 @@
   line-height: 1.8;
   color: var(--muted);
   margin-bottom: 22px;
-  display: -webkit-box;
-  /* -webkit-line-clamp: 4; */
-  -webkit-box-orient: vertical;
+  display: block;
   overflow: hidden;
   flex: 1; /* Automatically pushes the bottom footer row down */
 }
@@ -1202,8 +1200,8 @@
   inset: 0;
   z-index: 9999;
   background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
