@@ -132,17 +132,17 @@ function ExpertVideo() {
 
 const VALUES = [
   {
-    icon: '/assets/icons/about/client-first Always.png',
+    icon: '/assets/icons/about/Client-First%20Always.png',
     title: 'Client-First Always',
     desc: "Every engagement is shaped around the client’s actual needs—not a pre-packaged solution. We start by listening and define success by your metrics.",
   },
   {
-    icon: '/assets/icons/about/Deep Expertise.png',
+    icon: '/assets/icons/about/Deep%20Expertise.png',
     title: 'Deep Expertise',
     desc: "Our consultants hold Oracle, SAP, and GRC certifications. We don’t learn on your time—we bring mastery from day one.",
   },
   {
-    icon: '/assets/icons/about/Measurable Outcomes.png',
+    icon: '/assets/icons/about/Measurable%20Outcomes.png',
     title: 'Measurable Outcomes',
     desc: "We define success metrics at the start of every project and hold ourselves accountable through every phase.",
   },
