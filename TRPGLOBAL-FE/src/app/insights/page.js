@@ -78,7 +78,7 @@ export default function InsightsPage() {
             category: item.ShortHeading || 'General',
             author: item.Author || 'TRP Global',
           }));
-          
+
           setBlogArticles(fetchedLogs);
           if (fetchedLogs.length > 0) {
             setFeaturedArticle(fetchedLogs[0]); // Optional: use the newest fetched blog as featured
@@ -91,10 +91,10 @@ export default function InsightsPage() {
   // Global search filtering
   const filtered = searchQuery.trim() !== ''
     ? blogArticles.filter(a =>
-        a.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        a.excerpt?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        a.category?.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      a.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      a.excerpt?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      a.category?.toLowerCase().includes(searchQuery.toLowerCase())
+    )
     : [...blogArticles].sort((a, b) => b.dateOrder - a.dateOrder);
 
   return (
@@ -180,7 +180,7 @@ export default function InsightsPage() {
         <div className="container" style={{ textAlign: 'center', padding: '120px 0', minHeight: '30vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <div className="ibp-coming-soon-icon" style={{ fontSize: '3rem', margin: '0 auto 24px', opacity: 0.8 }}>🚀</div>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, color: 'var(--fg)', marginBottom: '16px' }}>Coming <strong>Soon..</strong></h2>
-          <p style={{ fontSize: '1.1rem', color: 'var(--muted)', maxWidth: '400px', lineHeight: 1.6 }}>We are currently taking the time to craft some amazing articles and insights. Stay tuned!</p>
+          <p style={{ fontSize: '1.1rem', color: 'var(--muted)', maxWidth: '400px', lineHeight: 1.6 }}>Our experts are crafting insightful content to help you navigate Risk, Compliance, and Digital Transformation.</p>
         </div>
       </section>
 
