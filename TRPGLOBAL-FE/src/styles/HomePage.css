@@ -544,6 +544,36 @@
   }
 }
 
+/* Logo items inside client marquee */
+.client-logo-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 8px;
+  opacity: 0.65;
+  transition: opacity 0.3s;
+}
+
+.client-logo-item:hover {
+  opacity: 1;
+}
+
+.client-logo-img {
+  height: 36px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.client-logo-item:hover .client-logo-img {
+  filter: grayscale(0%);
+}
+
 /* ── INTRO SPLIT ── */
 .intro-split {
   display: grid;

@@ -118,7 +118,7 @@ const EVENTS = [
     title: 'AI ML Community Meetup',
     date: 'November 2024',
     location: 'Singapore',
-    desc: 'A regional meetup hosted by TRP for SAP GRC practitioners across APAC to discuss compliance trends and best practices.',
+    desc: 'A regional meetup hosted by TRP for GRC practitioners across APAC to discuss compliance trends and best practices.',
   },
   {
     img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&auto=format&fit=crop&q=80',

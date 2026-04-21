@@ -315,13 +315,26 @@ export default function HomePage() {
       {/* Client marquee */}
       <div className="client-bar">
         <div className="trust-inner client-inner">
-          <span className="trust-label client-label">Our Client</span>
+          <span className="trust-label client-label">Our Clients</span>
           <div className="trust-marquee-wrap client-marquee-wrap">
             <div className="client-marquee-track">
               {[...Array(4)].map((_, copy) => (
                 <div className="trust-marquee-set client-marquee-set" key={copy} aria-hidden={copy > 0}>
-                  {['Cisco Systems', 'IBM Americas', 'Dell Technologies', 'Hewlett Packard Enterprise', 'VMware', 'Red Hat', 'Intel Corp', 'Oracle Global', 'Microsoft Enterprise'].map(c => (
-                    <span className="trust-logo client-logo" key={c}><span className="trust-dot client-dot"></span>{c}</span>
+                  {[
+                    { src: '/assets/icons/home_marquee/Al_Rajhi_Bank_Logo.svg.png', alt: 'Al Rajhi Bank' },
+                    { src: '/assets/icons/home_marquee/GDILogo.png', alt: 'GDI' },
+                    { src: '/assets/icons/home_marquee/Parle_Products_logo.svg.png', alt: 'Parle Products' },
+                    { src: '/assets/icons/home_marquee/canon-wordmark-1.svg', alt: 'Canon' },
+                    { src: '/assets/icons/home_marquee/dmcc-1.svg', alt: 'DMCC' },
+                    { src: '/assets/icons/home_marquee/dp-world-2021-logo.svg', alt: 'DP World' },
+                    { src: '/assets/icons/home_marquee/maaden.webp', alt: 'Ma\'aden' },
+                    { src: '/assets/icons/home_marquee/mtn-new-logo.svg', alt: 'MTN' },
+                    { src: '/assets/icons/home_marquee/nationalauditoffice_logo.jpg', alt: 'National Audit Office' },
+                    { src: '/assets/icons/home_marquee/virginmobile_logo.png', alt: 'Virgin Mobile' },
+                  ].map(logo => (
+                    <span className="client-logo-item" key={logo.alt}>
+                      <img src={logo.src} alt={logo.alt} className="client-logo-img" />
+                    </span>
                   ))}
                 </div>
               ))}
