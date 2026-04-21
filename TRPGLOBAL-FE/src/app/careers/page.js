@@ -86,30 +86,10 @@ export default function CareersPage() {
         <div className="container">
           <div className="eyebrow rv">Open Positions</div>
           <h2 className="heading rv"><strong>Current Openings</strong></h2>
-          <div className="jobs-filters rv">
-            {FILTERS.map(f => (
-              <button key={f} className={`jfilter${activeFilter === f ? ' active' : ''}`} onClick={() => setActiveFilter(f)}>
-                {f === 'all' ? 'All Roles' : f}
-              </button>
-            ))}
-          </div>
-          <div className="jobs-list">
-            {filteredJobs.map((job) => (
-              <div className="job-item" key={job.title}>
-                <div>
-                  <div className="job-title">{job.title}</div>
-                  <div className="job-meta">
-                    <span className="job-dept">{job.dept}</span>
-                    <span className="job-dot"></span>
-                    <span className="job-loc">{job.loc}</span>
-                  </div>
-                </div>
-                <div className="job-r">
-                  <span className="job-tag">{job.tag}</span>
-                  <Link href="/contact" className="job-apply">Apply Now</Link>
-                </div>
-              </div>
-            ))}
+          <div className="jobs-list rv" style={{ textAlign: 'center', padding: '80px 0', borderTop: '1px solid var(--border)', marginTop: '40px' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '20px', opacity: 0.8 }}>💼</div>
+            <h3 style={{ fontSize: '2rem', fontWeight: 300, color: 'var(--fg)', marginBottom: '12px' }}>Hiring <strong>soon..</strong></h3>
+            <p style={{ color: 'var(--muted)', fontSize: '1.05rem', maxWidth: '400px', margin: '0 auto', lineHeight: 1.6 }}>We are currently preparing new roles and team expansions. Please check back later for exciting opportunities.</p>
           </div>
         </div>
       </div>

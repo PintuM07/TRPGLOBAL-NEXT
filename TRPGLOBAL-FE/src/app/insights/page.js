@@ -176,102 +176,11 @@ export default function InsightsPage() {
         <div className="ibp-hero-fade" />
       </section>
 
-      {/* ══ GLOBAL SEARCH BAR ════════════════════════════════════════ */}
-      <div className="ibp-search-bar">
-        <div className="container ibp-search-inner">
-          <div className="ibp-search-input-wrap">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ibp-search-icon">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input
-              type="text"
-              placeholder="Search articles, topics, or keywords..."
-              className="ibp-search-input"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* ══ FEATURED ARTICLE ══════════════════════════════════════════ */}
-      {searchQuery.trim() === '' && featuredArticle && (
-        <section className="ibp-featured-section">
-          <div className="container">
-            <article className="ibp-featured ibp-featured-enter">
-              <div className="ibp-featured-img-wrap">
-                <img src={featuredArticle.img} alt={featuredArticle.title} />
-                <div className="ibp-featured-overlay" />
-                <div className="ibp-featured-badge">
-                  <span className="ibp-badge-dot" />
-                  Featured
-                </div>
-              </div>
-              <div className="ibp-featured-body">
-                <h2 className="ibp-featured-title">{featuredArticle.title}</h2>
-                <div className="ibp-featured-cat-row">
-                  <span className="ibp-featured-cat">{featuredArticle.cat}</span>
-                </div>
-                <p className="ibp-featured-excerpt">{featuredArticle.excerpt}</p>
-                <div className="ibp-featured-meta">
-                  <div className="ibp-featured-author">
-                    <div className="ibp-author-avatar">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                        <circle cx="12" cy="7" r="4" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="ibp-author-name">{featuredArticle.author}</div>
-                      <div className="ibp-author-meta">{featuredArticle.date} · {featuredArticle.read}</div>
-                    </div>
-                  </div>
-                  <button className="ibp-featured-btn" onClick={() => setSelectedArticle(featuredArticle)}>
-                    <span>Read Full Article</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-      )}
-
-      {/* ══ LATEST STORIES GRID ═══════════════════════════════════════ */}
-      <section className="ibp-grid-section">
-        <div className="container">
-          <div className="ibp-grid-header">
-            <div>
-              <div className="eyebrow">
-                {searchQuery.trim() === '' ? 'Most Recent' : 'Search Results'}
-              </div>
-              <h2 className="ibp-grid-title">
-                {searchQuery.trim() === '' ? 'Latest Posts' : `Results for "${searchQuery}"`}
-              </h2>
-            </div>
-            <div className="ibp-grid-count-wrap">
-              {searchQuery.trim() === '' && (
-                <span className="ibp-sorted-badge">Sorted by latest ↓</span>
-              )}
-              <span className="ibp-grid-count">
-                {filtered.length} article{filtered.length !== 1 ? 's' : ''}
-              </span>
-            </div>
-          </div>
-
-          {filtered.length > 0 ? (
-            <div className="ibp-grid">
-              {filtered.map((article, i) => (
-                <BlogCard key={article.title} article={article} index={i} onReadMore={() => setSelectedArticle(article)} />
-              ))}
-            </div>
-          ) : (
-            <div className="ibp-empty">
-              <div className="ibp-empty-icon">📄</div>
-              <p>No articles found matching your search.</p>
-            </div>
-          )}
+      <section className="ibp-coming-soon-section rv">
+        <div className="container" style={{ textAlign: 'center', padding: '120px 0', minHeight: '30vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="ibp-coming-soon-icon" style={{ fontSize: '3rem', margin: '0 auto 24px', opacity: 0.8 }}>🚀</div>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, color: 'var(--fg)', marginBottom: '16px' }}>Coming <strong>Soon..</strong></h2>
+          <p style={{ fontSize: '1.1rem', color: 'var(--muted)', maxWidth: '400px', lineHeight: 1.6 }}>We are currently taking the time to craft some amazing articles and insights. Stay tuned!</p>
         </div>
       </section>
 

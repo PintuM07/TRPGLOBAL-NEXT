@@ -229,48 +229,108 @@
 .icard {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 28px;
-  transition: background 0.4s, border-color 0.4s, box-shadow 0.3s, transform 0.3s;
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  z-index: 1;
+}
+
+.icard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: linear-gradient(135deg, var(--red) 0%, transparent 100%);
+  opacity: 0.05;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.icard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--red);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.4s;
 }
 
 .icard:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-8px);
+  border-color: transparent;
+}
+
+.icard:hover::before {
+  height: 100%;
+  opacity: 0.08;
+}
+
+.icard:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 [data-theme="dark"] .icard:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .icard-icon {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   background: var(--bg2);
-  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
-  transition: background 0.4s;
+  margin-bottom: 24px;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  position: relative;
+}
+
+.icard:hover .icard-icon {
+  background: var(--red);
+  border-color: var(--red);
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(255, 78, 19, 0.3);
 }
 
 .icard-icon img {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
+  transition: filter 0.4s, transform 0.4s;
+}
+
+.icard:hover .icard-icon img {
+  filter: brightness(0) invert(1);
+  transform: scale(1.1);
 }
 
 .icard-title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--fg);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
   transition: color 0.4s;
 }
 
 .icard-desc {
-  font-size: 0.875rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: var(--muted);
   transition: color 0.4s;
 }
