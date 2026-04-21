@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import React, { useState } from 'react';
@@ -53,7 +54,7 @@ function BlogCard({ article, index, onReadMore }) {
 }
 
 export default function InsightsPage() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
   const [blogArticles, setBlogArticles] = useState([]);
   const [featuredArticle, setFeaturedArticle] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null); // For popup modal
@@ -86,11 +87,14 @@ export default function InsightsPage() {
       .catch(err => console.error("Failed to fetch blogs from Strapi:", err));
   }, []);
 
-  // 'All' tab → sort by most recent date first
-  // Category tabs → show matching articles in original order
-  const filtered = activeCategory === 'All'
-    ? [...blogArticles].sort((a, b) => b.dateOrder - a.dateOrder)
-    : blogArticles.filter(a => a.category === activeCategory);
+  // Global search filtering
+  const filtered = searchQuery.trim() !== ''
+    ? blogArticles.filter(a =>
+        a.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        a.excerpt?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        a.category?.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [...blogArticles].sort((a, b) => b.dateOrder - a.dateOrder);
 
   return (
     <div className="ibp-root" ref={pageRef}>
@@ -171,28 +175,27 @@ export default function InsightsPage() {
         <div className="ibp-hero-fade" />
       </section>
 
-      {/* ══ CATEGORY FILTER BAR ════════════════════════════════════════ */}
-      <div className="ibp-filter-bar">
-        <div className="container ibp-filter-inner">
-          <div className="ibp-filter-label">Filter by:</div>
-          <div className="ibp-filter-tabs" role="tablist">
-            {CATEGORIES.map(cat => (
-              <button
-                key={cat}
-                role="tab"
-                aria-selected={activeCategory === cat}
-                className={`ibp-filter-tab ${activeCategory === cat ? 'ibp-tab-active' : ''}`}
-                onClick={() => setActiveCategory(cat)}
-              >
-                {cat}
-              </button>
-            ))}
+      {/* ══ GLOBAL SEARCH BAR ════════════════════════════════════════ */}
+      <div className="ibp-search-bar">
+        <div className="container ibp-search-inner">
+          <div className="ibp-search-input-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ibp-search-icon">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="text"
+              placeholder="Search articles, topics, or keywords..."
+              className="ibp-search-input"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
         </div>
       </div>
 
       {/* ══ FEATURED ARTICLE ══════════════════════════════════════════ */}
-      {activeCategory === 'All' && featuredArticle && (
+      {searchQuery.trim() === '' && featuredArticle && (
         <section className="ibp-featured-section">
           <div className="container">
             <article className="ibp-featured ibp-featured-enter">
@@ -240,14 +243,14 @@ export default function InsightsPage() {
           <div className="ibp-grid-header">
             <div>
               <div className="eyebrow">
-                {activeCategory === 'All' ? 'Most Recent' : 'Category'}
+                {searchQuery.trim() === '' ? 'Most Recent' : 'Search Results'}
               </div>
               <h2 className="ibp-grid-title">
-                {activeCategory === 'All' ? 'Latest Posts' : activeCategory}
+                {searchQuery.trim() === '' ? 'Latest Posts' : `Results for "${searchQuery}"`}
               </h2>
             </div>
             <div className="ibp-grid-count-wrap">
-              {activeCategory === 'All' && (
+              {searchQuery.trim() === '' && (
                 <span className="ibp-sorted-badge">Sorted by latest ↓</span>
               )}
               <span className="ibp-grid-count">
@@ -257,7 +260,7 @@ export default function InsightsPage() {
           </div>
 
           {filtered.length > 0 ? (
-            <div className="ibp-grid" key={activeCategory}>
+            <div className="ibp-grid">
               {filtered.map((article, i) => (
                 <BlogCard key={article.title} article={article} index={i} onReadMore={() => setSelectedArticle(article)} />
               ))}
@@ -265,7 +268,7 @@ export default function InsightsPage() {
           ) : (
             <div className="ibp-empty">
               <div className="ibp-empty-icon">📄</div>
-              <p>No articles found in this category yet.</p>
+              <p>No articles found matching your search.</p>
             </div>
           )}
         </div>
