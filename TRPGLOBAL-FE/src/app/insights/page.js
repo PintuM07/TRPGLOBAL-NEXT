@@ -61,12 +61,13 @@ export default function InsightsPage() {
   const pageRef = useReveal();
 
   React.useEffect(() => {
-    fetch('http://localhost:1337/api/blogs?populate=*')
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
+    fetch(`${apiUrl}/api/blogs?populate=*`)
       .then(res => res.json())
       .then(data => {
         if (data && data.data && data.data.length > 0) {
           const fetchedLogs = data.data.map(item => ({
-            img: item.HeaderImage?.url ? `http://localhost:1337${item.HeaderImage.url}` : 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80',
+            img: item.HeaderImage?.url ? `${apiUrl}${item.HeaderImage.url}` : 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80',
             cat: item.ShortHeading || 'General',
             title: item.Title,
             excerpt: item.ShortDiscription,
