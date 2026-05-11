@@ -110,8 +110,10 @@ export default function Footer() {
                   type="email"
                   placeholder="Your email address"
                   className="f-input"
+                  autoComplete="off"
+                  data-lpignore="true"
                 />
-                <button type="submit" className="f-btn">
+                <button type="submit" className="f-btn" suppressHydrationWarning>
                   Sign up
                 </button>
               </div>

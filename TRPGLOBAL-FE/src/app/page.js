@@ -151,6 +151,7 @@ function ServiceShowcase() {
             key={srv.id}
             className={`showcase-nav-item ${idx === activeIndex ? 'active' : ''}`}
             onClick={() => handleManualClick(idx)}
+            suppressHydrationWarning
           >
             <span className="sci-num">{srv.num.split(' / ')[0]}</span>
             <span className="sci-name">{srv.name}</span>
@@ -275,7 +276,7 @@ export default function HomePage() {
           </div>
           <div className="hero-dots">
             {SLIDES.map((_, idx) => (
-              <button key={idx} className={`hero-dot ${idx === activeSlide ? 'dot-active' : ''} ${idx < activeSlide ? 'dot-past' : ''}`} onClick={() => goToSlide(idx)} aria-label={`Slide ${idx + 1}`} />
+              <button key={idx} className={`hero-dot ${idx === activeSlide ? 'dot-active' : ''} ${idx < activeSlide ? 'dot-past' : ''}`} onClick={() => goToSlide(idx)} aria-label={`Slide ${idx + 1}`} suppressHydrationWarning />
             ))}
           </div>
         </div>

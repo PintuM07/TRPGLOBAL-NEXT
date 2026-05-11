@@ -93,7 +93,7 @@ export default function Navbar() {
           </ul>
 
           <div className="nav-right">
-            <button className="theme-btn" onClick={toggleTheme} title="Toggle theme">
+            <button className="theme-btn" onClick={toggleTheme} title="Toggle theme" suppressHydrationWarning>
               {theme === 'light' ? '🌙' : '☀'}
             </button>
             <Link href="/contact" className="nav-cta" onClick={(e) => handleNavClick(e, '/contact')}>
@@ -103,6 +103,7 @@ export default function Navbar() {
               className={`hamburger ${menuOpen ? 'open' : ''}`}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
+              suppressHydrationWarning
             >
               <span /><span /><span />
             </button>
