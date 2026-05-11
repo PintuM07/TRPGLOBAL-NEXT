@@ -37,7 +37,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="#"
+                href="https://youtube.com/@trpglobal?si=aE-1g_x4MVKFkwz1"
                 aria-label="YouTube"
                 className="f-social-link"
               >
@@ -47,7 +47,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="#"
+                href="https://www.instagram.com/trp.global_?igsh=eGttcWpyOTJjZ2dr"
                 aria-label="Instagram"
                 className="f-social-link"
               >
