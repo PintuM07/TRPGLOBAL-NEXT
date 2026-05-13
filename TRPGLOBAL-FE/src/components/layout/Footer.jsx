@@ -112,6 +112,7 @@ export default function Footer() {
                   className="f-input"
                   autoComplete="off"
                   data-lpignore="true"
+                  suppressHydrationWarning
                 />
                 <button type="submit" className="f-btn" suppressHydrationWarning>
                   Sign up

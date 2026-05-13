@@ -14,6 +14,7 @@ import { ThemeProvider } from '@/lib/context/ThemeContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { ProgressBar, BackToTop, PageTransition } from '@/components/ui/PageUtils';
+import WebinarPopup from '@/components/ui/WebinarPopup';
 
 export const metadata = {
   title: 'TRPGLOBAL — TechRiskPartners | Enterprise Risk Management & IT Consulting',
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <WebinarPopup />
         </ThemeProvider>
       </body>
     </html>
