@@ -17,12 +17,12 @@ import { ProgressBar, BackToTop, PageTransition } from '@/components/ui/PageUtil
 import WebinarPopup from '@/components/ui/WebinarPopup';
 
 export const metadata = {
-  title: 'TRPGLOBAL — TechRiskPartners | Enterprise Risk Management & IT Consulting',
-  description: 'TRPGLOBAL (TechRiskPartners) is a specialist IT consulting and risk management company. Oracle, SAP, and AI-powered solutions for 100+ global enterprises across 18 countries.',
-  keywords: 'TRPGLOBAL, enterprise risk management, Oracle consulting, SAP consulting, IT audit, compliance, digital transformation',
+  title: 'Boost Your Enterprise Security & IT Efficiency | TRPGLOBAL',
+  description: 'Enhance your business resilience with expert Enterprise Risk Management & IT Consulting. Secure your future with TRPGLOBAL today.',
+  keywords: 'TRPGLOBAL, enterprise risk management, Oracle consulting, IT audit, compliance, digital transformation',
   openGraph: {
-    title: 'TRPGLOBAL — TechRiskPartners',
-    description: 'Enterprise Risk Management & IT Consulting for global enterprises.',
+    title: 'Boost Your Enterprise Security & IT Efficiency | TRPGLOBAL',
+    description: 'Enhance your business resilience with expert Enterprise Risk Management & IT Consulting. Secure your future with TRPGLOBAL today.',
     type: 'website',
   },
 };
