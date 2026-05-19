@@ -29,7 +29,7 @@ export default function WebinarPopup() {
         <button className="wp-close" onClick={dismiss} aria-label="Close">✕</button>
         <a href={WEBINAR_URL} target="_blank" rel="noopener noreferrer" onClick={dismiss}>
           <Image
-            src="/assets/webiner.png"
+            src="/assets/webiner.jpg"
             alt="Register for our webinar"
             width={600}
             height={400}
