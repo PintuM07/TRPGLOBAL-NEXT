@@ -26,6 +26,11 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/assets/TRPGLOBAL_NEWUPDATE%202%205.png',
+    shortcut: '/assets/TRPGLOBAL_NEWUPDATE%202%205.png',
+    apple: '/assets/TRPGLOBAL_NEWUPDATE%202%205.png',
+  },
   verification: {
     google: 'mMFbUh8oyRe150hPElr4CkYA6s0ZoGxNw3K2KeWjVfs',
   },
