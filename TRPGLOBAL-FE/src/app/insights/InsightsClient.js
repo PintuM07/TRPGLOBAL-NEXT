@@ -19,7 +19,12 @@ function BlogCard({ article, index, onReadMore }) {
   return (
     <article
       className="ibp-card ibp-card-enter"
-      style={{ animationDelay: `${index * 0.08}s` }}
+      style={{ animationDelay: `${index * 0.08}s`, cursor: 'pointer' }}
+      onClick={onReadMore}
+      role="button"
+      tabIndex={0}
+      aria-label={`Read article: ${article.title}`}
+      onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onReadMore()}
     >
       <div className="ibp-card-img-wrap">
         <img
@@ -43,9 +48,9 @@ function BlogCard({ article, index, onReadMore }) {
             <div className="ibp-card-author-dot" />
             <span>{article.author}</span>
           </div>
-          <button className="ibp-card-link" aria-label={`Read ${article.title}`} onClick={onReadMore}>
+          <span className="ibp-card-link" aria-hidden="true">
             Read Article <span className="ibp-arrow">→</span>
-          </button>
+          </span>
         </div>
       </div>
     </article>
