@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useReveal } from '@/lib/hooks/useReveal';
 
@@ -57,10 +57,11 @@ export default function InsightsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [blogArticles, setBlogArticles] = useState([]);
   const [featuredArticle, setFeaturedArticle] = useState(null);
-  const [selectedArticle, setSelectedArticle] = useState(null); // For popup modal
-  const pageRef = useReveal();
+  const [loading, setLoading] = useState(true);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const pageRef = useReveal([loading]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
     fetch(`${apiUrl}/api/blogs?populate=*`)
       .then(res => res.json())
@@ -71,7 +72,7 @@ export default function InsightsPage() {
             cat: item.ShortHeading || 'General',
             title: item.Title,
             excerpt: item.ShortDiscription,
-            longDesc: item.LongDesc, // Captured from Strapi
+            longDesc: item.LongDesc,
             date: new Date(item.Date || item.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
             dateOrder: parseInt(new Date(item.Date || item.createdAt).toISOString().slice(0, 7).replace('-', ''), 10),
             read: '5 min read',
@@ -80,12 +81,14 @@ export default function InsightsPage() {
           }));
 
           setBlogArticles(fetchedLogs);
-          if (fetchedLogs.length > 0) {
-            setFeaturedArticle(fetchedLogs[0]); // Optional: use the newest fetched blog as featured
-          }
+          setFeaturedArticle(fetchedLogs[0]);
         }
+        setLoading(false);
       })
-      .catch(err => console.error("Failed to fetch blogs from Strapi:", err));
+      .catch(err => {
+        console.error("Failed to fetch blogs from Strapi:", err);
+        setLoading(false);
+      });
   }, []);
 
   // Global search filtering
@@ -102,14 +105,9 @@ export default function InsightsPage() {
 
       {/* ══ HERO SECTION ══════════════════════════════════════════════ */}
       <section className="ibp-hero">
-        {/* Subtle gradient background */}
         <div className="ibp-hero-bg" />
-
         <div className="ibp-hero-inner container">
-
-          {/* Left: Text column */}
           <div className="ibp-hero-text">
-            {/* Breadcrumb */}
             <nav className="ibp-breadcrumb" aria-label="Breadcrumb">
               <Link href="/" className="ibp-bc-link">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -121,25 +119,17 @@ export default function InsightsPage() {
               <span className="ibp-bc-sep">/</span>
               <span className="ibp-bc-current">Blog</span>
             </nav>
-
-            {/* Eyebrow */}
             <div className="ibp-hero-eyebrow">
               <span className="ibp-eyebrow-pill">TRPGLOBAL INSIGHTS</span>
             </div>
-
-            {/* Main heading */}
             <h1 className="ibp-hero-title">
               Insights<br />
               <strong>Ideas &amp; Innovation</strong>
             </h1>
-
-            {/* Subtitle */}
             <p className="ibp-hero-sub">
               Explore expert articles, tech trends, and practical tips to keep your
               business ahead of the curve in Risk, Compliance, and Digital Transformation.
             </p>
-
-            {/* Stats row */}
             <div className="ibp-hero-stats">
               <div className="ibp-hstat">
                 <span className="ibp-hstat-n">120+</span>
@@ -157,8 +147,6 @@ export default function InsightsPage() {
               </div>
             </div>
           </div>
-
-          {/* Right: Gallery column */}
           <div className="ibp-hero-gallery" aria-hidden="true">
             {HERO_GALLERY.map((img, i) => (
               <div
@@ -171,16 +159,150 @@ export default function InsightsPage() {
             ))}
           </div>
         </div>
-
-        {/* Bottom fade */}
         <div className="ibp-hero-fade" />
       </section>
 
-      <section className="ibp-coming-soon-section rv">
-        <div className="container" style={{ textAlign: 'center', padding: '120px 0', minHeight: '30vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <div className="ibp-coming-soon-icon" style={{ fontSize: '3rem', margin: '0 auto 24px', opacity: 0.8 }}>🚀</div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, color: 'var(--fg)', marginBottom: '16px' }}>Coming <strong>Soon..</strong></h2>
-          <p style={{ fontSize: '1.1rem', color: 'var(--muted)', maxWidth: '400px', lineHeight: 1.6 }}>Our experts are crafting insightful content to help you navigate Risk, Compliance, and Digital Transformation.</p>
+      {/* ══ SEARCH BAR ══════════════════════════════════════════════════ */}
+      <div className="ibp-search-bar">
+        <div className="container ibp-search-inner">
+          <div className="ibp-search-input-wrap">
+            <span className="ibp-search-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
+              </svg>
+            </span>
+            <input
+              id="blog-search"
+              type="search"
+              className="ibp-search-input"
+              placeholder="Search articles by title, topic, or keyword…"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              aria-label="Search blog articles"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* ══ FEATURED ARTICLE ═══════════════════════════════════════════ */}
+      {featuredArticle && !searchQuery && (
+        <section className="ibp-featured-section">
+          <div className="container">
+            <div className="eyebrow" style={{ marginBottom: 24 }}>Featured Article</div>
+            <article className="ibp-featured ibp-featured-enter">
+              <div className="ibp-featured-img-wrap">
+                <img src={featuredArticle.img} alt={featuredArticle.title} />
+                <div className="ibp-featured-overlay" />
+                <div className="ibp-featured-badge">
+                  <span className="ibp-badge-dot" />
+                  Latest Post
+                </div>
+                <div className="ibp-featured-img-cat">{featuredArticle.cat}</div>
+              </div>
+              <div className="ibp-featured-body">
+                <div className="ibp-featured-label-row">
+                  <span className="ibp-featured-cat">{featuredArticle.cat}</span>
+                  <span className="ibp-featured-read-pill">{featuredArticle.read}</span>
+                </div>
+                <h2 className="ibp-featured-title">{featuredArticle.title}</h2>
+                <div className="ibp-featured-divider" />
+                <p className="ibp-featured-excerpt">{featuredArticle.excerpt}</p>
+                <div className="ibp-featured-meta">
+                  <div className="ibp-featured-author">
+                    <div className="ibp-author-avatar">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div>
+                      <div className="ibp-author-name">{featuredArticle.author}</div>
+                      <div className="ibp-author-meta">{featuredArticle.date}</div>
+                    </div>
+                  </div>
+                  <button
+                    className="ibp-featured-btn"
+                    onClick={() => setSelectedArticle(featuredArticle)}
+                    aria-label={`Read ${featuredArticle.title}`}
+                  >
+                    <span>Read Article</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      )}
+
+      {/* ══ ARTICLES GRID ══════════════════════════════════════════════ */}
+      <section className="ibp-grid-section">
+        <div className="container">
+          <div className="ibp-grid-header">
+            <div>
+              <div className="eyebrow">All Articles</div>
+              <h2 className="ibp-grid-title">
+                {searchQuery
+                  ? <><strong>Results</strong> for &ldquo;{searchQuery}&rdquo;</>
+                  : <>Latest <strong>Insights</strong></>
+                }
+              </h2>
+            </div>
+            <div className="ibp-grid-count-wrap">
+              {!loading && (
+                <span className="ibp-grid-count">
+                  {filtered.length} article{filtered.length !== 1 ? 's' : ''}
+                </span>
+              )}
+              {!searchQuery && !loading && <span className="ibp-sorted-badge">Newest First</span>}
+            </div>
+          </div>
+
+          {/* Loading skeleton */}
+          {loading && (
+            <div className="ibp-grid">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="ibp-card ibp-skeleton-card" style={{ animationDelay: `${i * 0.08}s` }}>
+                  <div className="ibp-card-img-wrap ibp-skeleton" />
+                  <div className="ibp-card-body" style={{ gap: 10 }}>
+                    <div className="ibp-skeleton" style={{ height: 14, width: '40%', borderRadius: 8, marginBottom: 4 }} />
+                    <div className="ibp-skeleton" style={{ height: 18, width: '90%', borderRadius: 8 }} />
+                    <div className="ibp-skeleton" style={{ height: 18, width: '70%', borderRadius: 8, marginBottom: 8 }} />
+                    <div className="ibp-skeleton" style={{ height: 12, width: '80%', borderRadius: 8 }} />
+                    <div className="ibp-skeleton" style={{ height: 12, width: '60%', borderRadius: 8 }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Empty state — Strapi returned nothing or search found nothing */}
+          {!loading && blogArticles.length === 0 && (
+            <div className="ibp-empty">
+              <div className="ibp-empty-icon">📭</div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: 8 }}>No articles yet</h3>
+              <p>Our experts are crafting insightful content — check back soon.</p>
+            </div>
+          )}
+
+          {!loading && blogArticles.length > 0 && filtered.length === 0 && (
+            <div className="ibp-empty">
+              <div className="ibp-empty-icon">🔍</div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: 8 }}>No articles found</h3>
+              <p>Try a different keyword or clear your search.</p>
+            </div>
+          )}
+
+          {/* Articles grid */}
+          {!loading && filtered.length > 0 && (
+            <div className="ibp-grid">
+              {filtered.map((article, i) => (
+                <BlogCard
+                  key={article.title + i}
+                  article={article}
+                  index={i}
+                  onReadMore={() => setSelectedArticle(article)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
