@@ -5,7 +5,6 @@ const FALLBACK_IMG = 'https://images.unsplash.com/photo-1563986768609-322da13575
 async function fetchBlogs() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://thoughtful-frog-771c7c34ea.strapiapp.com';
 
-  // Request only the fields we render + just the image URL — much smaller payload than populate=*
   const query = [
     'fields[0]=Title',
     'fields[1]=ShortHeading',
@@ -20,7 +19,7 @@ async function fetchBlogs() {
 
   try {
     const res = await fetch(`${apiUrl}/api/blogs?${query}`, {
-      next: { revalidate: 60 }, // cache for 60 s — repeat visitors pay nothing
+      next: { revalidate: 60 },
     });
     if (!res.ok) {
       console.error(`[Strapi] HTTP ${res.status} ${res.statusText}`);
@@ -33,9 +32,7 @@ async function fetchBlogs() {
     }
 
     return data.data.map(item => {
-      // Support Strapi v4 (item.attributes.*) and v5 (flat item.*)
       const attrs = item.attributes || item;
-      // Support v4 image shape and v5 image shape
       const imgUrl = attrs.HeaderImage?.data?.attributes?.url || attrs.HeaderImage?.url || null;
       const resolvedImg = imgUrl
         ? (imgUrl.startsWith('http') ? imgUrl : `${apiUrl}${imgUrl}`)
