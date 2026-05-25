@@ -28,7 +28,12 @@ function BlogCard({ article, index, onReadMore }) {
       style={{ animationDelay: `${index * 0.08}s` }}
     >
       <div className="ibp-card-img-wrap">
-        <img src={article.img} alt={article.title} className="ibp-card-img" />
+        <img
+          src={article.img}
+          alt={article.title}
+          className="ibp-card-img"
+          onError={e => { e.currentTarget.src = 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80'; }}
+        />
         <div className="ibp-card-cat-badge">{article.cat}</div>
       </div>
       <div className="ibp-card-body">
@@ -62,26 +67,44 @@ export default function InsightsPage() {
   const pageRef = useReveal([loading]);
 
   React.useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://thoughtful-frog-771c7c34ea.strapiapp.com';
     fetch(`${apiUrl}/api/blogs?populate=*`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        return res.json();
+      })
       .then(data => {
         if (data && data.data && data.data.length > 0) {
-          const fetchedLogs = data.data.map(item => ({
-            img: item.HeaderImage?.url ? `${apiUrl}${item.HeaderImage.url}` : 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80',
-            cat: item.ShortHeading || 'General',
-            title: item.Title,
-            excerpt: item.ShortDiscription,
-            longDesc: item.LongDesc,
-            date: new Date(item.Date || item.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-            dateOrder: parseInt(new Date(item.Date || item.createdAt).toISOString().slice(0, 7).replace('-', ''), 10),
-            read: '5 min read',
-            category: item.ShortHeading || 'General',
-            author: item.Author || 'TRP Global',
-          }));
+          // Debug: log raw Strapi item to inspect HeaderImage shape
+          console.log('[Strapi] First item raw:', JSON.stringify(data.data[0], null, 2));
+          const fetchedLogs = data.data.map(item => {
+            // Support both Strapi v4 (item.attributes.*) and v5 (item.* flat)
+            const attrs = item.attributes || item;
+            // Support both v4 image shape (attrs.HeaderImage.data.attributes.url) and v5 (attrs.HeaderImage.url)
+            const imgUrl = attrs.HeaderImage?.data?.attributes?.url || attrs.HeaderImage?.url || null;
+            console.log('[Strapi] imgUrl for', attrs.Title, '→', imgUrl);
+            const resolvedImg = imgUrl
+              ? (imgUrl.startsWith('http') ? imgUrl : `${apiUrl}${imgUrl}`)
+              : 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80';
+            const rawDate = attrs.Date || attrs.createdAt || attrs.publishedAt;
+            return {
+              img: resolvedImg,
+              cat: attrs.ShortHeading || 'General',
+              title: attrs.Title,
+              excerpt: attrs.ShortDiscription,
+              longDesc: attrs.LongDesc,
+              date: new Date(rawDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+              dateOrder: parseInt(new Date(rawDate).toISOString().slice(0, 7).replace('-', ''), 10),
+              read: '5 min read',
+              category: attrs.ShortHeading || 'General',
+              author: attrs.Author || 'TRP Global',
+            };
+          });
 
           setBlogArticles(fetchedLogs);
           setFeaturedArticle(fetchedLogs[0]);
+        } else {
+          console.warn("Strapi response:", data);
         }
         setLoading(false);
       })
@@ -191,7 +214,11 @@ export default function InsightsPage() {
             <div className="eyebrow" style={{ marginBottom: 24 }}>Featured Article</div>
             <article className="ibp-featured ibp-featured-enter">
               <div className="ibp-featured-img-wrap">
-                <img src={featuredArticle.img} alt={featuredArticle.title} />
+                <img
+                  src={featuredArticle.img}
+                  alt={featuredArticle.title}
+                  onError={e => { e.currentTarget.src = 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80'; }}
+                />
                 <div className="ibp-featured-overlay" />
                 <div className="ibp-featured-badge">
                   <span className="ibp-badge-dot" />
