@@ -923,9 +923,6 @@
 }
 
 .ibp-card-link {
-  background: none;
-  border: none;
-  cursor: pointer;
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--red);
@@ -937,9 +934,11 @@
   letter-spacing: 0.02em;
   transition: gap 0.2s, color 0.2s;
   flex-shrink: 0;
+  pointer-events: none; /* card itself is the click target */
+  user-select: none;
 }
 
-.ibp-card-link:hover {
+.ibp-card:hover .ibp-card-link {
   gap: 9px;
 }
 
@@ -948,7 +947,7 @@
   transition: transform 0.2s;
 }
 
-.ibp-card-link:hover .ibp-arrow {
+.ibp-card:hover .ibp-arrow {
   transform: translateX(3px);
 }
 
