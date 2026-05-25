@@ -61,7 +61,8 @@ export default function InsightsPage() {
   const pageRef = useReveal();
 
   React.useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
+    // const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://thoughtful-frog-771c7c34ea.strapiapp.com';
     fetch(`${apiUrl}/api/blogs?populate=*`)
       .then(res => res.json())
       .then(data => {
