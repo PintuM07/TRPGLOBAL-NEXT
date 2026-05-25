@@ -4,7 +4,9 @@
       "Bash(npm run *)",
       "Bash(Get-Content \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-USER-Desktop-trpglobal-next\\\\b223f06a-f473-42f0-b61b-735e2e93ebe7\\\\tasks\\\\bzev90aqv.output\" -Wait)",
       "Bash(Select-String --line-buffered -Pattern \"listening|started|ready|error|Error|FATAL|failed|warn\")",
-      "Bash(Get-Content \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-USER-Desktop-trpglobal-next\\\\b223f06a-f473-42f0-b61b-735e2e93ebe7\\\\tasks\\\\bzev90aqv.output\" -Tail 30)"
+      "Bash(Get-Content \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-USER-Desktop-trpglobal-next\\\\b223f06a-f473-42f0-b61b-735e2e93ebe7\\\\tasks\\\\bzev90aqv.output\" -Tail 30)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
