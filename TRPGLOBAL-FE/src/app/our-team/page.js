@@ -13,6 +13,7 @@ const LEADERS = [
     role: 'Group CEO & Senior Partner',
     bio: 'Arun leads global security, risk, and compliance initiatives, specialising in Oracle Risk Management Cloud and ERP assurance. He drives digital transformation, ensuring robust security, compliance, and scalable solutions across enterprises.',
     initials: 'AM',
+    linkedin: 'https://www.linkedin.com/in/arunkmajumdar',
   },
   {
     img: '/assets/Sayantan.jpg',
@@ -20,6 +21,7 @@ const LEADERS = [
     role: 'Co-Founder & Director',
     bio: 'Sayantan leads AI-driven security and risk initiatives, specialising in Oracle Risk Cloud and IT audit automation. He enables organisations to strengthen compliance and build secure, scalable, future-ready frameworks.',
     initials: 'SP',
+    linkedin: 'https://www.linkedin.com/in/sayantanpolley/',
   },
   {
     img: '/assets/JDG_8108.JPG',
@@ -27,6 +29,7 @@ const LEADERS = [
     role: 'Partner - Head of ERP Advisory',
     bio: 'Rahul leads GRC advisory services, specialising in GRC solutions and Basis consulting. He drives secure, compliant environments and helps organisations build scalable, future-ready systems.',
     initials: 'RG',
+    linkedin: 'https://www.linkedin.com/in/rahulpwc/',
   },
   {
     img: '/assets/Samson.png',
@@ -34,6 +37,7 @@ const LEADERS = [
     role: 'Associate Partner',
     bio: 'Samson specialises in Oracle Security & GRC, leading risk advisory and cybersecurity initiatives. He helps organisations strengthen security, manage risk, and stay ahead of evolving threats.',
     initials: 'SG',
+    linkedin: 'https://www.linkedin.com/in/samson-george-csm-13498212a/',
   },
   {
     img: '/assets/SunilSuit_PNG 1.png',
@@ -41,6 +45,7 @@ const LEADERS = [
     role: 'Partner - Information Security & Cyber Risk',
     bio: 'Sunil leads cybersecurity and IT risk initiatives, specialising in enterprise risk management and C-suite advisory. He helps organisations strengthen security, ensure compliance, and manage evolving cyber risks.',
     initials: 'SK',
+    linkedin: 'https://www.linkedin.com/in/sunilkumaruk/',
   },
   {
     img: '/assets/Amrita Ganguly.png',
@@ -48,6 +53,7 @@ const LEADERS = [
     role: 'Director - Finance Risk & Compliance',
     bio: 'Amrita leads finance risk and compliance initiatives, specialising in Oracle Fusion Risk Management, SoD, and access governance. She ensures strong controls, compliance, and scalable risk management.',
     initials: 'AG',
+    linkedin: 'https://www.linkedin.com/in/amrritaganguly/',
   },
   {
     img: '/assets/Srijita Chatterjee.jpg',
@@ -55,6 +61,7 @@ const LEADERS = [
     role: 'Senior Consultant - Oracle GRC',
     bio: 'Srijita leads Oracle Risk Management Cloud implementations, strengthening governance, risk, and compliance. She enables secure, scalable systems and helps enterprises navigate regulatory complexities with confidence.',
     initials: 'SC',
+    linkedin: 'https://www.linkedin.com/in/srijita-chatterjee-002bb7168/',
   },
 ];
 
