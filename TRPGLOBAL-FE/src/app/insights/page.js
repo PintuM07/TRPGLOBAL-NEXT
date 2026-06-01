@@ -9,7 +9,7 @@ async function fetchBlogs() {
     'fields[0]=Title',
     'fields[1]=ShortHeading',
     'fields[2]=ShortDiscription',
-    'fields[3]=LongDesc',
+    'fields[3]=LongDescription',
     'fields[4]=Date',
     'fields[5]=Author',
     'populate[HeaderImage][fields][0]=url',
