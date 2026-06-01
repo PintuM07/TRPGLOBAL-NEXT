@@ -58,7 +58,7 @@ const LEADERS = [
   {
     img: '/assets/Srijita Chatterjee.jpg',
     name: 'Srijita Chatterjee',
-    role: 'Senior Consultant - Oracle GRC',
+    role: 'Director - Oracle GRC',
     bio: 'Srijita leads Oracle Risk Management Cloud implementations, strengthening governance, risk, and compliance. She enables secure, scalable systems and helps enterprises navigate regulatory complexities with confidence.',
     initials: 'SC',
     linkedin: 'https://www.linkedin.com/in/srijita-chatterjee-002bb7168/',
