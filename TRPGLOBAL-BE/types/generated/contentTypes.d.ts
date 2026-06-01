@@ -548,7 +548,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
       Schema.Attribute.Private;
-    LongDesc: Schema.Attribute.Text & Schema.Attribute.Required;
+    LongDescription: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
     ShortDiscription: Schema.Attribute.Text & Schema.Attribute.Required;
     ShortHeading: Schema.Attribute.String;

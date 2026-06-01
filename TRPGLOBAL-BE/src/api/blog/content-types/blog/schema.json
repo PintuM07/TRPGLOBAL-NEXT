@@ -31,9 +31,8 @@
       "type": "text",
       "required": true
     },
-    "LongDesc": {
-      "type": "text",
-      "required": true
+    "LongDescription": {
+      "type": "blocks"
     },
     "Date": {
       "type": "date",
