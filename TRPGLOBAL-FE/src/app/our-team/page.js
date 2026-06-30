@@ -47,14 +47,14 @@ const LEADERS = [
     initials: 'SK',
     linkedin: 'https://www.linkedin.com/in/sunilkumaruk/',
   },
-  {
-    img: '/assets/Amrita Ganguly.png',
-    name: 'Amrita Ganguly',
-    role: 'Director - Finance Risk & Compliance',
-    bio: 'Amrita leads finance risk and compliance initiatives, specialising in Oracle Fusion Risk Management, SoD, and access governance. She ensures strong controls, compliance, and scalable risk management.',
-    initials: 'AG',
-    linkedin: 'https://www.linkedin.com/in/amrritaganguly/',
-  },
+  // {
+  //   img: '/assets/Amrita Ganguly.png',
+  //   name: 'Amrita Ganguly',
+  //   role: 'Director - Finance Risk & Compliance',
+  //   bio: 'Amrita leads finance risk and compliance initiatives, specialising in Oracle Fusion Risk Management, SoD, and access governance. She ensures strong controls, compliance, and scalable risk management.',
+  //   initials: 'AG',
+  //   linkedin: 'https://www.linkedin.com/in/amrritaganguly/',
+  // },
   {
     img: '/assets/Srijita Chatterjee.jpg',
     name: 'Srijita Chatterjee',
