@@ -7,6 +7,77 @@ import { useReveal } from '@/lib/hooks/useReveal';
 
 const FALLBACK_IMG = 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&auto=format&fit=crop&q=80';
 
+/* ── Strapi Rich-Text Blocks Renderer ─────────────────────────────── */
+function renderInlineChildren(children) {
+  if (!Array.isArray(children)) return children;
+  return children.map((child, i) => {
+    if (child.type === 'link') {
+      return (
+        <a key={i} href={child.url} target="_blank" rel="noopener noreferrer">
+          {renderInlineChildren(child.children)}
+        </a>
+      );
+    }
+    let node = child.text ?? '';
+    if (child.bold)          node = <strong key={`b${i}`}>{node}</strong>;
+    if (child.italic)        node = <em key={`i${i}`}>{node}</em>;
+    if (child.underline)     node = <u key={`u${i}`}>{node}</u>;
+    if (child.strikethrough) node = <s key={`s${i}`}>{node}</s>;
+    if (child.code)          node = <code key={`c${i}`}>{node}</code>;
+    return <React.Fragment key={i}>{node}</React.Fragment>;
+  });
+}
+
+function renderStrapiBlocks(blocks) {
+  if (!Array.isArray(blocks)) return null;
+  return blocks.map((block, idx) => {
+    switch (block.type) {
+      case 'paragraph':
+        return <p key={idx}>{renderInlineChildren(block.children)}</p>;
+      case 'heading': {
+        const Tag = `h${block.level || 2}`;
+        return <Tag key={idx}>{renderInlineChildren(block.children)}</Tag>;
+      }
+      case 'list': {
+        const ListTag = block.format === 'ordered' ? 'ol' : 'ul';
+        return (
+          <ListTag key={idx}>
+            {(block.children || []).map((li, liIdx) => (
+              <li key={liIdx}>{renderInlineChildren(li.children)}</li>
+            ))}
+          </ListTag>
+        );
+      }
+      case 'image':
+        return (
+          <img
+            key={idx}
+            src={block.image?.url}
+            alt={block.image?.alternativeText || ''}
+            style={{ maxWidth: '100%', borderRadius: 8, margin: '1rem 0' }}
+          />
+        );
+      case 'quote':
+        return (
+          <blockquote key={idx} style={{ borderLeft: '3px solid #e67e22', paddingLeft: 16, margin: '1rem 0', fontStyle: 'italic' }}>
+            {renderInlineChildren(block.children)}
+          </blockquote>
+        );
+      case 'code':
+        return (
+          <pre key={idx} style={{ background: '#1a1a2e', color: '#e0e0e0', padding: 16, borderRadius: 8, overflow: 'auto', margin: '1rem 0' }}>
+            <code>{renderInlineChildren(block.children)}</code>
+          </pre>
+        );
+      default:
+        if (block.children) {
+          return <p key={idx}>{renderInlineChildren(block.children)}</p>;
+        }
+        return null;
+    }
+  });
+}
+
 const HERO_GALLERY = [
   { src: '/assets/icons/Blog/126769.jpg', alt: 'Data analytics', height: 'short' },
   { src: '/assets/icons/Blog/2151877160.jpg', alt: 'Strategy session', height: 'tall' },
@@ -318,7 +389,7 @@ export default function InsightsClient({ initialArticles }) {
       {selectedArticle && (
         <div className="ibp-modal-overlay" onClick={() => setSelectedArticle(null)}>
           <div className="ibp-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="ibp-modal-close" onClick={() => setSelectedArticle(null)}>
+            <button className="ibp-modal-close" onClick={() => setSelectedArticle(null)} aria-label="Close article">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
             </button>
 
@@ -339,16 +410,55 @@ export default function InsightsClient({ initialArticles }) {
               </div>
             </div>
 
+            {/* ── Author info bar ── */}
+            <div className="ibp-modal-author-bar">
+              <div className="ibp-modal-author-info">
+                <div className="ibp-modal-author-avatar">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                </div>
+                <div>
+                  <div className="ibp-modal-author-name">{selectedArticle.author}</div>
+                  <div className="ibp-modal-author-date">{selectedArticle.date} · {selectedArticle.read}</div>
+                </div>
+              </div>
+              <div className="ibp-modal-share-row">
+                <button className="ibp-modal-share-btn" aria-label="Copy link" onClick={() => { navigator.clipboard?.writeText(window.location.href); }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" /></svg>
+                </button>
+                <button className="ibp-modal-share-btn" aria-label="Share on LinkedIn" onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank')}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                </button>
+                <button className="ibp-modal-share-btn" aria-label="Share on Twitter" onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(selectedArticle.title)}&url=${encodeURIComponent(window.location.href)}`, '_blank')}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                </button>
+              </div>
+            </div>
+
             <div className="ibp-modal-body">
               <div className="ibp-modal-prose">
                 <div className="ibp-modal-divider" />
                 {selectedArticle.longDesc ? (
-                  selectedArticle.longDesc.split('\n').filter(p => p.trim()).map((para, idx) => (
-                    <p key={idx}>{para}</p>
-                  ))
+                  typeof selectedArticle.longDesc === 'string'
+                    ? selectedArticle.longDesc.split('\n').filter(p => p.trim()).map((para, idx) => (
+                        <p key={idx}>{para}</p>
+                      ))
+                    : Array.isArray(selectedArticle.longDesc)
+                      ? renderStrapiBlocks(selectedArticle.longDesc)
+                      : <p>{String(selectedArticle.longDesc)}</p>
                 ) : (
                   <p>{selectedArticle.excerpt}</p>
                 )}
+              </div>
+            </div>
+
+            {/* ── Bottom CTA ── */}
+            <div className="ibp-modal-footer">
+              <div className="ibp-modal-footer-inner">
+                <span className="ibp-modal-footer-label">Enjoyed this article?</span>
+                <Link href="/contact" className="ibp-modal-footer-btn" onClick={() => setSelectedArticle(null)}>
+                  Get in Touch
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </Link>
               </div>
             </div>
           </div>

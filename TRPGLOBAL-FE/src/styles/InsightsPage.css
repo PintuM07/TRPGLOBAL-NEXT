@@ -1197,19 +1197,19 @@
 }
 
 /* ════════════════════════════════════════════════════════════════
-   ARTICLE POPUP MODAL
+   ARTICLE POPUP MODAL — Premium Editorial Reading Experience
    ════════════════════════════════════════════════════════════════ */
 .ibp-modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(0, 0, 0, 0.75);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 32px 20px;
   animation: modalFadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   overscroll-behavior: contain;
   overflow-y: auto;
@@ -1223,62 +1223,76 @@
 .ibp-modal-content {
   background: var(--bg);
   width: 100%;
-  max-width: 900px;
-  max-height: 85vh;
-  border-radius: 12px;
+  max-width: 920px;
+  max-height: 90vh;
+  border-radius: 20px;
   overflow-y: auto;
   overscroll-behavior: contain;
   position: relative;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 30px 80px rgba(0,0,0,0.5),
+    0 0 120px rgba(255, 78, 19, 0.04);
   animation: modalSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   scrollbar-width: thin;
+  scrollbar-color: var(--border2) transparent;
 }
 
 .ibp-modal-content::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+}
+.ibp-modal-content::-webkit-scrollbar-track {
+  background: transparent;
 }
 .ibp-modal-content::-webkit-scrollbar-thumb {
   background: var(--border2);
-  border-radius: 4px;
+  border-radius: 3px;
+}
+.ibp-modal-content::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
 
 @keyframes modalSlideUp {
-  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  from { opacity: 0; transform: translateY(40px) scale(0.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+/* ── Close Button ── */
 .ibp-modal-close {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 20px;
+  right: 20px;
   z-index: 20;
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .ibp-modal-close:hover {
   background: var(--red);
   border-color: var(--red);
-  transform: scale(1.05) rotate(90deg);
+  transform: scale(1.08) rotate(90deg);
+  box-shadow: 0 4px 20px rgba(255, 78, 19, 0.4);
 }
 
+/* ── Hero Section ── */
 .ibp-modal-hero {
   position: relative;
   width: 100%;
-  min-height: 480px;
+  min-height: 420px;
   display: flex;
   align-items: flex-end;
-  padding: 60px;
+  padding: 48px 56px;
 }
 
 .ibp-modal-hero-img {
@@ -1292,64 +1306,157 @@
 .ibp-modal-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.1) 0%,
-    rgba(0,0,0,0.4) 40%,
-    rgba(0,0,0,0.85) 100%
-  );
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.88) 100%),
+    linear-gradient(135deg, rgba(255, 78, 19, 0.08) 0%, transparent 50%);
 }
 
 .ibp-modal-hero-content {
   position: relative;
   z-index: 10;
   color: #fff;
-  max-width: 700px;
+  max-width: 720px;
 }
 
 .ibp-modal-badge {
   display: inline-block;
   background: var(--red);
   color: #fff;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 4px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 6px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(255, 78, 19, 0.35);
 }
 
 .ibp-modal-title {
   font-family: 'Source Serif 4', Georgia, serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.2;
   color: #fff;
-  margin-bottom: 24px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  letter-spacing: -0.02em;
 }
 
 .ibp-modal-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.9rem;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.88rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .ibp-modal-meta-sep {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .ibp-modal-author, .ibp-modal-date, .ibp-modal-read {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
 }
 
+/* ── Author Info Bar ── */
+.ibp-modal-author-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 56px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.ibp-modal-author-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ibp-modal-author-avatar {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red-light) 0%, var(--bg2) 100%);
+  border: 2px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red);
+  flex-shrink: 0;
+}
+
+.ibp-modal-author-avatar svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.ibp-modal-author-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+}
+
+.ibp-modal-author-date {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.ibp-modal-share-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ibp-modal-share-btn {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border2);
+  background: var(--bg2);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.ibp-modal-share-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.ibp-modal-share-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 78, 19, 0.3);
+}
+
+/* ── Modal Body ── */
 .ibp-modal-body {
-  padding: 60px;
+  padding: 48px 56px 56px;
   background: var(--bg);
   display: flex;
   justify-content: center;
@@ -1363,52 +1470,382 @@
 .ibp-modal-divider {
   width: 60px;
   height: 4px;
-  background: var(--red);
-  margin-bottom: 40px;
+  background: linear-gradient(90deg, var(--red), rgba(255, 78, 19, 0.2));
+  margin-bottom: 36px;
   border-radius: 2px;
 }
 
+/* ── Prose Typography ── */
 .ibp-modal-prose p {
-  font-size: 1.15rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.85;
   color: var(--muted);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
 }
 
 .ibp-modal-prose p:first-of-type {
-  font-size: 1.3rem;
-  line-height: 1.7;
+  font-size: 1.25rem;
+  line-height: 1.75;
   color: var(--fg);
   font-weight: 300;
   letter-spacing: -0.01em;
+}
+
+.ibp-modal-prose p:first-of-type::first-letter {
+  font-size: 3.4em;
+  float: left;
+  line-height: 0.85;
+  margin-right: 10px;
+  margin-top: 6px;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 700;
+  color: var(--red);
 }
 
 .ibp-modal-prose p:last-child {
   margin-bottom: 0;
 }
 
-/* Modal Responsiveness */
+/* Headings inside prose */
+.ibp-modal-prose h2 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 40px 0 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  position: relative;
+  padding-left: 20px;
+}
+
+.ibp-modal-prose h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 4px;
+  height: calc(100% - 8px);
+  background: var(--red);
+  border-radius: 2px;
+}
+
+.ibp-modal-prose h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 32px 0 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.ibp-modal-prose h4 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 28px 0 10px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+/* Strong / Bold */
+.ibp-modal-prose strong {
+  font-weight: 700;
+  color: var(--fg);
+}
+
+/* Italic */
+.ibp-modal-prose em {
+  font-style: italic;
+  color: var(--fg);
+}
+
+/* Links in prose */
+.ibp-modal-prose a {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 78, 19, 0.3);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.ibp-modal-prose a:hover {
+  border-bottom-color: var(--red);
+}
+
+/* Lists */
+.ibp-modal-prose ul,
+.ibp-modal-prose ol {
+  margin: 20px 0 28px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.ibp-modal-prose ul li,
+.ibp-modal-prose ol li {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 10px;
+  padding-left: 28px;
+  position: relative;
+}
+
+.ibp-modal-prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.ibp-modal-prose ol {
+  counter-reset: prose-counter;
+}
+
+.ibp-modal-prose ol li {
+  counter-increment: prose-counter;
+}
+
+.ibp-modal-prose ol li::before {
+  content: counter(prose-counter);
+  position: absolute;
+  left: 4px;
+  top: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--red);
+  min-width: 18px;
+  text-align: center;
+}
+
+/* Blockquotes */
+.ibp-modal-prose blockquote {
+  border-left: 4px solid var(--red) !important;
+  padding: 20px 28px !important;
+  margin: 32px 0 !important;
+  background: var(--bg2);
+  border-radius: 0 12px 12px 0;
+  font-style: italic !important;
+  position: relative;
+}
+
+.ibp-modal-prose blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  font-size: 4rem;
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: var(--red);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.ibp-modal-prose blockquote p {
+  color: var(--fg) !important;
+  font-size: 1.1rem !important;
+  font-weight: 400;
+  margin-bottom: 0 !important;
+}
+
+/* Code blocks */
+.ibp-modal-prose pre {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  padding: 24px 28px !important;
+  border-radius: 12px !important;
+  overflow-x: auto !important;
+  margin: 28px 0 !important;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.ibp-modal-prose code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.88em;
+}
+
+.ibp-modal-prose p code,
+.ibp-modal-prose li code {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  color: var(--red);
+}
+
+/* Images in prose */
+.ibp-modal-prose img {
+  max-width: 100% !important;
+  border-radius: 12px !important;
+  margin: 28px 0 !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+/* ── Modal Footer CTA ── */
+.ibp-modal-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 56px;
+  background: var(--bg2);
+  border-radius: 0 0 20px 20px;
+}
+
+.ibp-modal-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ibp-modal-footer-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.ibp-modal-footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Source Sans 3', sans-serif;
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ibp-modal-footer-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.ibp-modal-footer-btn:hover::before {
+  transform: translateX(0);
+}
+
+.ibp-modal-footer-btn span,
+.ibp-modal-footer-btn svg {
+  position: relative;
+  z-index: 1;
+}
+
+.ibp-modal-footer-btn:hover {
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(255, 78, 19, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ── Modal Responsive ── */
 @media (max-width: 768px) {
   .ibp-modal-hero {
-    min-height: 380px;
-    padding: 40px 24px;
+    min-height: 320px;
+    padding: 36px 24px;
   }
-  
+
   .ibp-modal-title {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
-  
+
+  .ibp-modal-author-bar {
+    padding: 16px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
   .ibp-modal-body {
-    padding: 40px 24px;
+    padding: 32px 24px 40px;
   }
-  
+
   .ibp-modal-prose p {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
-  
+
   .ibp-modal-prose p:first-of-type {
+    font-size: 1.1rem;
+  }
+
+  .ibp-modal-prose p:first-of-type::first-letter {
+    font-size: 2.8em;
+  }
+
+  .ibp-modal-prose h2 {
+    font-size: 1.35rem;
+  }
+
+  .ibp-modal-prose h3 {
     font-size: 1.15rem;
+  }
+
+  .ibp-modal-footer {
+    padding: 20px 24px;
+  }
+
+  .ibp-modal-footer-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .ibp-modal-footer-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ibp-modal-hero {
+    min-height: 260px;
+    padding: 28px 18px;
+  }
+
+  .ibp-modal-title {
+    font-size: 1.35rem;
+  }
+
+  .ibp-modal-meta {
+    font-size: 0.78rem;
+  }
+
+  .ibp-modal-author-bar {
+    padding: 14px 18px;
+  }
+
+  .ibp-modal-body {
+    padding: 24px 18px 32px;
+  }
+
+  .ibp-modal-prose p:first-of-type::first-letter {
+    font-size: 2.4em;
+    margin-right: 8px;
+  }
+
+  .ibp-modal-footer {
+    padding: 16px 18px;
   }
 }
 
