@@ -9,6 +9,7 @@ import '@/styles/ContactPage.css';
 import '@/styles/LoginPage.css';
 import '@/styles/AdminDashboard.css';
 import '@/styles/OurTeamPage.css';
+import '@/styles/ErrorPage.css';
 import { ThemeProvider } from '@/lib/context/ThemeContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';

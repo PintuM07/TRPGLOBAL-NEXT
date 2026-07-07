@@ -1747,10 +1747,15 @@
   transform: translateX(0);
 }
 
-.ibp-modal-footer-btn span,
-.ibp-modal-footer-btn svg {
+.ibp-modal-footer-btn > * {
   position: relative;
   z-index: 1;
+}
+
+.ibp-modal-footer-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .ibp-modal-footer-btn:hover {
