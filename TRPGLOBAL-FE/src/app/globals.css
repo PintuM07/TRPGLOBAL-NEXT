@@ -57,12 +57,15 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 ::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
+  /* Chrome, Safari and Opera */
 }
 
 body {
@@ -136,7 +139,8 @@ a {
   background: linear-gradient(120deg, #ff4e13, #ffb300, #47ad05);
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth but faster ease-in-out */
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Smooth but faster ease-in-out */
 }
 
 /* ── SHARED UTILS ── */
@@ -418,21 +422,21 @@ body {
   cursor: default;
 }
 
-a, 
-button, 
-input[type="button"], 
-input[type="submit"], 
-input[type="reset"], 
-select, 
-.svc-card, 
-.ig-card, 
-.team-card, 
+a,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+.svc-card,
+.ig-card,
+.team-card,
 .job-item,
 [role="button"] {
   cursor: pointer;
 }
 
-input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]), 
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),
 textarea {
   cursor: text;
 }
